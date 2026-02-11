@@ -1,0 +1,32 @@
+name:                apple-backgroundtasks-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the BackgroundTasks framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.BackgroundTasks.BGAppRefreshTask
+  - ObjC.BackgroundTasks.BGAppRefreshTaskRequest
+  - ObjC.BackgroundTasks.BGContinuedProcessingTask
+  - ObjC.BackgroundTasks.BGContinuedProcessingTaskRequest
+  - ObjC.BackgroundTasks.BGHealthResearchTask
+  - ObjC.BackgroundTasks.BGHealthResearchTaskRequest
+  - ObjC.BackgroundTasks.BGProcessingTask
+  - ObjC.BackgroundTasks.BGProcessingTaskRequest
+  - ObjC.BackgroundTasks.BGTask
+  - ObjC.BackgroundTasks.BGTaskRequest
+  - ObjC.BackgroundTasks.BGTaskScheduler
+  - ObjC.BackgroundTasks.Enums
+  - ObjC.BackgroundTasks.Internal.Classes
+  - ObjC.BackgroundTasks.Internal.Enums

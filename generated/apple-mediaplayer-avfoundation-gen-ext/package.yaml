@@ -1,0 +1,23 @@
+name:                apple-mediaplayer-avfoundation-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the MediaPlayer extensions on AVFoundation framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-avfoundation-gen
+- apple-mediaplayer-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.MediaPlayer.AVMediaSelectionGroup
+  - ObjC.MediaPlayer.AVMediaSelectionOption
+  - ObjC.MediaPlayer.AVPlayerItem
+  - ObjC.MediaPlayer.NSUserActivity

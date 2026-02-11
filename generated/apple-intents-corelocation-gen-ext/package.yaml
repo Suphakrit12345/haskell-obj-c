@@ -1,0 +1,25 @@
+name:                apple-intents-corelocation-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the Intents extensions on CoreLocation framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-contacts-gen
+- apple-corelocation-gen
+- apple-foundation-gen
+- apple-intents-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.Intents.CLPlacemark
+  - ObjC.Intents.NSExtensionContext
+  - ObjC.Intents.NSString
+  - ObjC.Intents.NSUserActivity

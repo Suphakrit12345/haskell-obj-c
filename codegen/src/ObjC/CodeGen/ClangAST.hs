@@ -154,12 +154,20 @@ resolveFrameworks = go Nothing
             Nothing -> lastFile
           -- 2. Try includedFrom.file (the including header chain)
           incFile = extractIncludedFrom val
-          -- Resolve framework in priority order:
-          -- direct file > includedFrom > delta-tracked file
-          fwFromDirect = directFile >>= frameworkFromPath
+          -- Resolve framework from the various sources
           fwFromInc    = incFile >>= frameworkFromPath
           fwFromTrack  = trackedFile >>= frameworkFromPath
-          fw = fwFromDirect <|> fwFromInc <|> fwFromTrack
+          -- Priority depends on whether we have a direct loc.file.
+          -- When loc.file IS present: extract framework from it; if
+          -- it's a non-framework path (e.g. /usr/include/), fall back
+          -- to includedFrom which tells us the importing framework.
+          -- When loc.file is ABSENT (clang delta encoding): the
+          -- delta-tracked file IS the correct file, so trust it
+          -- over includedFrom (which may point to an importing
+          -- framework rather than the owning framework).
+          fw = case directFile of
+            Just path -> frameworkFromPath path <|> fwFromInc
+            Nothing   -> fwFromTrack <|> fwFromInc
       in (fw, val) : go trackedFile rest
 
 -- | Extract the @includedFrom.file@ path from a declaration's @loc@.
@@ -391,24 +399,30 @@ escapeHaddock = convertBacktickCode . escapeSpecialChars
 
 -- | Extract the source file path from a declaration's @"loc"@ field.
 --
--- Handles both direct @loc.file@ and the @loc.spellingLoc.file@ /
--- @loc.expansionLoc.file@ variants that clang uses for macro expansions.
+-- Handles both direct @loc.file@ and the @loc.expansionLoc.file@ /
+-- @loc.spellingLoc.file@ variants that clang uses for macro expansions.
+--
+-- For framework attribution we prefer @expansionLoc@ over @spellingLoc@:
+-- @spellingLoc@ points to the macro *definition* site (e.g.,
+-- @CoreFoundation\/CFAvailability.h@ for @NS_ENUM@), while @expansionLoc@
+-- points to the macro *use* site (e.g., @Foundation\/NSString.h@), which
+-- is the actual owning framework.
 extractLocFile :: Value -> Maybe Text
 extractLocFile (Object o) = case KM.lookup "loc" o of
   Just (Object locObj) ->
     -- Try direct "file" field first
     case KM.lookup "file" locObj of
       Just (String s) -> Just s
-      _ -> -- Try spellingLoc, then expansionLoc
-        case KM.lookup "spellingLoc" locObj of
-          Just (Object slObj) -> case KM.lookup "file" slObj of
+      _ -> -- Prefer expansionLoc (use site) over spellingLoc (definition site)
+        case KM.lookup "expansionLoc" locObj of
+          Just (Object elObj) -> case KM.lookup "file" elObj of
             Just (String s) -> Just s
-            _ -> tryExpansionLoc locObj
-          _ -> tryExpansionLoc locObj
+            _ -> trySpellingLoc locObj
+          _ -> trySpellingLoc locObj
   _ -> Nothing
   where
-    tryExpansionLoc locObj = case KM.lookup "expansionLoc" locObj of
-      Just (Object elObj) -> case KM.lookup "file" elObj of
+    trySpellingLoc locObj = case KM.lookup "spellingLoc" locObj of
+      Just (Object slObj) -> case KM.lookup "file" slObj of
         Just (String s) -> Just s
         _ -> Nothing
       _ -> Nothing
@@ -431,7 +445,15 @@ frameworkFromPath path = do
   -- e.g., ".../Foundation" -> "Foundation"
   let (_, fwName) = T.breakOnEnd "/" before
   guard (not (T.null fwName))
-  pure fwName
+  -- Ensure the first character is uppercase so the name is a valid
+  -- Haskell module component (e.g. vecLib -> VecLib).
+  pure (capitalizeFirst fwName)
+
+-- | Uppercase the first character of a 'Text' value.
+capitalizeFirst :: Text -> Text
+capitalizeFirst t = case T.uncons t of
+  Just (c, rest) -> T.cons (Char.toUpper c) rest
+  Nothing        -> t
 
 -- ---------------------------------------------------------------------------
 -- Interface extraction

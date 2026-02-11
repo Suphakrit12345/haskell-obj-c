@@ -1,0 +1,23 @@
+name:                apple-coreaudio-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the CoreAudio framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-coreaudiotypes-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.CoreAudio
+  - ObjC.CoreAudio.Enums
+  - ObjC.CoreAudio.Internal.Enums
+  - ObjC.CoreAudio.Internal.Structs
+  - ObjC.CoreAudio.Structs

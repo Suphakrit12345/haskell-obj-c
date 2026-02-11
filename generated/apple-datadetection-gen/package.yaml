@@ -1,0 +1,28 @@
+name:                apple-datadetection-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the DataDetection framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.DataDetection.DDMatch
+  - ObjC.DataDetection.DDMatchCalendarEvent
+  - ObjC.DataDetection.DDMatchEmailAddress
+  - ObjC.DataDetection.DDMatchFlightNumber
+  - ObjC.DataDetection.DDMatchLink
+  - ObjC.DataDetection.DDMatchMoneyAmount
+  - ObjC.DataDetection.DDMatchPhoneNumber
+  - ObjC.DataDetection.DDMatchPostalAddress
+  - ObjC.DataDetection.DDMatchShipmentTrackingNumber
+  - ObjC.DataDetection.Internal.Classes

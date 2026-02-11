@@ -1,0 +1,20 @@
+name:                apple-shazamkit-uniformtypeidentifiers-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the ShazamKit extensions on UniformTypeIdentifiers framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-shazamkit-gen
+- apple-uniformtypeidentifiers-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.ShazamKit.UTType

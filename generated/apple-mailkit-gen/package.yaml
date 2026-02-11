@@ -1,0 +1,38 @@
+name:                apple-mailkit-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the MailKit framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.MailKit.Enums
+  - ObjC.MailKit.Internal.Classes
+  - ObjC.MailKit.Internal.Enums
+  - ObjC.MailKit.MEAddressAnnotation
+  - ObjC.MailKit.MEComposeContext
+  - ObjC.MailKit.MEComposeSession
+  - ObjC.MailKit.MEDecodedMessage
+  - ObjC.MailKit.MEDecodedMessageBanner
+  - ObjC.MailKit.MEEmailAddress
+  - ObjC.MailKit.MEEncodedOutgoingMessage
+  - ObjC.MailKit.MEExtensionManager
+  - ObjC.MailKit.MEExtensionViewController
+  - ObjC.MailKit.MEMessage
+  - ObjC.MailKit.MEMessageAction
+  - ObjC.MailKit.MEMessageActionDecision
+  - ObjC.MailKit.MEMessageEncodingResult
+  - ObjC.MailKit.MEMessageSecurityInformation
+  - ObjC.MailKit.MEMessageSigner
+  - ObjC.MailKit.MEOutgoingMessageEncodingStatus

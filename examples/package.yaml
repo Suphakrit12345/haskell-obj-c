@@ -7,8 +7,8 @@ dependencies:
 - base >= 4.7 && < 5
 - haskell-obj-c
 - libffi
-- objc-appkit
-- objc-foundation
+- apple-appkit-gen
+- apple-foundation-gen
 - template-haskell
 
 ghc-options:

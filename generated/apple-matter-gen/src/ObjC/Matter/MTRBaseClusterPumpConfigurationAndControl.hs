@@ -1,0 +1,2528 @@
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleContexts #-}
+
+-- | Cluster Pump Configuration and Control
+--
+-- An interface for configuring and controlling pumps.
+--
+-- Generated bindings for @MTRBaseClusterPumpConfigurationAndControl@.
+module ObjC.Matter.MTRBaseClusterPumpConfigurationAndControl
+  ( MTRBaseClusterPumpConfigurationAndControl
+  , IsMTRBaseClusterPumpConfigurationAndControl(..)
+  , readAttributeMaxPressureWithCompletion
+  , subscribeAttributeMaxPressureWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxPressureWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxSpeedWithCompletion
+  , subscribeAttributeMaxSpeedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxSpeedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxFlowWithCompletion
+  , subscribeAttributeMaxFlowWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxFlowWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMinConstPressureWithCompletion
+  , subscribeAttributeMinConstPressureWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMinConstPressureWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxConstPressureWithCompletion
+  , subscribeAttributeMaxConstPressureWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstPressureWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMinCompPressureWithCompletion
+  , subscribeAttributeMinCompPressureWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMinCompPressureWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxCompPressureWithCompletion
+  , subscribeAttributeMaxCompPressureWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxCompPressureWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMinConstSpeedWithCompletion
+  , subscribeAttributeMinConstSpeedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMinConstSpeedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxConstSpeedWithCompletion
+  , subscribeAttributeMaxConstSpeedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstSpeedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMinConstFlowWithCompletion
+  , subscribeAttributeMinConstFlowWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMinConstFlowWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxConstFlowWithCompletion
+  , subscribeAttributeMaxConstFlowWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstFlowWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMinConstTempWithCompletion
+  , subscribeAttributeMinConstTempWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMinConstTempWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxConstTempWithCompletion
+  , subscribeAttributeMaxConstTempWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstTempWithClusterStateCache_endpoint_queue_completion
+  , readAttributePumpStatusWithCompletion
+  , subscribeAttributePumpStatusWithParams_subscriptionEstablished_reportHandler
+  , readAttributePumpStatusWithClusterStateCache_endpoint_queue_completion
+  , readAttributeEffectiveOperationModeWithCompletion
+  , subscribeAttributeEffectiveOperationModeWithParams_subscriptionEstablished_reportHandler
+  , readAttributeEffectiveOperationModeWithClusterStateCache_endpoint_queue_completion
+  , readAttributeEffectiveControlModeWithCompletion
+  , subscribeAttributeEffectiveControlModeWithParams_subscriptionEstablished_reportHandler
+  , readAttributeEffectiveControlModeWithClusterStateCache_endpoint_queue_completion
+  , readAttributeCapacityWithCompletion
+  , subscribeAttributeCapacityWithParams_subscriptionEstablished_reportHandler
+  , readAttributeCapacityWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSpeedWithCompletion
+  , subscribeAttributeSpeedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSpeedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeLifetimeRunningHoursWithCompletion
+  , writeAttributeLifetimeRunningHoursWithValue_completion
+  , writeAttributeLifetimeRunningHoursWithValue_params_completion
+  , subscribeAttributeLifetimeRunningHoursWithParams_subscriptionEstablished_reportHandler
+  , readAttributeLifetimeRunningHoursWithClusterStateCache_endpoint_queue_completion
+  , readAttributePowerWithCompletion
+  , subscribeAttributePowerWithParams_subscriptionEstablished_reportHandler
+  , readAttributePowerWithClusterStateCache_endpoint_queue_completion
+  , readAttributeLifetimeEnergyConsumedWithCompletion
+  , writeAttributeLifetimeEnergyConsumedWithValue_completion
+  , writeAttributeLifetimeEnergyConsumedWithValue_params_completion
+  , subscribeAttributeLifetimeEnergyConsumedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeLifetimeEnergyConsumedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeOperationModeWithCompletion
+  , writeAttributeOperationModeWithValue_completion
+  , writeAttributeOperationModeWithValue_params_completion
+  , subscribeAttributeOperationModeWithParams_subscriptionEstablished_reportHandler
+  , readAttributeOperationModeWithClusterStateCache_endpoint_queue_completion
+  , readAttributeControlModeWithCompletion
+  , writeAttributeControlModeWithValue_completion
+  , writeAttributeControlModeWithValue_params_completion
+  , subscribeAttributeControlModeWithParams_subscriptionEstablished_reportHandler
+  , readAttributeControlModeWithClusterStateCache_endpoint_queue_completion
+  , readAttributeGeneratedCommandListWithCompletion
+  , subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandler
+  , readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAcceptedCommandListWithCompletion
+  , subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAttributeListWithCompletion
+  , subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAttributeListWithClusterStateCache_endpoint_queue_completion
+  , readAttributeFeatureMapWithCompletion
+  , subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandler
+  , readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completion
+  , readAttributeClusterRevisionWithCompletion
+  , subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandler
+  , readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completion
+  , init_
+  , new
+  , initWithDevice_endpoint_queue
+  , readAttributeMaxPressureWithCompletionHandler
+  , subscribeAttributeMaxPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxPressureWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxSpeedWithCompletionHandler
+  , subscribeAttributeMaxSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxSpeedWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxFlowWithCompletionHandler
+  , subscribeAttributeMaxFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxFlowWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMinConstPressureWithCompletionHandler
+  , subscribeAttributeMinConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMinConstPressureWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxConstPressureWithCompletionHandler
+  , subscribeAttributeMaxConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstPressureWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMinCompPressureWithCompletionHandler
+  , subscribeAttributeMinCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMinCompPressureWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxCompPressureWithCompletionHandler
+  , subscribeAttributeMaxCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxCompPressureWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMinConstSpeedWithCompletionHandler
+  , subscribeAttributeMinConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMinConstSpeedWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxConstSpeedWithCompletionHandler
+  , subscribeAttributeMaxConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstSpeedWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMinConstFlowWithCompletionHandler
+  , subscribeAttributeMinConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMinConstFlowWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxConstFlowWithCompletionHandler
+  , subscribeAttributeMaxConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstFlowWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMinConstTempWithCompletionHandler
+  , subscribeAttributeMinConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMinConstTempWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeMaxConstTempWithCompletionHandler
+  , subscribeAttributeMaxConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeMaxConstTempWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributePumpStatusWithCompletionHandler
+  , subscribeAttributePumpStatusWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributePumpStatusWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeEffectiveOperationModeWithCompletionHandler
+  , subscribeAttributeEffectiveOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeEffectiveOperationModeWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeEffectiveControlModeWithCompletionHandler
+  , subscribeAttributeEffectiveControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeEffectiveControlModeWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeCapacityWithCompletionHandler
+  , subscribeAttributeCapacityWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeCapacityWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeSpeedWithCompletionHandler
+  , subscribeAttributeSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeSpeedWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeLifetimeRunningHoursWithCompletionHandler
+  , writeAttributeLifetimeRunningHoursWithValue_completionHandler
+  , writeAttributeLifetimeRunningHoursWithValue_params_completionHandler
+  , subscribeAttributeLifetimeRunningHoursWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeLifetimeRunningHoursWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributePowerWithCompletionHandler
+  , subscribeAttributePowerWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributePowerWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeLifetimeEnergyConsumedWithCompletionHandler
+  , writeAttributeLifetimeEnergyConsumedWithValue_completionHandler
+  , writeAttributeLifetimeEnergyConsumedWithValue_params_completionHandler
+  , subscribeAttributeLifetimeEnergyConsumedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeLifetimeEnergyConsumedWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeOperationModeWithCompletionHandler
+  , writeAttributeOperationModeWithValue_completionHandler
+  , writeAttributeOperationModeWithValue_params_completionHandler
+  , subscribeAttributeOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeOperationModeWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeControlModeWithCompletionHandler
+  , writeAttributeControlModeWithValue_completionHandler
+  , writeAttributeControlModeWithValue_params_completionHandler
+  , subscribeAttributeControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeControlModeWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeGeneratedCommandListWithCompletionHandler
+  , subscribeAttributeGeneratedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeGeneratedCommandListWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeAcceptedCommandListWithCompletionHandler
+  , subscribeAttributeAcceptedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeAcceptedCommandListWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeAttributeListWithCompletionHandler
+  , subscribeAttributeAttributeListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeAttributeListWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeFeatureMapWithCompletionHandler
+  , subscribeAttributeFeatureMapWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeFeatureMapWithAttributeCache_endpoint_queue_completionHandler
+  , readAttributeClusterRevisionWithCompletionHandler
+  , subscribeAttributeClusterRevisionWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler
+  , readAttributeClusterRevisionWithAttributeCache_endpoint_queue_completionHandler
+  , initWithDevice_endpointID_queue
+  , readAttributeMaxPressureWithCompletionSelector
+  , subscribeAttributeMaxPressureWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxPressureWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxSpeedWithCompletionSelector
+  , subscribeAttributeMaxSpeedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxSpeedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxFlowWithCompletionSelector
+  , subscribeAttributeMaxFlowWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxFlowWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMinConstPressureWithCompletionSelector
+  , subscribeAttributeMinConstPressureWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstPressureWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxConstPressureWithCompletionSelector
+  , subscribeAttributeMaxConstPressureWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstPressureWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMinCompPressureWithCompletionSelector
+  , subscribeAttributeMinCompPressureWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinCompPressureWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxCompPressureWithCompletionSelector
+  , subscribeAttributeMaxCompPressureWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxCompPressureWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMinConstSpeedWithCompletionSelector
+  , subscribeAttributeMinConstSpeedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstSpeedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxConstSpeedWithCompletionSelector
+  , subscribeAttributeMaxConstSpeedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstSpeedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMinConstFlowWithCompletionSelector
+  , subscribeAttributeMinConstFlowWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstFlowWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxConstFlowWithCompletionSelector
+  , subscribeAttributeMaxConstFlowWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstFlowWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMinConstTempWithCompletionSelector
+  , subscribeAttributeMinConstTempWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstTempWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxConstTempWithCompletionSelector
+  , subscribeAttributeMaxConstTempWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstTempWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributePumpStatusWithCompletionSelector
+  , subscribeAttributePumpStatusWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributePumpStatusWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeEffectiveOperationModeWithCompletionSelector
+  , subscribeAttributeEffectiveOperationModeWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeEffectiveOperationModeWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeEffectiveControlModeWithCompletionSelector
+  , subscribeAttributeEffectiveControlModeWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeEffectiveControlModeWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeCapacityWithCompletionSelector
+  , subscribeAttributeCapacityWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeCapacityWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSpeedWithCompletionSelector
+  , subscribeAttributeSpeedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeLifetimeRunningHoursWithCompletionSelector
+  , writeAttributeLifetimeRunningHoursWithValue_completionSelector
+  , writeAttributeLifetimeRunningHoursWithValue_params_completionSelector
+  , subscribeAttributeLifetimeRunningHoursWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeLifetimeRunningHoursWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributePowerWithCompletionSelector
+  , subscribeAttributePowerWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributePowerWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeLifetimeEnergyConsumedWithCompletionSelector
+  , writeAttributeLifetimeEnergyConsumedWithValue_completionSelector
+  , writeAttributeLifetimeEnergyConsumedWithValue_params_completionSelector
+  , subscribeAttributeLifetimeEnergyConsumedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeLifetimeEnergyConsumedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeOperationModeWithCompletionSelector
+  , writeAttributeOperationModeWithValue_completionSelector
+  , writeAttributeOperationModeWithValue_params_completionSelector
+  , subscribeAttributeOperationModeWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeOperationModeWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeControlModeWithCompletionSelector
+  , writeAttributeControlModeWithValue_completionSelector
+  , writeAttributeControlModeWithValue_params_completionSelector
+  , subscribeAttributeControlModeWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeControlModeWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeGeneratedCommandListWithCompletionSelector
+  , subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAcceptedCommandListWithCompletionSelector
+  , subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAttributeListWithCompletionSelector
+  , subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAttributeListWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeFeatureMapWithCompletionSelector
+  , subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeClusterRevisionWithCompletionSelector
+  , subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completionSelector
+  , initSelector
+  , newSelector
+  , initWithDevice_endpoint_queueSelector
+  , readAttributeMaxPressureWithCompletionHandlerSelector
+  , subscribeAttributeMaxPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxPressureWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxSpeedWithCompletionHandlerSelector
+  , subscribeAttributeMaxSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxFlowWithCompletionHandlerSelector
+  , subscribeAttributeMaxFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxFlowWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMinConstPressureWithCompletionHandlerSelector
+  , subscribeAttributeMinConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstPressureWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxConstPressureWithCompletionHandlerSelector
+  , subscribeAttributeMaxConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstPressureWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMinCompPressureWithCompletionHandlerSelector
+  , subscribeAttributeMinCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinCompPressureWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxCompPressureWithCompletionHandlerSelector
+  , subscribeAttributeMaxCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxCompPressureWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMinConstSpeedWithCompletionHandlerSelector
+  , subscribeAttributeMinConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxConstSpeedWithCompletionHandlerSelector
+  , subscribeAttributeMaxConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMinConstFlowWithCompletionHandlerSelector
+  , subscribeAttributeMinConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstFlowWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxConstFlowWithCompletionHandlerSelector
+  , subscribeAttributeMaxConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstFlowWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMinConstTempWithCompletionHandlerSelector
+  , subscribeAttributeMinConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinConstTempWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeMaxConstTempWithCompletionHandlerSelector
+  , subscribeAttributeMaxConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConstTempWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributePumpStatusWithCompletionHandlerSelector
+  , subscribeAttributePumpStatusWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributePumpStatusWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeEffectiveOperationModeWithCompletionHandlerSelector
+  , subscribeAttributeEffectiveOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeEffectiveOperationModeWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeEffectiveControlModeWithCompletionHandlerSelector
+  , subscribeAttributeEffectiveControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeEffectiveControlModeWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeCapacityWithCompletionHandlerSelector
+  , subscribeAttributeCapacityWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeCapacityWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeSpeedWithCompletionHandlerSelector
+  , subscribeAttributeSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeLifetimeRunningHoursWithCompletionHandlerSelector
+  , writeAttributeLifetimeRunningHoursWithValue_completionHandlerSelector
+  , writeAttributeLifetimeRunningHoursWithValue_params_completionHandlerSelector
+  , subscribeAttributeLifetimeRunningHoursWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeLifetimeRunningHoursWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributePowerWithCompletionHandlerSelector
+  , subscribeAttributePowerWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributePowerWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeLifetimeEnergyConsumedWithCompletionHandlerSelector
+  , writeAttributeLifetimeEnergyConsumedWithValue_completionHandlerSelector
+  , writeAttributeLifetimeEnergyConsumedWithValue_params_completionHandlerSelector
+  , subscribeAttributeLifetimeEnergyConsumedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeLifetimeEnergyConsumedWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeOperationModeWithCompletionHandlerSelector
+  , writeAttributeOperationModeWithValue_completionHandlerSelector
+  , writeAttributeOperationModeWithValue_params_completionHandlerSelector
+  , subscribeAttributeOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeOperationModeWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeControlModeWithCompletionHandlerSelector
+  , writeAttributeControlModeWithValue_completionHandlerSelector
+  , writeAttributeControlModeWithValue_params_completionHandlerSelector
+  , subscribeAttributeControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeControlModeWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeGeneratedCommandListWithCompletionHandlerSelector
+  , subscribeAttributeGeneratedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeGeneratedCommandListWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeAcceptedCommandListWithCompletionHandlerSelector
+  , subscribeAttributeAcceptedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAcceptedCommandListWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeAttributeListWithCompletionHandlerSelector
+  , subscribeAttributeAttributeListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAttributeListWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeFeatureMapWithCompletionHandlerSelector
+  , subscribeAttributeFeatureMapWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeFeatureMapWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , readAttributeClusterRevisionWithCompletionHandlerSelector
+  , subscribeAttributeClusterRevisionWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector
+  , readAttributeClusterRevisionWithAttributeCache_endpoint_queue_completionHandlerSelector
+  , initWithDevice_endpointID_queueSelector
+
+
+  ) where
+
+import Foreign.Ptr (Ptr, nullPtr, castPtr)
+import Foreign.LibFFI
+import Foreign.C.Types
+import Data.Int (Int8, Int16)
+import Data.Word (Word16)
+import Data.Coerce (coerce)
+
+import ObjC.Runtime.Types
+import ObjC.Runtime.MsgSend (sendMsg, sendClassMsg)
+import ObjC.Runtime.Selector (mkSelector)
+import ObjC.Runtime.Class (getRequiredClass)
+
+import ObjC.Matter.Internal.Classes
+import ObjC.Foundation.Internal.Classes
+
+-- | @- readAttributeMaxPressureWithCompletion:@
+readAttributeMaxPressureWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxPressureWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxPressureWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxPressureWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxPressureWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxPressureWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxPressureWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxPressureWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxPressureWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxSpeedWithCompletion:@
+readAttributeMaxSpeedWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxSpeedWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxSpeedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxSpeedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxSpeedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxSpeedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxSpeedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxSpeedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxSpeedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxFlowWithCompletion:@
+readAttributeMaxFlowWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxFlowWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxFlowWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxFlowWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxFlowWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxFlowWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxFlowWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxFlowWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxFlowWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxFlowWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxFlowWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMinConstPressureWithCompletion:@
+readAttributeMinConstPressureWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstPressureWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstPressureWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstPressureWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstPressureWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstPressureWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstPressureWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstPressureWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstPressureWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxConstPressureWithCompletion:@
+readAttributeMaxConstPressureWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstPressureWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstPressureWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstPressureWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstPressureWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstPressureWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstPressureWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstPressureWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstPressureWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMinCompPressureWithCompletion:@
+readAttributeMinCompPressureWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinCompPressureWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinCompPressureWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMinCompPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinCompPressureWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinCompPressureWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinCompPressureWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinCompPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinCompPressureWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinCompPressureWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinCompPressureWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxCompPressureWithCompletion:@
+readAttributeMaxCompPressureWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxCompPressureWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxCompPressureWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxCompPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxCompPressureWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxCompPressureWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxCompPressureWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxCompPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxCompPressureWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxCompPressureWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxCompPressureWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMinConstSpeedWithCompletion:@
+readAttributeMinConstSpeedWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstSpeedWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstSpeedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstSpeedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstSpeedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstSpeedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstSpeedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstSpeedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstSpeedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxConstSpeedWithCompletion:@
+readAttributeMaxConstSpeedWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstSpeedWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstSpeedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstSpeedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstSpeedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstSpeedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstSpeedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstSpeedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstSpeedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMinConstFlowWithCompletion:@
+readAttributeMinConstFlowWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstFlowWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstFlowWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstFlowWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstFlowWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstFlowWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstFlowWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstFlowWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstFlowWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstFlowWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstFlowWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxConstFlowWithCompletion:@
+readAttributeMaxConstFlowWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstFlowWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstFlowWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstFlowWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstFlowWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstFlowWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstFlowWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstFlowWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstFlowWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstFlowWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstFlowWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMinConstTempWithCompletion:@
+readAttributeMinConstTempWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstTempWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstTempWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstTempWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstTempWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstTempWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstTempWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstTempWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstTempWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstTempWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstTempWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxConstTempWithCompletion:@
+readAttributeMaxConstTempWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstTempWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstTempWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstTempWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstTempWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstTempWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstTempWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstTempWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstTempWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstTempWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstTempWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributePumpStatusWithCompletion:@
+readAttributePumpStatusWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributePumpStatusWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributePumpStatusWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributePumpStatusWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributePumpStatusWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributePumpStatusWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributePumpStatusWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributePumpStatusWithClusterStateCache:endpoint:queue:completion:@
+readAttributePumpStatusWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributePumpStatusWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributePumpStatusWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeEffectiveOperationModeWithCompletion:@
+readAttributeEffectiveOperationModeWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeEffectiveOperationModeWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeEffectiveOperationModeWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeEffectiveOperationModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveOperationModeWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeEffectiveOperationModeWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeEffectiveOperationModeWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeEffectiveOperationModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeEffectiveOperationModeWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeEffectiveOperationModeWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeEffectiveOperationModeWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeEffectiveControlModeWithCompletion:@
+readAttributeEffectiveControlModeWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeEffectiveControlModeWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeEffectiveControlModeWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeEffectiveControlModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveControlModeWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeEffectiveControlModeWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeEffectiveControlModeWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeEffectiveControlModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeEffectiveControlModeWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeEffectiveControlModeWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeEffectiveControlModeWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeCapacityWithCompletion:@
+readAttributeCapacityWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeCapacityWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeCapacityWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeCapacityWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeCapacityWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeCapacityWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeCapacityWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeCapacityWithClusterStateCache:endpoint:queue:completion:@
+readAttributeCapacityWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeCapacityWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeCapacityWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSpeedWithCompletion:@
+readAttributeSpeedWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeSpeedWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeSpeedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeSpeedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeLifetimeRunningHoursWithCompletion:@
+readAttributeLifetimeRunningHoursWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeLifetimeRunningHoursWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeLifetimeRunningHoursWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLifetimeRunningHoursWithValue:completion:@
+writeAttributeLifetimeRunningHoursWithValue_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeLifetimeRunningHoursWithValue_completion mtrBaseClusterPumpConfigurationAndControl  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeRunningHoursWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLifetimeRunningHoursWithValue:params:completion:@
+writeAttributeLifetimeRunningHoursWithValue_params_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeLifetimeRunningHoursWithValue_params_completion mtrBaseClusterPumpConfigurationAndControl  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeRunningHoursWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeLifetimeRunningHoursWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeRunningHoursWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeLifetimeRunningHoursWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeLifetimeRunningHoursWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeLifetimeRunningHoursWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLifetimeRunningHoursWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeLifetimeRunningHoursWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeLifetimeRunningHoursWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributePowerWithCompletion:@
+readAttributePowerWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributePowerWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributePowerWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributePowerWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributePowerWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributePowerWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributePowerWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributePowerWithClusterStateCache:endpoint:queue:completion:@
+readAttributePowerWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributePowerWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributePowerWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeLifetimeEnergyConsumedWithCompletion:@
+readAttributeLifetimeEnergyConsumedWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeLifetimeEnergyConsumedWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeLifetimeEnergyConsumedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLifetimeEnergyConsumedWithValue:completion:@
+writeAttributeLifetimeEnergyConsumedWithValue_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeLifetimeEnergyConsumedWithValue_completion mtrBaseClusterPumpConfigurationAndControl  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLifetimeEnergyConsumedWithValue:params:completion:@
+writeAttributeLifetimeEnergyConsumedWithValue_params_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeLifetimeEnergyConsumedWithValue_params_completion mtrBaseClusterPumpConfigurationAndControl  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeLifetimeEnergyConsumedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeEnergyConsumedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeLifetimeEnergyConsumedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeLifetimeEnergyConsumedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeLifetimeEnergyConsumedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLifetimeEnergyConsumedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeLifetimeEnergyConsumedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeLifetimeEnergyConsumedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeOperationModeWithCompletion:@
+readAttributeOperationModeWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeOperationModeWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeOperationModeWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeOperationModeWithValue:completion:@
+writeAttributeOperationModeWithValue_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeOperationModeWithValue_completion mtrBaseClusterPumpConfigurationAndControl  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeOperationModeWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeOperationModeWithValue:params:completion:@
+writeAttributeOperationModeWithValue_params_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeOperationModeWithValue_params_completion mtrBaseClusterPumpConfigurationAndControl  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeOperationModeWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeOperationModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeOperationModeWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeOperationModeWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeOperationModeWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeOperationModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeOperationModeWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeOperationModeWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeOperationModeWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeControlModeWithCompletion:@
+readAttributeControlModeWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeControlModeWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeControlModeWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeControlModeWithValue:completion:@
+writeAttributeControlModeWithValue_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeControlModeWithValue_completion mtrBaseClusterPumpConfigurationAndControl  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeControlModeWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeControlModeWithValue:params:completion:@
+writeAttributeControlModeWithValue_params_completion :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeControlModeWithValue_params_completion mtrBaseClusterPumpConfigurationAndControl  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeControlModeWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeControlModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeControlModeWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeControlModeWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeControlModeWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeControlModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeControlModeWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeControlModeWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeControlModeWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeGeneratedCommandListWithCompletion:@
+readAttributeGeneratedCommandListWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeGeneratedCommandListWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeGeneratedCommandListWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAcceptedCommandListWithCompletion:@
+readAttributeAcceptedCommandListWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeAcceptedCommandListWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeAcceptedCommandListWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAttributeListWithCompletion:@
+readAttributeAttributeListWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeAttributeListWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeAttributeListWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeFeatureMapWithCompletion:@
+readAttributeFeatureMapWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeFeatureMapWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeFeatureMapWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:@
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeClusterRevisionWithCompletion:@
+readAttributeClusterRevisionWithCompletion :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeClusterRevisionWithCompletion mtrBaseClusterPumpConfigurationAndControl  completion =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeClusterRevisionWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- init@
+init_ :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> IO (Id MTRBaseClusterPumpConfigurationAndControl)
+init_ mtrBaseClusterPumpConfigurationAndControl  =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "init") (retPtr retVoid) [] >>= ownedObject . castPtr
+
+-- | @+ new@
+new :: IO (Id MTRBaseClusterPumpConfigurationAndControl)
+new  =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    sendClassMsg cls' (mkSelector "new") (retPtr retVoid) [] >>= ownedObject . castPtr
+
+-- | @- initWithDevice:endpoint:queue:@
+initWithDevice_endpoint_queue :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRBaseDevice device, IsNSObject queue) => mtrBaseClusterPumpConfigurationAndControl -> device -> CUShort -> queue -> IO (Id MTRBaseClusterPumpConfigurationAndControl)
+initWithDevice_endpoint_queue mtrBaseClusterPumpConfigurationAndControl  device endpoint queue =
+  withObjCPtr device $ \raw_device ->
+    withObjCPtr queue $ \raw_queue ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "initWithDevice:endpoint:queue:") (retPtr retVoid) [argPtr (castPtr raw_device :: Ptr ()), argCUInt (fromIntegral endpoint), argPtr (castPtr raw_queue :: Ptr ())] >>= ownedObject . castPtr
+
+-- | @- readAttributeMaxPressureWithCompletionHandler:@
+readAttributeMaxPressureWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxPressureWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxPressureWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxPressureWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxPressureWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxPressureWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxSpeedWithCompletionHandler:@
+readAttributeMaxSpeedWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxSpeedWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxSpeedWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxSpeedWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxSpeedWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxSpeedWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxFlowWithCompletionHandler:@
+readAttributeMaxFlowWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxFlowWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxFlowWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxFlowWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxFlowWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxFlowWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxFlowWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMinConstPressureWithCompletionHandler:@
+readAttributeMinConstPressureWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstPressureWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstPressureWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstPressureWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstPressureWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstPressureWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxConstPressureWithCompletionHandler:@
+readAttributeMaxConstPressureWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstPressureWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstPressureWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstPressureWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstPressureWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstPressureWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMinCompPressureWithCompletionHandler:@
+readAttributeMinCompPressureWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinCompPressureWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinCompPressureWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMinCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinCompPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinCompPressureWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinCompPressureWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinCompPressureWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxCompPressureWithCompletionHandler:@
+readAttributeMaxCompPressureWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxCompPressureWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxCompPressureWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxCompPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxCompPressureWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxCompPressureWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxCompPressureWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMinConstSpeedWithCompletionHandler:@
+readAttributeMinConstSpeedWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstSpeedWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstSpeedWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstSpeedWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstSpeedWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstSpeedWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxConstSpeedWithCompletionHandler:@
+readAttributeMaxConstSpeedWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstSpeedWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstSpeedWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstSpeedWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstSpeedWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstSpeedWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMinConstFlowWithCompletionHandler:@
+readAttributeMinConstFlowWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstFlowWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstFlowWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstFlowWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstFlowWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstFlowWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstFlowWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxConstFlowWithCompletionHandler:@
+readAttributeMaxConstFlowWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstFlowWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstFlowWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstFlowWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstFlowWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstFlowWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstFlowWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMinConstTempWithCompletionHandler:@
+readAttributeMinConstTempWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMinConstTempWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMinConstTempWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMinConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMinConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinConstTempWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstTempWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinConstTempWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinConstTempWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeMaxConstTempWithCompletionHandler:@
+readAttributeMaxConstTempWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeMaxConstTempWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeMaxConstTempWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeMaxConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConstTempWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstTempWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConstTempWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConstTempWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributePumpStatusWithCompletionHandler:@
+readAttributePumpStatusWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributePumpStatusWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributePumpStatusWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributePumpStatusWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributePumpStatusWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributePumpStatusWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributePumpStatusWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributePumpStatusWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributePumpStatusWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributePumpStatusWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributePumpStatusWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeEffectiveOperationModeWithCompletionHandler:@
+readAttributeEffectiveOperationModeWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeEffectiveOperationModeWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeEffectiveOperationModeWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeEffectiveOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeEffectiveOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeEffectiveOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeEffectiveOperationModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeEffectiveOperationModeWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeEffectiveOperationModeWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeEffectiveOperationModeWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeEffectiveControlModeWithCompletionHandler:@
+readAttributeEffectiveControlModeWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeEffectiveControlModeWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeEffectiveControlModeWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeEffectiveControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeEffectiveControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeEffectiveControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeEffectiveControlModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeEffectiveControlModeWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeEffectiveControlModeWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeEffectiveControlModeWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeCapacityWithCompletionHandler:@
+readAttributeCapacityWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeCapacityWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeCapacityWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeCapacityWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeCapacityWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeCapacityWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeCapacityWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeCapacityWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeCapacityWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeCapacityWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeCapacityWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeSpeedWithCompletionHandler:@
+readAttributeSpeedWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeSpeedWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeSpeedWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeSpeedWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeedWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeedWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeLifetimeRunningHoursWithCompletionHandler:@
+readAttributeLifetimeRunningHoursWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeLifetimeRunningHoursWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeLifetimeRunningHoursWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeLifetimeRunningHoursWithValue:completionHandler:@
+writeAttributeLifetimeRunningHoursWithValue_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeLifetimeRunningHoursWithValue_completionHandler mtrBaseClusterPumpConfigurationAndControl  value completionHandler =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeRunningHoursWithValue:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeLifetimeRunningHoursWithValue:params:completionHandler:@
+writeAttributeLifetimeRunningHoursWithValue_params_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeLifetimeRunningHoursWithValue_params_completionHandler mtrBaseClusterPumpConfigurationAndControl  value params completionHandler =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeRunningHoursWithValue:params:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeLifetimeRunningHoursWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeRunningHoursWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeLifetimeRunningHoursWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeLifetimeRunningHoursWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeLifetimeRunningHoursWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeLifetimeRunningHoursWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeLifetimeRunningHoursWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeLifetimeRunningHoursWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributePowerWithCompletionHandler:@
+readAttributePowerWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributePowerWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributePowerWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributePowerWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributePowerWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributePowerWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributePowerWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributePowerWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributePowerWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributePowerWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributePowerWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeLifetimeEnergyConsumedWithCompletionHandler:@
+readAttributeLifetimeEnergyConsumedWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeLifetimeEnergyConsumedWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeLifetimeEnergyConsumedWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeLifetimeEnergyConsumedWithValue:completionHandler:@
+writeAttributeLifetimeEnergyConsumedWithValue_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeLifetimeEnergyConsumedWithValue_completionHandler mtrBaseClusterPumpConfigurationAndControl  value completionHandler =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeLifetimeEnergyConsumedWithValue:params:completionHandler:@
+writeAttributeLifetimeEnergyConsumedWithValue_params_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeLifetimeEnergyConsumedWithValue_params_completionHandler mtrBaseClusterPumpConfigurationAndControl  value params completionHandler =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:params:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeLifetimeEnergyConsumedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeEnergyConsumedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeLifetimeEnergyConsumedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeLifetimeEnergyConsumedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeLifetimeEnergyConsumedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeLifetimeEnergyConsumedWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeLifetimeEnergyConsumedWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeLifetimeEnergyConsumedWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeOperationModeWithCompletionHandler:@
+readAttributeOperationModeWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeOperationModeWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeOperationModeWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeOperationModeWithValue:completionHandler:@
+writeAttributeOperationModeWithValue_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeOperationModeWithValue_completionHandler mtrBaseClusterPumpConfigurationAndControl  value completionHandler =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeOperationModeWithValue:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeOperationModeWithValue:params:completionHandler:@
+writeAttributeOperationModeWithValue_params_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeOperationModeWithValue_params_completionHandler mtrBaseClusterPumpConfigurationAndControl  value params completionHandler =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeOperationModeWithValue:params:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeOperationModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeOperationModeWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeOperationModeWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeOperationModeWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeControlModeWithCompletionHandler:@
+readAttributeControlModeWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeControlModeWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeControlModeWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeControlModeWithValue:completionHandler:@
+writeAttributeControlModeWithValue_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value) => mtrBaseClusterPumpConfigurationAndControl -> value -> Ptr () -> IO ()
+writeAttributeControlModeWithValue_completionHandler mtrBaseClusterPumpConfigurationAndControl  value completionHandler =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeControlModeWithValue:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- writeAttributeControlModeWithValue:params:completionHandler:@
+writeAttributeControlModeWithValue_params_completionHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterPumpConfigurationAndControl -> value -> params -> Ptr () -> IO ()
+writeAttributeControlModeWithValue_params_completionHandler mtrBaseClusterPumpConfigurationAndControl  value params completionHandler =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "writeAttributeControlModeWithValue:params:completionHandler:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeControlModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeControlModeWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeControlModeWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeControlModeWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeGeneratedCommandListWithCompletionHandler:@
+readAttributeGeneratedCommandListWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeGeneratedCommandListWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeGeneratedCommandListWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeGeneratedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeGeneratedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeGeneratedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeGeneratedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeGeneratedCommandListWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeGeneratedCommandListWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeGeneratedCommandListWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeGeneratedCommandListWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeAcceptedCommandListWithCompletionHandler:@
+readAttributeAcceptedCommandListWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeAcceptedCommandListWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeAcceptedCommandListWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeAcceptedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeAcceptedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAcceptedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeAcceptedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAcceptedCommandListWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeAcceptedCommandListWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAcceptedCommandListWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAcceptedCommandListWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeAttributeListWithCompletionHandler:@
+readAttributeAttributeListWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeAttributeListWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeAttributeListWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeAttributeListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeAttributeListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAttributeListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeAttributeListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAttributeListWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeAttributeListWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAttributeListWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAttributeListWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeFeatureMapWithCompletionHandler:@
+readAttributeFeatureMapWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeFeatureMapWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeFeatureMapWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeFeatureMapWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeFeatureMapWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeFeatureMapWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeFeatureMapWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeFeatureMapWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeFeatureMapWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeFeatureMapWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeFeatureMapWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- readAttributeClusterRevisionWithCompletionHandler:@
+readAttributeClusterRevisionWithCompletionHandler :: IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl => mtrBaseClusterPumpConfigurationAndControl -> Ptr () -> IO ()
+readAttributeClusterRevisionWithCompletionHandler mtrBaseClusterPumpConfigurationAndControl  completionHandler =
+    sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "readAttributeClusterRevisionWithCompletionHandler:") retVoid [argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | @- subscribeAttributeClusterRevisionWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeClusterRevisionWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsNSNumber minInterval, IsNSNumber maxInterval, IsMTRSubscribeParams params) => mtrBaseClusterPumpConfigurationAndControl -> minInterval -> maxInterval -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeClusterRevisionWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandler mtrBaseClusterPumpConfigurationAndControl  minInterval maxInterval params subscriptionEstablishedHandler reportHandler =
+  withObjCPtr minInterval $ \raw_minInterval ->
+    withObjCPtr maxInterval $ \raw_maxInterval ->
+      withObjCPtr params $ \raw_params ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "subscribeAttributeClusterRevisionWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_minInterval :: Ptr ()), argPtr (castPtr raw_maxInterval :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablishedHandler :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeClusterRevisionWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeClusterRevisionWithAttributeCache_endpoint_queue_completionHandler :: (IsMTRAttributeCacheContainer attributeCacheContainer, IsNSNumber endpoint, IsNSObject queue) => attributeCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeClusterRevisionWithAttributeCache_endpoint_queue_completionHandler attributeCacheContainer endpoint queue completionHandler =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterPumpConfigurationAndControl"
+    withObjCPtr attributeCacheContainer $ \raw_attributeCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeClusterRevisionWithAttributeCache:endpoint:queue:completionHandler:") retVoid [argPtr (castPtr raw_attributeCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completionHandler :: Ptr ())]
+
+-- | For all instance methods (reads, writes, commands) that take a completion, the completion will be called on the provided queue.
+--
+-- ObjC selector: @- initWithDevice:endpointID:queue:@
+initWithDevice_endpointID_queue :: (IsMTRBaseClusterPumpConfigurationAndControl mtrBaseClusterPumpConfigurationAndControl, IsMTRBaseDevice device, IsNSNumber endpointID, IsNSObject queue) => mtrBaseClusterPumpConfigurationAndControl -> device -> endpointID -> queue -> IO (Id MTRBaseClusterPumpConfigurationAndControl)
+initWithDevice_endpointID_queue mtrBaseClusterPumpConfigurationAndControl  device endpointID queue =
+  withObjCPtr device $ \raw_device ->
+    withObjCPtr endpointID $ \raw_endpointID ->
+      withObjCPtr queue $ \raw_queue ->
+          sendMsg mtrBaseClusterPumpConfigurationAndControl (mkSelector "initWithDevice:endpointID:queue:") (retPtr retVoid) [argPtr (castPtr raw_device :: Ptr ()), argPtr (castPtr raw_endpointID :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ())] >>= ownedObject . castPtr
+
+-- ---------------------------------------------------------------------------
+-- Selectors
+-- ---------------------------------------------------------------------------
+
+-- | @Selector@ for @readAttributeMaxPressureWithCompletion:@
+readAttributeMaxPressureWithCompletionSelector :: Selector
+readAttributeMaxPressureWithCompletionSelector = mkSelector "readAttributeMaxPressureWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxPressureWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxPressureWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxPressureWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxPressureWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxPressureWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxPressureWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxSpeedWithCompletion:@
+readAttributeMaxSpeedWithCompletionSelector :: Selector
+readAttributeMaxSpeedWithCompletionSelector = mkSelector "readAttributeMaxSpeedWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxSpeedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxSpeedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxSpeedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxSpeedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxSpeedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxSpeedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxFlowWithCompletion:@
+readAttributeMaxFlowWithCompletionSelector :: Selector
+readAttributeMaxFlowWithCompletionSelector = mkSelector "readAttributeMaxFlowWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxFlowWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxFlowWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxFlowWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxFlowWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxFlowWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxFlowWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxFlowWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxFlowWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMinConstPressureWithCompletion:@
+readAttributeMinConstPressureWithCompletionSelector :: Selector
+readAttributeMinConstPressureWithCompletionSelector = mkSelector "readAttributeMinConstPressureWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMinConstPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstPressureWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstPressureWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstPressureWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstPressureWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMinConstPressureWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMinConstPressureWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxConstPressureWithCompletion:@
+readAttributeMaxConstPressureWithCompletionSelector :: Selector
+readAttributeMaxConstPressureWithCompletionSelector = mkSelector "readAttributeMaxConstPressureWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstPressureWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstPressureWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstPressureWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstPressureWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxConstPressureWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxConstPressureWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMinCompPressureWithCompletion:@
+readAttributeMinCompPressureWithCompletionSelector :: Selector
+readAttributeMinCompPressureWithCompletionSelector = mkSelector "readAttributeMinCompPressureWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMinCompPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinCompPressureWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinCompPressureWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinCompPressureWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinCompPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinCompPressureWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMinCompPressureWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMinCompPressureWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxCompPressureWithCompletion:@
+readAttributeMaxCompPressureWithCompletionSelector :: Selector
+readAttributeMaxCompPressureWithCompletionSelector = mkSelector "readAttributeMaxCompPressureWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxCompPressureWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxCompPressureWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxCompPressureWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxCompPressureWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxCompPressureWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxCompPressureWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxCompPressureWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxCompPressureWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMinConstSpeedWithCompletion:@
+readAttributeMinConstSpeedWithCompletionSelector :: Selector
+readAttributeMinConstSpeedWithCompletionSelector = mkSelector "readAttributeMinConstSpeedWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMinConstSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstSpeedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstSpeedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstSpeedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstSpeedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMinConstSpeedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMinConstSpeedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxConstSpeedWithCompletion:@
+readAttributeMaxConstSpeedWithCompletionSelector :: Selector
+readAttributeMaxConstSpeedWithCompletionSelector = mkSelector "readAttributeMaxConstSpeedWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstSpeedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstSpeedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstSpeedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstSpeedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxConstSpeedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxConstSpeedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMinConstFlowWithCompletion:@
+readAttributeMinConstFlowWithCompletionSelector :: Selector
+readAttributeMinConstFlowWithCompletionSelector = mkSelector "readAttributeMinConstFlowWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMinConstFlowWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstFlowWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstFlowWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstFlowWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstFlowWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstFlowWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMinConstFlowWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMinConstFlowWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxConstFlowWithCompletion:@
+readAttributeMaxConstFlowWithCompletionSelector :: Selector
+readAttributeMaxConstFlowWithCompletionSelector = mkSelector "readAttributeMaxConstFlowWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstFlowWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstFlowWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstFlowWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstFlowWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstFlowWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstFlowWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxConstFlowWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxConstFlowWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMinConstTempWithCompletion:@
+readAttributeMinConstTempWithCompletionSelector :: Selector
+readAttributeMinConstTempWithCompletionSelector = mkSelector "readAttributeMinConstTempWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMinConstTempWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstTempWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstTempWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstTempWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstTempWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinConstTempWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMinConstTempWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMinConstTempWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxConstTempWithCompletion:@
+readAttributeMaxConstTempWithCompletionSelector :: Selector
+readAttributeMaxConstTempWithCompletionSelector = mkSelector "readAttributeMaxConstTempWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstTempWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstTempWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstTempWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstTempWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstTempWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConstTempWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxConstTempWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxConstTempWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributePumpStatusWithCompletion:@
+readAttributePumpStatusWithCompletionSelector :: Selector
+readAttributePumpStatusWithCompletionSelector = mkSelector "readAttributePumpStatusWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributePumpStatusWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributePumpStatusWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributePumpStatusWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributePumpStatusWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributePumpStatusWithClusterStateCache:endpoint:queue:completion:@
+readAttributePumpStatusWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributePumpStatusWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributePumpStatusWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeEffectiveOperationModeWithCompletion:@
+readAttributeEffectiveOperationModeWithCompletionSelector :: Selector
+readAttributeEffectiveOperationModeWithCompletionSelector = mkSelector "readAttributeEffectiveOperationModeWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeEffectiveOperationModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveOperationModeWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeEffectiveOperationModeWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeEffectiveOperationModeWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeEffectiveOperationModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeEffectiveOperationModeWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeEffectiveOperationModeWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeEffectiveOperationModeWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeEffectiveControlModeWithCompletion:@
+readAttributeEffectiveControlModeWithCompletionSelector :: Selector
+readAttributeEffectiveControlModeWithCompletionSelector = mkSelector "readAttributeEffectiveControlModeWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeEffectiveControlModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveControlModeWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeEffectiveControlModeWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeEffectiveControlModeWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeEffectiveControlModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeEffectiveControlModeWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeEffectiveControlModeWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeEffectiveControlModeWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeCapacityWithCompletion:@
+readAttributeCapacityWithCompletionSelector :: Selector
+readAttributeCapacityWithCompletionSelector = mkSelector "readAttributeCapacityWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeCapacityWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeCapacityWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeCapacityWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeCapacityWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeCapacityWithClusterStateCache:endpoint:queue:completion:@
+readAttributeCapacityWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeCapacityWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeCapacityWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSpeedWithCompletion:@
+readAttributeSpeedWithCompletionSelector :: Selector
+readAttributeSpeedWithCompletionSelector = mkSelector "readAttributeSpeedWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeSpeedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSpeedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSpeedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeLifetimeRunningHoursWithCompletion:@
+readAttributeLifetimeRunningHoursWithCompletionSelector :: Selector
+readAttributeLifetimeRunningHoursWithCompletionSelector = mkSelector "readAttributeLifetimeRunningHoursWithCompletion:"
+
+-- | @Selector@ for @writeAttributeLifetimeRunningHoursWithValue:completion:@
+writeAttributeLifetimeRunningHoursWithValue_completionSelector :: Selector
+writeAttributeLifetimeRunningHoursWithValue_completionSelector = mkSelector "writeAttributeLifetimeRunningHoursWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeLifetimeRunningHoursWithValue:params:completion:@
+writeAttributeLifetimeRunningHoursWithValue_params_completionSelector :: Selector
+writeAttributeLifetimeRunningHoursWithValue_params_completionSelector = mkSelector "writeAttributeLifetimeRunningHoursWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeLifetimeRunningHoursWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeRunningHoursWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeLifetimeRunningHoursWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeLifetimeRunningHoursWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeLifetimeRunningHoursWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLifetimeRunningHoursWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeLifetimeRunningHoursWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeLifetimeRunningHoursWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributePowerWithCompletion:@
+readAttributePowerWithCompletionSelector :: Selector
+readAttributePowerWithCompletionSelector = mkSelector "readAttributePowerWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributePowerWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributePowerWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributePowerWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributePowerWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributePowerWithClusterStateCache:endpoint:queue:completion:@
+readAttributePowerWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributePowerWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributePowerWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeLifetimeEnergyConsumedWithCompletion:@
+readAttributeLifetimeEnergyConsumedWithCompletionSelector :: Selector
+readAttributeLifetimeEnergyConsumedWithCompletionSelector = mkSelector "readAttributeLifetimeEnergyConsumedWithCompletion:"
+
+-- | @Selector@ for @writeAttributeLifetimeEnergyConsumedWithValue:completion:@
+writeAttributeLifetimeEnergyConsumedWithValue_completionSelector :: Selector
+writeAttributeLifetimeEnergyConsumedWithValue_completionSelector = mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeLifetimeEnergyConsumedWithValue:params:completion:@
+writeAttributeLifetimeEnergyConsumedWithValue_params_completionSelector :: Selector
+writeAttributeLifetimeEnergyConsumedWithValue_params_completionSelector = mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeLifetimeEnergyConsumedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeEnergyConsumedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeLifetimeEnergyConsumedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeLifetimeEnergyConsumedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeLifetimeEnergyConsumedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLifetimeEnergyConsumedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeLifetimeEnergyConsumedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeLifetimeEnergyConsumedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeOperationModeWithCompletion:@
+readAttributeOperationModeWithCompletionSelector :: Selector
+readAttributeOperationModeWithCompletionSelector = mkSelector "readAttributeOperationModeWithCompletion:"
+
+-- | @Selector@ for @writeAttributeOperationModeWithValue:completion:@
+writeAttributeOperationModeWithValue_completionSelector :: Selector
+writeAttributeOperationModeWithValue_completionSelector = mkSelector "writeAttributeOperationModeWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeOperationModeWithValue:params:completion:@
+writeAttributeOperationModeWithValue_params_completionSelector :: Selector
+writeAttributeOperationModeWithValue_params_completionSelector = mkSelector "writeAttributeOperationModeWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeOperationModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeOperationModeWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeOperationModeWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeOperationModeWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeOperationModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeOperationModeWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeOperationModeWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeOperationModeWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeControlModeWithCompletion:@
+readAttributeControlModeWithCompletionSelector :: Selector
+readAttributeControlModeWithCompletionSelector = mkSelector "readAttributeControlModeWithCompletion:"
+
+-- | @Selector@ for @writeAttributeControlModeWithValue:completion:@
+writeAttributeControlModeWithValue_completionSelector :: Selector
+writeAttributeControlModeWithValue_completionSelector = mkSelector "writeAttributeControlModeWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeControlModeWithValue:params:completion:@
+writeAttributeControlModeWithValue_params_completionSelector :: Selector
+writeAttributeControlModeWithValue_params_completionSelector = mkSelector "writeAttributeControlModeWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeControlModeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeControlModeWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeControlModeWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeControlModeWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeControlModeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeControlModeWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeControlModeWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeControlModeWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeGeneratedCommandListWithCompletion:@
+readAttributeGeneratedCommandListWithCompletionSelector :: Selector
+readAttributeGeneratedCommandListWithCompletionSelector = mkSelector "readAttributeGeneratedCommandListWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAcceptedCommandListWithCompletion:@
+readAttributeAcceptedCommandListWithCompletionSelector :: Selector
+readAttributeAcceptedCommandListWithCompletionSelector = mkSelector "readAttributeAcceptedCommandListWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAttributeListWithCompletion:@
+readAttributeAttributeListWithCompletionSelector :: Selector
+readAttributeAttributeListWithCompletionSelector = mkSelector "readAttributeAttributeListWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeFeatureMapWithCompletion:@
+readAttributeFeatureMapWithCompletionSelector :: Selector
+readAttributeFeatureMapWithCompletionSelector = mkSelector "readAttributeFeatureMapWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:@
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeClusterRevisionWithCompletion:@
+readAttributeClusterRevisionWithCompletionSelector :: Selector
+readAttributeClusterRevisionWithCompletionSelector = mkSelector "readAttributeClusterRevisionWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @init@
+initSelector :: Selector
+initSelector = mkSelector "init"
+
+-- | @Selector@ for @new@
+newSelector :: Selector
+newSelector = mkSelector "new"
+
+-- | @Selector@ for @initWithDevice:endpoint:queue:@
+initWithDevice_endpoint_queueSelector :: Selector
+initWithDevice_endpoint_queueSelector = mkSelector "initWithDevice:endpoint:queue:"
+
+-- | @Selector@ for @readAttributeMaxPressureWithCompletionHandler:@
+readAttributeMaxPressureWithCompletionHandlerSelector :: Selector
+readAttributeMaxPressureWithCompletionHandlerSelector = mkSelector "readAttributeMaxPressureWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxPressureWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxPressureWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxPressureWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxSpeedWithCompletionHandler:@
+readAttributeMaxSpeedWithCompletionHandlerSelector :: Selector
+readAttributeMaxSpeedWithCompletionHandlerSelector = mkSelector "readAttributeMaxSpeedWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxSpeedWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxFlowWithCompletionHandler:@
+readAttributeMaxFlowWithCompletionHandlerSelector :: Selector
+readAttributeMaxFlowWithCompletionHandlerSelector = mkSelector "readAttributeMaxFlowWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxFlowWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxFlowWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxFlowWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxFlowWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMinConstPressureWithCompletionHandler:@
+readAttributeMinConstPressureWithCompletionHandlerSelector :: Selector
+readAttributeMinConstPressureWithCompletionHandlerSelector = mkSelector "readAttributeMinConstPressureWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMinConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstPressureWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMinConstPressureWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMinConstPressureWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstPressureWithCompletionHandler:@
+readAttributeMaxConstPressureWithCompletionHandlerSelector :: Selector
+readAttributeMaxConstPressureWithCompletionHandlerSelector = mkSelector "readAttributeMaxConstPressureWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstPressureWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxConstPressureWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxConstPressureWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMinCompPressureWithCompletionHandler:@
+readAttributeMinCompPressureWithCompletionHandlerSelector :: Selector
+readAttributeMinCompPressureWithCompletionHandlerSelector = mkSelector "readAttributeMinCompPressureWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMinCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinCompPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinCompPressureWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMinCompPressureWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMinCompPressureWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxCompPressureWithCompletionHandler:@
+readAttributeMaxCompPressureWithCompletionHandlerSelector :: Selector
+readAttributeMaxCompPressureWithCompletionHandlerSelector = mkSelector "readAttributeMaxCompPressureWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxCompPressureWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxCompPressureWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxCompPressureWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxCompPressureWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxCompPressureWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxCompPressureWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMinConstSpeedWithCompletionHandler:@
+readAttributeMinConstSpeedWithCompletionHandlerSelector :: Selector
+readAttributeMinConstSpeedWithCompletionHandlerSelector = mkSelector "readAttributeMinConstSpeedWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMinConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMinConstSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMinConstSpeedWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstSpeedWithCompletionHandler:@
+readAttributeMaxConstSpeedWithCompletionHandlerSelector :: Selector
+readAttributeMaxConstSpeedWithCompletionHandlerSelector = mkSelector "readAttributeMaxConstSpeedWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxConstSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxConstSpeedWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMinConstFlowWithCompletionHandler:@
+readAttributeMinConstFlowWithCompletionHandlerSelector :: Selector
+readAttributeMinConstFlowWithCompletionHandlerSelector = mkSelector "readAttributeMinConstFlowWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMinConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstFlowWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstFlowWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMinConstFlowWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMinConstFlowWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstFlowWithCompletionHandler:@
+readAttributeMaxConstFlowWithCompletionHandlerSelector :: Selector
+readAttributeMaxConstFlowWithCompletionHandlerSelector = mkSelector "readAttributeMaxConstFlowWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstFlowWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstFlowWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstFlowWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstFlowWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxConstFlowWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxConstFlowWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMinConstTempWithCompletionHandler:@
+readAttributeMinConstTempWithCompletionHandlerSelector :: Selector
+readAttributeMinConstTempWithCompletionHandlerSelector = mkSelector "readAttributeMinConstTempWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMinConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinConstTempWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMinConstTempWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMinConstTempWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMinConstTempWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstTempWithCompletionHandler:@
+readAttributeMaxConstTempWithCompletionHandlerSelector :: Selector
+readAttributeMaxConstTempWithCompletionHandlerSelector = mkSelector "readAttributeMaxConstTempWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeMaxConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConstTempWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConstTempWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConstTempWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeMaxConstTempWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeMaxConstTempWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeMaxConstTempWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributePumpStatusWithCompletionHandler:@
+readAttributePumpStatusWithCompletionHandlerSelector :: Selector
+readAttributePumpStatusWithCompletionHandlerSelector = mkSelector "readAttributePumpStatusWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributePumpStatusWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributePumpStatusWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributePumpStatusWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributePumpStatusWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributePumpStatusWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributePumpStatusWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributePumpStatusWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributePumpStatusWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeEffectiveOperationModeWithCompletionHandler:@
+readAttributeEffectiveOperationModeWithCompletionHandlerSelector :: Selector
+readAttributeEffectiveOperationModeWithCompletionHandlerSelector = mkSelector "readAttributeEffectiveOperationModeWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeEffectiveOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeEffectiveOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeEffectiveOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeEffectiveOperationModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeEffectiveOperationModeWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeEffectiveOperationModeWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeEffectiveOperationModeWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeEffectiveControlModeWithCompletionHandler:@
+readAttributeEffectiveControlModeWithCompletionHandlerSelector :: Selector
+readAttributeEffectiveControlModeWithCompletionHandlerSelector = mkSelector "readAttributeEffectiveControlModeWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeEffectiveControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeEffectiveControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeEffectiveControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeEffectiveControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeEffectiveControlModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeEffectiveControlModeWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeEffectiveControlModeWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeEffectiveControlModeWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeCapacityWithCompletionHandler:@
+readAttributeCapacityWithCompletionHandlerSelector :: Selector
+readAttributeCapacityWithCompletionHandlerSelector = mkSelector "readAttributeCapacityWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeCapacityWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeCapacityWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeCapacityWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeCapacityWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeCapacityWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeCapacityWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeCapacityWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeCapacityWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeSpeedWithCompletionHandler:@
+readAttributeSpeedWithCompletionHandlerSelector :: Selector
+readAttributeSpeedWithCompletionHandlerSelector = mkSelector "readAttributeSpeedWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeSpeedWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeSpeedWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeLifetimeRunningHoursWithCompletionHandler:@
+readAttributeLifetimeRunningHoursWithCompletionHandlerSelector :: Selector
+readAttributeLifetimeRunningHoursWithCompletionHandlerSelector = mkSelector "readAttributeLifetimeRunningHoursWithCompletionHandler:"
+
+-- | @Selector@ for @writeAttributeLifetimeRunningHoursWithValue:completionHandler:@
+writeAttributeLifetimeRunningHoursWithValue_completionHandlerSelector :: Selector
+writeAttributeLifetimeRunningHoursWithValue_completionHandlerSelector = mkSelector "writeAttributeLifetimeRunningHoursWithValue:completionHandler:"
+
+-- | @Selector@ for @writeAttributeLifetimeRunningHoursWithValue:params:completionHandler:@
+writeAttributeLifetimeRunningHoursWithValue_params_completionHandlerSelector :: Selector
+writeAttributeLifetimeRunningHoursWithValue_params_completionHandlerSelector = mkSelector "writeAttributeLifetimeRunningHoursWithValue:params:completionHandler:"
+
+-- | @Selector@ for @subscribeAttributeLifetimeRunningHoursWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeRunningHoursWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeLifetimeRunningHoursWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeLifetimeRunningHoursWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeLifetimeRunningHoursWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeLifetimeRunningHoursWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeLifetimeRunningHoursWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeLifetimeRunningHoursWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributePowerWithCompletionHandler:@
+readAttributePowerWithCompletionHandlerSelector :: Selector
+readAttributePowerWithCompletionHandlerSelector = mkSelector "readAttributePowerWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributePowerWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributePowerWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributePowerWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributePowerWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributePowerWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributePowerWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributePowerWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributePowerWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeLifetimeEnergyConsumedWithCompletionHandler:@
+readAttributeLifetimeEnergyConsumedWithCompletionHandlerSelector :: Selector
+readAttributeLifetimeEnergyConsumedWithCompletionHandlerSelector = mkSelector "readAttributeLifetimeEnergyConsumedWithCompletionHandler:"
+
+-- | @Selector@ for @writeAttributeLifetimeEnergyConsumedWithValue:completionHandler:@
+writeAttributeLifetimeEnergyConsumedWithValue_completionHandlerSelector :: Selector
+writeAttributeLifetimeEnergyConsumedWithValue_completionHandlerSelector = mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:completionHandler:"
+
+-- | @Selector@ for @writeAttributeLifetimeEnergyConsumedWithValue:params:completionHandler:@
+writeAttributeLifetimeEnergyConsumedWithValue_params_completionHandlerSelector :: Selector
+writeAttributeLifetimeEnergyConsumedWithValue_params_completionHandlerSelector = mkSelector "writeAttributeLifetimeEnergyConsumedWithValue:params:completionHandler:"
+
+-- | @Selector@ for @subscribeAttributeLifetimeEnergyConsumedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeLifetimeEnergyConsumedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeLifetimeEnergyConsumedWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeLifetimeEnergyConsumedWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeLifetimeEnergyConsumedWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeLifetimeEnergyConsumedWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeLifetimeEnergyConsumedWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeLifetimeEnergyConsumedWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeOperationModeWithCompletionHandler:@
+readAttributeOperationModeWithCompletionHandlerSelector :: Selector
+readAttributeOperationModeWithCompletionHandlerSelector = mkSelector "readAttributeOperationModeWithCompletionHandler:"
+
+-- | @Selector@ for @writeAttributeOperationModeWithValue:completionHandler:@
+writeAttributeOperationModeWithValue_completionHandlerSelector :: Selector
+writeAttributeOperationModeWithValue_completionHandlerSelector = mkSelector "writeAttributeOperationModeWithValue:completionHandler:"
+
+-- | @Selector@ for @writeAttributeOperationModeWithValue:params:completionHandler:@
+writeAttributeOperationModeWithValue_params_completionHandlerSelector :: Selector
+writeAttributeOperationModeWithValue_params_completionHandlerSelector = mkSelector "writeAttributeOperationModeWithValue:params:completionHandler:"
+
+-- | @Selector@ for @subscribeAttributeOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeOperationModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeOperationModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeOperationModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeOperationModeWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeOperationModeWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeOperationModeWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeControlModeWithCompletionHandler:@
+readAttributeControlModeWithCompletionHandlerSelector :: Selector
+readAttributeControlModeWithCompletionHandlerSelector = mkSelector "readAttributeControlModeWithCompletionHandler:"
+
+-- | @Selector@ for @writeAttributeControlModeWithValue:completionHandler:@
+writeAttributeControlModeWithValue_completionHandlerSelector :: Selector
+writeAttributeControlModeWithValue_completionHandlerSelector = mkSelector "writeAttributeControlModeWithValue:completionHandler:"
+
+-- | @Selector@ for @writeAttributeControlModeWithValue:params:completionHandler:@
+writeAttributeControlModeWithValue_params_completionHandlerSelector :: Selector
+writeAttributeControlModeWithValue_params_completionHandlerSelector = mkSelector "writeAttributeControlModeWithValue:params:completionHandler:"
+
+-- | @Selector@ for @subscribeAttributeControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeControlModeWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeControlModeWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeControlModeWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeControlModeWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeControlModeWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeControlModeWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeGeneratedCommandListWithCompletionHandler:@
+readAttributeGeneratedCommandListWithCompletionHandlerSelector :: Selector
+readAttributeGeneratedCommandListWithCompletionHandlerSelector = mkSelector "readAttributeGeneratedCommandListWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeGeneratedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeGeneratedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeGeneratedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeGeneratedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeGeneratedCommandListWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeGeneratedCommandListWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeGeneratedCommandListWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeGeneratedCommandListWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeAcceptedCommandListWithCompletionHandler:@
+readAttributeAcceptedCommandListWithCompletionHandlerSelector :: Selector
+readAttributeAcceptedCommandListWithCompletionHandlerSelector = mkSelector "readAttributeAcceptedCommandListWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeAcceptedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeAcceptedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAcceptedCommandListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAcceptedCommandListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAcceptedCommandListWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeAcceptedCommandListWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeAcceptedCommandListWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeAcceptedCommandListWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeAttributeListWithCompletionHandler:@
+readAttributeAttributeListWithCompletionHandlerSelector :: Selector
+readAttributeAttributeListWithCompletionHandlerSelector = mkSelector "readAttributeAttributeListWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeAttributeListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeAttributeListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAttributeListWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAttributeListWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAttributeListWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeAttributeListWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeAttributeListWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeAttributeListWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeFeatureMapWithCompletionHandler:@
+readAttributeFeatureMapWithCompletionHandlerSelector :: Selector
+readAttributeFeatureMapWithCompletionHandlerSelector = mkSelector "readAttributeFeatureMapWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeFeatureMapWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeFeatureMapWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeFeatureMapWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeFeatureMapWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeFeatureMapWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeFeatureMapWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeFeatureMapWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeFeatureMapWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @readAttributeClusterRevisionWithCompletionHandler:@
+readAttributeClusterRevisionWithCompletionHandlerSelector :: Selector
+readAttributeClusterRevisionWithCompletionHandlerSelector = mkSelector "readAttributeClusterRevisionWithCompletionHandler:"
+
+-- | @Selector@ for @subscribeAttributeClusterRevisionWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:@
+subscribeAttributeClusterRevisionWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeClusterRevisionWithMinInterval_maxInterval_params_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeClusterRevisionWithMinInterval:maxInterval:params:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeClusterRevisionWithAttributeCache:endpoint:queue:completionHandler:@
+readAttributeClusterRevisionWithAttributeCache_endpoint_queue_completionHandlerSelector :: Selector
+readAttributeClusterRevisionWithAttributeCache_endpoint_queue_completionHandlerSelector = mkSelector "readAttributeClusterRevisionWithAttributeCache:endpoint:queue:completionHandler:"
+
+-- | @Selector@ for @initWithDevice:endpointID:queue:@
+initWithDevice_endpointID_queueSelector :: Selector
+initWithDevice_endpointID_queueSelector = mkSelector "initWithDevice:endpointID:queue:"
+

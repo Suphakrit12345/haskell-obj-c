@@ -47,7 +47,7 @@ generateProtocolModule fwMap hierarchy allKnown framework depFws proto
 
     importable = Set.fromList
       [ c | (c, fw) <- Map.toList fwMap
-      , fw == framework || ("objc-" <> T.toLower fw) `Set.member` depFws
+      , fw == framework || fwToPackageName fw `Set.member` depFws
       ]
 
     requiredMethods = filter (isMethodSupported allKnown) (protoDeclRequired proto)

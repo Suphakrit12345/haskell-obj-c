@@ -1,0 +1,20 @@
+name:                apple-spritekit-appkit-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the SpriteKit extensions on AppKit framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-spritekit-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.SpriteKit.NSEvent

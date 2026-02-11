@@ -1,0 +1,25 @@
+name:                apple-javaruntimesupport-quartzcore-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the JavaRuntimeSupport extensions on QuartzCore framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-foundation-gen
+- apple-javaruntimesupport-gen
+- apple-quartzcore-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.JavaRuntimeSupport.CALayer
+  - ObjC.JavaRuntimeSupport.NSCursor
+  - ObjC.JavaRuntimeSupport.NSEvent
+  - ObjC.JavaRuntimeSupport.NSMenu
+  - ObjC.JavaRuntimeSupport.NSWindow

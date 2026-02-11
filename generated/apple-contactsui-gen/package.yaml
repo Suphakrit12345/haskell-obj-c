@@ -1,0 +1,22 @@
+name:                apple-contactsui-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the ContactsUI framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.ContactsUI.CNContactPicker
+  - ObjC.ContactsUI.CNContactViewController
+  - ObjC.ContactsUI.Internal.Classes

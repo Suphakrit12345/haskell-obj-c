@@ -1,0 +1,36 @@
+name:                apple-appkit-foundation-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the AppKit extensions on Foundation framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-cloudkit-gen
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.AppKit.CIColor
+  - ObjC.AppKit.CIImage
+  - ObjC.AppKit.NSAffineTransform
+  - ObjC.AppKit.NSAppleScript
+  - ObjC.AppKit.NSAttributedString
+  - ObjC.AppKit.NSBundle
+  - ObjC.AppKit.NSCoder
+  - ObjC.AppKit.NSFileManager
+  - ObjC.AppKit.NSFileWrapper
+  - ObjC.AppKit.NSIndexPath
+  - ObjC.AppKit.NSItemProvider
+  - ObjC.AppKit.NSMutableAttributedString
+  - ObjC.AppKit.NSObject
+  - ObjC.AppKit.NSSet
+  - ObjC.AppKit.NSString
+  - ObjC.AppKit.NSURL

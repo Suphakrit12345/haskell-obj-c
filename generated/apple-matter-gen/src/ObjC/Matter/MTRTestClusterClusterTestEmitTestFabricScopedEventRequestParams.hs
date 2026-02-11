@@ -1,0 +1,124 @@
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleContexts #-}
+
+-- | Generated bindings for @MTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams@.
+module ObjC.Matter.MTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams
+  ( MTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams
+  , IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams(..)
+  , arg1
+  , setArg1
+  , timedInvokeTimeoutMs
+  , setTimedInvokeTimeoutMs
+  , serverSideProcessingTimeout
+  , setServerSideProcessingTimeout
+  , arg1Selector
+  , setArg1Selector
+  , timedInvokeTimeoutMsSelector
+  , setTimedInvokeTimeoutMsSelector
+  , serverSideProcessingTimeoutSelector
+  , setServerSideProcessingTimeoutSelector
+
+
+  ) where
+
+import Foreign.Ptr (Ptr, nullPtr, castPtr)
+import Foreign.LibFFI
+import Foreign.C.Types
+import Data.Int (Int8, Int16)
+import Data.Word (Word16)
+import Data.Coerce (coerce)
+
+import ObjC.Runtime.Types
+import ObjC.Runtime.MsgSend (sendMsg, sendClassMsg)
+import ObjC.Runtime.Selector (mkSelector)
+import ObjC.Runtime.Class (getRequiredClass)
+
+import ObjC.Matter.Internal.Classes
+import ObjC.Foundation.Internal.Classes
+
+-- | @- arg1@
+arg1 :: IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams => mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams -> IO (Id NSNumber)
+arg1 mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams  =
+    sendMsg mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams (mkSelector "arg1") (retPtr retVoid) [] >>= retainedObject . castPtr
+
+-- | @- setArg1:@
+setArg1 :: (IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams, IsNSNumber value) => mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams -> value -> IO ()
+setArg1 mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams  value =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams (mkSelector "setArg1:") retVoid [argPtr (castPtr raw_value :: Ptr ())]
+
+-- | Controls whether the command is a timed command (using Timed Invoke).
+--
+-- If nil (the default value), a regular invoke is done for commands that do not require a timed invoke and a timed invoke with some default timed request timeout is done for commands that require a timed invoke.
+--
+-- If not nil, a timed invoke is done, with the provided value used as the timed request timeout.  The value should be chosen small enough to provide the desired security properties but large enough that it will allow a round-trip from the sever to the client (for the status response and actual invoke request) within the timeout window.
+--
+-- ObjC selector: @- timedInvokeTimeoutMs@
+timedInvokeTimeoutMs :: IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams => mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams -> IO (Id NSNumber)
+timedInvokeTimeoutMs mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams  =
+    sendMsg mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams (mkSelector "timedInvokeTimeoutMs") (retPtr retVoid) [] >>= retainedObject . castPtr
+
+-- | Controls whether the command is a timed command (using Timed Invoke).
+--
+-- If nil (the default value), a regular invoke is done for commands that do not require a timed invoke and a timed invoke with some default timed request timeout is done for commands that require a timed invoke.
+--
+-- If not nil, a timed invoke is done, with the provided value used as the timed request timeout.  The value should be chosen small enough to provide the desired security properties but large enough that it will allow a round-trip from the sever to the client (for the status response and actual invoke request) within the timeout window.
+--
+-- ObjC selector: @- setTimedInvokeTimeoutMs:@
+setTimedInvokeTimeoutMs :: (IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams, IsNSNumber value) => mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams -> value -> IO ()
+setTimedInvokeTimeoutMs mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams  value =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams (mkSelector "setTimedInvokeTimeoutMs:") retVoid [argPtr (castPtr raw_value :: Ptr ())]
+
+-- | Controls how much time, in seconds, we will allow for the server to process the command.
+--
+-- The command will then time out if that much time, plus an allowance for retransmits due to network failures, passes.
+--
+-- If nil, the framework will try to select an appropriate timeout value itself.
+--
+-- ObjC selector: @- serverSideProcessingTimeout@
+serverSideProcessingTimeout :: IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams => mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams -> IO (Id NSNumber)
+serverSideProcessingTimeout mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams  =
+    sendMsg mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams (mkSelector "serverSideProcessingTimeout") (retPtr retVoid) [] >>= retainedObject . castPtr
+
+-- | Controls how much time, in seconds, we will allow for the server to process the command.
+--
+-- The command will then time out if that much time, plus an allowance for retransmits due to network failures, passes.
+--
+-- If nil, the framework will try to select an appropriate timeout value itself.
+--
+-- ObjC selector: @- setServerSideProcessingTimeout:@
+setServerSideProcessingTimeout :: (IsMTRTestClusterClusterTestEmitTestFabricScopedEventRequestParams mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams, IsNSNumber value) => mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams -> value -> IO ()
+setServerSideProcessingTimeout mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams  value =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrTestClusterClusterTestEmitTestFabricScopedEventRequestParams (mkSelector "setServerSideProcessingTimeout:") retVoid [argPtr (castPtr raw_value :: Ptr ())]
+
+-- ---------------------------------------------------------------------------
+-- Selectors
+-- ---------------------------------------------------------------------------
+
+-- | @Selector@ for @arg1@
+arg1Selector :: Selector
+arg1Selector = mkSelector "arg1"
+
+-- | @Selector@ for @setArg1:@
+setArg1Selector :: Selector
+setArg1Selector = mkSelector "setArg1:"
+
+-- | @Selector@ for @timedInvokeTimeoutMs@
+timedInvokeTimeoutMsSelector :: Selector
+timedInvokeTimeoutMsSelector = mkSelector "timedInvokeTimeoutMs"
+
+-- | @Selector@ for @setTimedInvokeTimeoutMs:@
+setTimedInvokeTimeoutMsSelector :: Selector
+setTimedInvokeTimeoutMsSelector = mkSelector "setTimedInvokeTimeoutMs:"
+
+-- | @Selector@ for @serverSideProcessingTimeout@
+serverSideProcessingTimeoutSelector :: Selector
+serverSideProcessingTimeoutSelector = mkSelector "serverSideProcessingTimeout"
+
+-- | @Selector@ for @setServerSideProcessingTimeout:@
+setServerSideProcessingTimeoutSelector :: Selector
+setServerSideProcessingTimeoutSelector = mkSelector "setServerSideProcessingTimeout:"
+

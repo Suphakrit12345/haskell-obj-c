@@ -1,0 +1,22 @@
+name:                apple-tcl-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the Tcl framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.Tcl
+  - ObjC.Tcl.Enums
+  - ObjC.Tcl.Internal.Enums
+  - ObjC.Tcl.Internal.Structs
+  - ObjC.Tcl.Structs

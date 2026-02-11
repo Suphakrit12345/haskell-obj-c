@@ -1,0 +1,2479 @@
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleContexts #-}
+
+-- | Cluster Camera AV Stream Management
+--
+-- The Camera AV Stream Management cluster is used to allow clients to manage, control, and configure various audio, video, and snapshot streams on a camera.
+--
+-- Generated bindings for @MTRBaseClusterCameraAVStreamManagement@.
+module ObjC.Matter.MTRBaseClusterCameraAVStreamManagement
+  ( MTRBaseClusterCameraAVStreamManagement
+  , IsMTRBaseClusterCameraAVStreamManagement(..)
+  , audioStreamAllocateWithParams_completion
+  , audioStreamDeallocateWithParams_completion
+  , videoStreamAllocateWithParams_completion
+  , videoStreamModifyWithParams_completion
+  , videoStreamDeallocateWithParams_completion
+  , snapshotStreamAllocateWithParams_completion
+  , snapshotStreamModifyWithParams_completion
+  , snapshotStreamDeallocateWithParams_completion
+  , setStreamPrioritiesWithParams_completion
+  , captureSnapshotWithParams_completion
+  , readAttributeMaxConcurrentEncodersWithCompletion
+  , subscribeAttributeMaxConcurrentEncodersWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxConcurrentEncodersWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxEncodedPixelRateWithCompletion
+  , subscribeAttributeMaxEncodedPixelRateWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxEncodedPixelRateWithClusterStateCache_endpoint_queue_completion
+  , readAttributeVideoSensorParamsWithCompletion
+  , subscribeAttributeVideoSensorParamsWithParams_subscriptionEstablished_reportHandler
+  , readAttributeVideoSensorParamsWithClusterStateCache_endpoint_queue_completion
+  , readAttributeNightVisionUsesInfraredWithCompletion
+  , subscribeAttributeNightVisionUsesInfraredWithParams_subscriptionEstablished_reportHandler
+  , readAttributeNightVisionUsesInfraredWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMinViewportResolutionWithCompletion
+  , subscribeAttributeMinViewportResolutionWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMinViewportResolutionWithClusterStateCache_endpoint_queue_completion
+  , readAttributeRateDistortionTradeOffPointsWithCompletion
+  , subscribeAttributeRateDistortionTradeOffPointsWithParams_subscriptionEstablished_reportHandler
+  , readAttributeRateDistortionTradeOffPointsWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxContentBufferSizeWithCompletion
+  , subscribeAttributeMaxContentBufferSizeWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxContentBufferSizeWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMicrophoneCapabilitiesWithCompletion
+  , subscribeAttributeMicrophoneCapabilitiesWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMicrophoneCapabilitiesWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSpeakerCapabilitiesWithCompletion
+  , subscribeAttributeSpeakerCapabilitiesWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSpeakerCapabilitiesWithClusterStateCache_endpoint_queue_completion
+  , readAttributeTwoWayTalkSupportWithCompletion
+  , subscribeAttributeTwoWayTalkSupportWithParams_subscriptionEstablished_reportHandler
+  , readAttributeTwoWayTalkSupportWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSnapshotCapabilitiesWithCompletion
+  , subscribeAttributeSnapshotCapabilitiesWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSnapshotCapabilitiesWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMaxNetworkBandwidthWithCompletion
+  , subscribeAttributeMaxNetworkBandwidthWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMaxNetworkBandwidthWithClusterStateCache_endpoint_queue_completion
+  , readAttributeCurrentFrameRateWithCompletion
+  , subscribeAttributeCurrentFrameRateWithParams_subscriptionEstablished_reportHandler
+  , readAttributeCurrentFrameRateWithClusterStateCache_endpoint_queue_completion
+  , readAttributeHDRModeEnabledWithCompletion
+  , writeAttributeHDRModeEnabledWithValue_completion
+  , writeAttributeHDRModeEnabledWithValue_params_completion
+  , subscribeAttributeHDRModeEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeHDRModeEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSupportedStreamUsagesWithCompletion
+  , subscribeAttributeSupportedStreamUsagesWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSupportedStreamUsagesWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAllocatedVideoStreamsWithCompletion
+  , subscribeAttributeAllocatedVideoStreamsWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAllocatedVideoStreamsWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAllocatedAudioStreamsWithCompletion
+  , subscribeAttributeAllocatedAudioStreamsWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAllocatedAudioStreamsWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAllocatedSnapshotStreamsWithCompletion
+  , subscribeAttributeAllocatedSnapshotStreamsWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAllocatedSnapshotStreamsWithClusterStateCache_endpoint_queue_completion
+  , readAttributeStreamUsagePrioritiesWithCompletion
+  , subscribeAttributeStreamUsagePrioritiesWithParams_subscriptionEstablished_reportHandler
+  , readAttributeStreamUsagePrioritiesWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSoftRecordingPrivacyModeEnabledWithCompletion
+  , writeAttributeSoftRecordingPrivacyModeEnabledWithValue_completion
+  , writeAttributeSoftRecordingPrivacyModeEnabledWithValue_params_completion
+  , subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion
+  , writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_completion
+  , writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_params_completion
+  , subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeHardPrivacyModeOnWithCompletion
+  , subscribeAttributeHardPrivacyModeOnWithParams_subscriptionEstablished_reportHandler
+  , readAttributeHardPrivacyModeOnWithClusterStateCache_endpoint_queue_completion
+  , readAttributeNightVisionWithCompletion
+  , writeAttributeNightVisionWithValue_completion
+  , writeAttributeNightVisionWithValue_params_completion
+  , subscribeAttributeNightVisionWithParams_subscriptionEstablished_reportHandler
+  , readAttributeNightVisionWithClusterStateCache_endpoint_queue_completion
+  , readAttributeNightVisionIllumWithCompletion
+  , writeAttributeNightVisionIllumWithValue_completion
+  , writeAttributeNightVisionIllumWithValue_params_completion
+  , subscribeAttributeNightVisionIllumWithParams_subscriptionEstablished_reportHandler
+  , readAttributeNightVisionIllumWithClusterStateCache_endpoint_queue_completion
+  , readAttributeViewportWithCompletion
+  , writeAttributeViewportWithValue_completion
+  , writeAttributeViewportWithValue_params_completion
+  , subscribeAttributeViewportWithParams_subscriptionEstablished_reportHandler
+  , readAttributeViewportWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSpeakerMutedWithCompletion
+  , writeAttributeSpeakerMutedWithValue_completion
+  , writeAttributeSpeakerMutedWithValue_params_completion
+  , subscribeAttributeSpeakerMutedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSpeakerMutedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSpeakerVolumeLevelWithCompletion
+  , writeAttributeSpeakerVolumeLevelWithValue_completion
+  , writeAttributeSpeakerVolumeLevelWithValue_params_completion
+  , subscribeAttributeSpeakerVolumeLevelWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSpeakerVolumeLevelWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSpeakerMaxLevelWithCompletion
+  , subscribeAttributeSpeakerMaxLevelWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSpeakerMaxLevelWithClusterStateCache_endpoint_queue_completion
+  , readAttributeSpeakerMinLevelWithCompletion
+  , subscribeAttributeSpeakerMinLevelWithParams_subscriptionEstablished_reportHandler
+  , readAttributeSpeakerMinLevelWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMicrophoneMutedWithCompletion
+  , writeAttributeMicrophoneMutedWithValue_completion
+  , writeAttributeMicrophoneMutedWithValue_params_completion
+  , subscribeAttributeMicrophoneMutedWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMicrophoneMutedWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMicrophoneVolumeLevelWithCompletion
+  , writeAttributeMicrophoneVolumeLevelWithValue_completion
+  , writeAttributeMicrophoneVolumeLevelWithValue_params_completion
+  , subscribeAttributeMicrophoneVolumeLevelWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMicrophoneVolumeLevelWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMicrophoneMaxLevelWithCompletion
+  , subscribeAttributeMicrophoneMaxLevelWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMicrophoneMaxLevelWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMicrophoneMinLevelWithCompletion
+  , subscribeAttributeMicrophoneMinLevelWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMicrophoneMinLevelWithClusterStateCache_endpoint_queue_completion
+  , readAttributeMicrophoneAGCEnabledWithCompletion
+  , writeAttributeMicrophoneAGCEnabledWithValue_completion
+  , writeAttributeMicrophoneAGCEnabledWithValue_params_completion
+  , subscribeAttributeMicrophoneAGCEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeMicrophoneAGCEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeImageRotationWithCompletion
+  , writeAttributeImageRotationWithValue_completion
+  , writeAttributeImageRotationWithValue_params_completion
+  , subscribeAttributeImageRotationWithParams_subscriptionEstablished_reportHandler
+  , readAttributeImageRotationWithClusterStateCache_endpoint_queue_completion
+  , readAttributeImageFlipHorizontalWithCompletion
+  , writeAttributeImageFlipHorizontalWithValue_completion
+  , writeAttributeImageFlipHorizontalWithValue_params_completion
+  , subscribeAttributeImageFlipHorizontalWithParams_subscriptionEstablished_reportHandler
+  , readAttributeImageFlipHorizontalWithClusterStateCache_endpoint_queue_completion
+  , readAttributeImageFlipVerticalWithCompletion
+  , writeAttributeImageFlipVerticalWithValue_completion
+  , writeAttributeImageFlipVerticalWithValue_params_completion
+  , subscribeAttributeImageFlipVerticalWithParams_subscriptionEstablished_reportHandler
+  , readAttributeImageFlipVerticalWithClusterStateCache_endpoint_queue_completion
+  , readAttributeLocalVideoRecordingEnabledWithCompletion
+  , writeAttributeLocalVideoRecordingEnabledWithValue_completion
+  , writeAttributeLocalVideoRecordingEnabledWithValue_params_completion
+  , subscribeAttributeLocalVideoRecordingEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeLocalVideoRecordingEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeLocalSnapshotRecordingEnabledWithCompletion
+  , writeAttributeLocalSnapshotRecordingEnabledWithValue_completion
+  , writeAttributeLocalSnapshotRecordingEnabledWithValue_params_completion
+  , subscribeAttributeLocalSnapshotRecordingEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeStatusLightEnabledWithCompletion
+  , writeAttributeStatusLightEnabledWithValue_completion
+  , writeAttributeStatusLightEnabledWithValue_params_completion
+  , subscribeAttributeStatusLightEnabledWithParams_subscriptionEstablished_reportHandler
+  , readAttributeStatusLightEnabledWithClusterStateCache_endpoint_queue_completion
+  , readAttributeStatusLightBrightnessWithCompletion
+  , writeAttributeStatusLightBrightnessWithValue_completion
+  , writeAttributeStatusLightBrightnessWithValue_params_completion
+  , subscribeAttributeStatusLightBrightnessWithParams_subscriptionEstablished_reportHandler
+  , readAttributeStatusLightBrightnessWithClusterStateCache_endpoint_queue_completion
+  , readAttributeGeneratedCommandListWithCompletion
+  , subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandler
+  , readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAcceptedCommandListWithCompletion
+  , subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completion
+  , readAttributeAttributeListWithCompletion
+  , subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandler
+  , readAttributeAttributeListWithClusterStateCache_endpoint_queue_completion
+  , readAttributeFeatureMapWithCompletion
+  , subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandler
+  , readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completion
+  , readAttributeClusterRevisionWithCompletion
+  , subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandler
+  , readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completion
+  , init_
+  , new
+  , initWithDevice_endpointID_queue
+  , audioStreamAllocateWithParams_completionSelector
+  , audioStreamDeallocateWithParams_completionSelector
+  , videoStreamAllocateWithParams_completionSelector
+  , videoStreamModifyWithParams_completionSelector
+  , videoStreamDeallocateWithParams_completionSelector
+  , snapshotStreamAllocateWithParams_completionSelector
+  , snapshotStreamModifyWithParams_completionSelector
+  , snapshotStreamDeallocateWithParams_completionSelector
+  , setStreamPrioritiesWithParams_completionSelector
+  , captureSnapshotWithParams_completionSelector
+  , readAttributeMaxConcurrentEncodersWithCompletionSelector
+  , subscribeAttributeMaxConcurrentEncodersWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxConcurrentEncodersWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxEncodedPixelRateWithCompletionSelector
+  , subscribeAttributeMaxEncodedPixelRateWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxEncodedPixelRateWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeVideoSensorParamsWithCompletionSelector
+  , subscribeAttributeVideoSensorParamsWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeVideoSensorParamsWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeNightVisionUsesInfraredWithCompletionSelector
+  , subscribeAttributeNightVisionUsesInfraredWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeNightVisionUsesInfraredWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMinViewportResolutionWithCompletionSelector
+  , subscribeAttributeMinViewportResolutionWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMinViewportResolutionWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeRateDistortionTradeOffPointsWithCompletionSelector
+  , subscribeAttributeRateDistortionTradeOffPointsWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeRateDistortionTradeOffPointsWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxContentBufferSizeWithCompletionSelector
+  , subscribeAttributeMaxContentBufferSizeWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxContentBufferSizeWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMicrophoneCapabilitiesWithCompletionSelector
+  , subscribeAttributeMicrophoneCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMicrophoneCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSpeakerCapabilitiesWithCompletionSelector
+  , subscribeAttributeSpeakerCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeakerCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeTwoWayTalkSupportWithCompletionSelector
+  , subscribeAttributeTwoWayTalkSupportWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeTwoWayTalkSupportWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSnapshotCapabilitiesWithCompletionSelector
+  , subscribeAttributeSnapshotCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSnapshotCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMaxNetworkBandwidthWithCompletionSelector
+  , subscribeAttributeMaxNetworkBandwidthWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMaxNetworkBandwidthWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeCurrentFrameRateWithCompletionSelector
+  , subscribeAttributeCurrentFrameRateWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeCurrentFrameRateWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeHDRModeEnabledWithCompletionSelector
+  , writeAttributeHDRModeEnabledWithValue_completionSelector
+  , writeAttributeHDRModeEnabledWithValue_params_completionSelector
+  , subscribeAttributeHDRModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeHDRModeEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSupportedStreamUsagesWithCompletionSelector
+  , subscribeAttributeSupportedStreamUsagesWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSupportedStreamUsagesWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAllocatedVideoStreamsWithCompletionSelector
+  , subscribeAttributeAllocatedVideoStreamsWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAllocatedVideoStreamsWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAllocatedAudioStreamsWithCompletionSelector
+  , subscribeAttributeAllocatedAudioStreamsWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAllocatedAudioStreamsWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAllocatedSnapshotStreamsWithCompletionSelector
+  , subscribeAttributeAllocatedSnapshotStreamsWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAllocatedSnapshotStreamsWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeStreamUsagePrioritiesWithCompletionSelector
+  , subscribeAttributeStreamUsagePrioritiesWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeStreamUsagePrioritiesWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSoftRecordingPrivacyModeEnabledWithCompletionSelector
+  , writeAttributeSoftRecordingPrivacyModeEnabledWithValue_completionSelector
+  , writeAttributeSoftRecordingPrivacyModeEnabledWithValue_params_completionSelector
+  , subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSoftLivestreamPrivacyModeEnabledWithCompletionSelector
+  , writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_completionSelector
+  , writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_params_completionSelector
+  , subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeHardPrivacyModeOnWithCompletionSelector
+  , subscribeAttributeHardPrivacyModeOnWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeHardPrivacyModeOnWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeNightVisionWithCompletionSelector
+  , writeAttributeNightVisionWithValue_completionSelector
+  , writeAttributeNightVisionWithValue_params_completionSelector
+  , subscribeAttributeNightVisionWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeNightVisionWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeNightVisionIllumWithCompletionSelector
+  , writeAttributeNightVisionIllumWithValue_completionSelector
+  , writeAttributeNightVisionIllumWithValue_params_completionSelector
+  , subscribeAttributeNightVisionIllumWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeNightVisionIllumWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeViewportWithCompletionSelector
+  , writeAttributeViewportWithValue_completionSelector
+  , writeAttributeViewportWithValue_params_completionSelector
+  , subscribeAttributeViewportWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeViewportWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSpeakerMutedWithCompletionSelector
+  , writeAttributeSpeakerMutedWithValue_completionSelector
+  , writeAttributeSpeakerMutedWithValue_params_completionSelector
+  , subscribeAttributeSpeakerMutedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeakerMutedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSpeakerVolumeLevelWithCompletionSelector
+  , writeAttributeSpeakerVolumeLevelWithValue_completionSelector
+  , writeAttributeSpeakerVolumeLevelWithValue_params_completionSelector
+  , subscribeAttributeSpeakerVolumeLevelWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeakerVolumeLevelWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSpeakerMaxLevelWithCompletionSelector
+  , subscribeAttributeSpeakerMaxLevelWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeakerMaxLevelWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeSpeakerMinLevelWithCompletionSelector
+  , subscribeAttributeSpeakerMinLevelWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeSpeakerMinLevelWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMicrophoneMutedWithCompletionSelector
+  , writeAttributeMicrophoneMutedWithValue_completionSelector
+  , writeAttributeMicrophoneMutedWithValue_params_completionSelector
+  , subscribeAttributeMicrophoneMutedWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMicrophoneMutedWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMicrophoneVolumeLevelWithCompletionSelector
+  , writeAttributeMicrophoneVolumeLevelWithValue_completionSelector
+  , writeAttributeMicrophoneVolumeLevelWithValue_params_completionSelector
+  , subscribeAttributeMicrophoneVolumeLevelWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMicrophoneVolumeLevelWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMicrophoneMaxLevelWithCompletionSelector
+  , subscribeAttributeMicrophoneMaxLevelWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMicrophoneMaxLevelWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMicrophoneMinLevelWithCompletionSelector
+  , subscribeAttributeMicrophoneMinLevelWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMicrophoneMinLevelWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeMicrophoneAGCEnabledWithCompletionSelector
+  , writeAttributeMicrophoneAGCEnabledWithValue_completionSelector
+  , writeAttributeMicrophoneAGCEnabledWithValue_params_completionSelector
+  , subscribeAttributeMicrophoneAGCEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeMicrophoneAGCEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeImageRotationWithCompletionSelector
+  , writeAttributeImageRotationWithValue_completionSelector
+  , writeAttributeImageRotationWithValue_params_completionSelector
+  , subscribeAttributeImageRotationWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeImageRotationWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeImageFlipHorizontalWithCompletionSelector
+  , writeAttributeImageFlipHorizontalWithValue_completionSelector
+  , writeAttributeImageFlipHorizontalWithValue_params_completionSelector
+  , subscribeAttributeImageFlipHorizontalWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeImageFlipHorizontalWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeImageFlipVerticalWithCompletionSelector
+  , writeAttributeImageFlipVerticalWithValue_completionSelector
+  , writeAttributeImageFlipVerticalWithValue_params_completionSelector
+  , subscribeAttributeImageFlipVerticalWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeImageFlipVerticalWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeLocalVideoRecordingEnabledWithCompletionSelector
+  , writeAttributeLocalVideoRecordingEnabledWithValue_completionSelector
+  , writeAttributeLocalVideoRecordingEnabledWithValue_params_completionSelector
+  , subscribeAttributeLocalVideoRecordingEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeLocalVideoRecordingEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeLocalSnapshotRecordingEnabledWithCompletionSelector
+  , writeAttributeLocalSnapshotRecordingEnabledWithValue_completionSelector
+  , writeAttributeLocalSnapshotRecordingEnabledWithValue_params_completionSelector
+  , subscribeAttributeLocalSnapshotRecordingEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeStatusLightEnabledWithCompletionSelector
+  , writeAttributeStatusLightEnabledWithValue_completionSelector
+  , writeAttributeStatusLightEnabledWithValue_params_completionSelector
+  , subscribeAttributeStatusLightEnabledWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeStatusLightEnabledWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeStatusLightBrightnessWithCompletionSelector
+  , writeAttributeStatusLightBrightnessWithValue_completionSelector
+  , writeAttributeStatusLightBrightnessWithValue_params_completionSelector
+  , subscribeAttributeStatusLightBrightnessWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeStatusLightBrightnessWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeGeneratedCommandListWithCompletionSelector
+  , subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAcceptedCommandListWithCompletionSelector
+  , subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeAttributeListWithCompletionSelector
+  , subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeAttributeListWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeFeatureMapWithCompletionSelector
+  , subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completionSelector
+  , readAttributeClusterRevisionWithCompletionSelector
+  , subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandlerSelector
+  , readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completionSelector
+  , initSelector
+  , newSelector
+  , initWithDevice_endpointID_queueSelector
+
+
+  ) where
+
+import Foreign.Ptr (Ptr, nullPtr, castPtr)
+import Foreign.LibFFI
+import Foreign.C.Types
+import Data.Int (Int8, Int16)
+import Data.Word (Word16)
+import Data.Coerce (coerce)
+
+import ObjC.Runtime.Types
+import ObjC.Runtime.MsgSend (sendMsg, sendClassMsg)
+import ObjC.Runtime.Selector (mkSelector)
+import ObjC.Runtime.Class (getRequiredClass)
+
+import ObjC.Matter.Internal.Classes
+import ObjC.Foundation.Internal.Classes
+
+-- | Command AudioStreamAllocate
+--
+-- This command SHALL allocate an audio stream on the camera and return an allocated audio stream identifier.
+--
+-- ObjC selector: @- audioStreamAllocateWithParams:completion:@
+audioStreamAllocateWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterAudioStreamAllocateParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+audioStreamAllocateWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "audioStreamAllocateWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command AudioStreamDeallocate
+--
+-- This command SHALL deallocate an audio stream on the camera, corresponding to the given audio stream identifier.
+--
+-- ObjC selector: @- audioStreamDeallocateWithParams:completion:@
+audioStreamDeallocateWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterAudioStreamDeallocateParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+audioStreamDeallocateWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "audioStreamDeallocateWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command VideoStreamAllocate
+--
+-- This command SHALL allocate a video stream on the camera and return an allocated video stream identifier.
+--
+-- ObjC selector: @- videoStreamAllocateWithParams:completion:@
+videoStreamAllocateWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterVideoStreamAllocateParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+videoStreamAllocateWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "videoStreamAllocateWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command VideoStreamModify
+--
+-- This command SHALL be used to modify a stream specified by the VideoStreamID.
+--
+-- ObjC selector: @- videoStreamModifyWithParams:completion:@
+videoStreamModifyWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterVideoStreamModifyParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+videoStreamModifyWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "videoStreamModifyWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command VideoStreamDeallocate
+--
+-- This command SHALL deallocate a video stream on the camera, corresponding to the given video stream identifier.
+--
+-- ObjC selector: @- videoStreamDeallocateWithParams:completion:@
+videoStreamDeallocateWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterVideoStreamDeallocateParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+videoStreamDeallocateWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "videoStreamDeallocateWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command SnapshotStreamAllocate
+--
+-- This command SHALL allocate a snapshot stream on the device and return an allocated snapshot stream identifier.
+--
+-- ObjC selector: @- snapshotStreamAllocateWithParams:completion:@
+snapshotStreamAllocateWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterSnapshotStreamAllocateParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+snapshotStreamAllocateWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "snapshotStreamAllocateWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command SnapshotStreamModify
+--
+-- This command SHALL be used to modify a stream specified by the VideoStreamID.
+--
+-- ObjC selector: @- snapshotStreamModifyWithParams:completion:@
+snapshotStreamModifyWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterSnapshotStreamModifyParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+snapshotStreamModifyWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "snapshotStreamModifyWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command SnapshotStreamDeallocate
+--
+-- This command SHALL deallocate an snapshot stream on the camera, corresponding to the given snapshot stream identifier.
+--
+-- ObjC selector: @- snapshotStreamDeallocateWithParams:completion:@
+snapshotStreamDeallocateWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterSnapshotStreamDeallocateParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+snapshotStreamDeallocateWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "snapshotStreamDeallocateWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command SetStreamPriorities
+--
+-- This command SHALL set the relative priorities of the various stream usages on the camera.
+--
+-- ObjC selector: @- setStreamPrioritiesWithParams:completion:@
+setStreamPrioritiesWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterSetStreamPrioritiesParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+setStreamPrioritiesWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "setStreamPrioritiesWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | Command CaptureSnapshot
+--
+-- This command SHALL return a Snapshot from the camera.
+--
+-- ObjC selector: @- captureSnapshotWithParams:completion:@
+captureSnapshotWithParams_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRCameraAVStreamManagementClusterCaptureSnapshotParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> IO ()
+captureSnapshotWithParams_completion mtrBaseClusterCameraAVStreamManagement  params completion =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "captureSnapshotWithParams:completion:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxConcurrentEncodersWithCompletion:@
+readAttributeMaxConcurrentEncodersWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMaxConcurrentEncodersWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMaxConcurrentEncodersWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxConcurrentEncodersWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConcurrentEncodersWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxConcurrentEncodersWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMaxConcurrentEncodersWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxConcurrentEncodersWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConcurrentEncodersWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxConcurrentEncodersWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxConcurrentEncodersWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxEncodedPixelRateWithCompletion:@
+readAttributeMaxEncodedPixelRateWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMaxEncodedPixelRateWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMaxEncodedPixelRateWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxEncodedPixelRateWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxEncodedPixelRateWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxEncodedPixelRateWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMaxEncodedPixelRateWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxEncodedPixelRateWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxEncodedPixelRateWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxEncodedPixelRateWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxEncodedPixelRateWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeVideoSensorParamsWithCompletion:@
+readAttributeVideoSensorParamsWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeVideoSensorParamsWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeVideoSensorParamsWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeVideoSensorParamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeVideoSensorParamsWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeVideoSensorParamsWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeVideoSensorParamsWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeVideoSensorParamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeVideoSensorParamsWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeVideoSensorParamsWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeVideoSensorParamsWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeNightVisionUsesInfraredWithCompletion:@
+readAttributeNightVisionUsesInfraredWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeNightVisionUsesInfraredWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeNightVisionUsesInfraredWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeNightVisionUsesInfraredWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeNightVisionUsesInfraredWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeNightVisionUsesInfraredWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeNightVisionUsesInfraredWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeNightVisionUsesInfraredWithClusterStateCache:endpoint:queue:completion:@
+readAttributeNightVisionUsesInfraredWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeNightVisionUsesInfraredWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeNightVisionUsesInfraredWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMinViewportResolutionWithCompletion:@
+readAttributeMinViewportResolutionWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMinViewportResolutionWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMinViewportResolutionWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMinViewportResolutionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinViewportResolutionWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMinViewportResolutionWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMinViewportResolutionWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMinViewportResolutionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinViewportResolutionWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMinViewportResolutionWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMinViewportResolutionWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeRateDistortionTradeOffPointsWithCompletion:@
+readAttributeRateDistortionTradeOffPointsWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeRateDistortionTradeOffPointsWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeRateDistortionTradeOffPointsWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeRateDistortionTradeOffPointsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeRateDistortionTradeOffPointsWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeRateDistortionTradeOffPointsWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeRateDistortionTradeOffPointsWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeRateDistortionTradeOffPointsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeRateDistortionTradeOffPointsWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeRateDistortionTradeOffPointsWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeRateDistortionTradeOffPointsWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxContentBufferSizeWithCompletion:@
+readAttributeMaxContentBufferSizeWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMaxContentBufferSizeWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMaxContentBufferSizeWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxContentBufferSizeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxContentBufferSizeWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxContentBufferSizeWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMaxContentBufferSizeWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxContentBufferSizeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxContentBufferSizeWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxContentBufferSizeWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxContentBufferSizeWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMicrophoneCapabilitiesWithCompletion:@
+readAttributeMicrophoneCapabilitiesWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMicrophoneCapabilitiesWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMicrophoneCapabilitiesWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMicrophoneCapabilitiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneCapabilitiesWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMicrophoneCapabilitiesWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMicrophoneCapabilitiesWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMicrophoneCapabilitiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneCapabilitiesWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMicrophoneCapabilitiesWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMicrophoneCapabilitiesWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSpeakerCapabilitiesWithCompletion:@
+readAttributeSpeakerCapabilitiesWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSpeakerCapabilitiesWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSpeakerCapabilitiesWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSpeakerCapabilitiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerCapabilitiesWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeakerCapabilitiesWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSpeakerCapabilitiesWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeakerCapabilitiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerCapabilitiesWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeakerCapabilitiesWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeakerCapabilitiesWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeTwoWayTalkSupportWithCompletion:@
+readAttributeTwoWayTalkSupportWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeTwoWayTalkSupportWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeTwoWayTalkSupportWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeTwoWayTalkSupportWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeTwoWayTalkSupportWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeTwoWayTalkSupportWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeTwoWayTalkSupportWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeTwoWayTalkSupportWithClusterStateCache:endpoint:queue:completion:@
+readAttributeTwoWayTalkSupportWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeTwoWayTalkSupportWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeTwoWayTalkSupportWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSnapshotCapabilitiesWithCompletion:@
+readAttributeSnapshotCapabilitiesWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSnapshotCapabilitiesWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSnapshotCapabilitiesWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSnapshotCapabilitiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSnapshotCapabilitiesWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSnapshotCapabilitiesWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSnapshotCapabilitiesWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSnapshotCapabilitiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSnapshotCapabilitiesWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSnapshotCapabilitiesWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSnapshotCapabilitiesWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMaxNetworkBandwidthWithCompletion:@
+readAttributeMaxNetworkBandwidthWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMaxNetworkBandwidthWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMaxNetworkBandwidthWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMaxNetworkBandwidthWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxNetworkBandwidthWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMaxNetworkBandwidthWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMaxNetworkBandwidthWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMaxNetworkBandwidthWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxNetworkBandwidthWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMaxNetworkBandwidthWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMaxNetworkBandwidthWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeCurrentFrameRateWithCompletion:@
+readAttributeCurrentFrameRateWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeCurrentFrameRateWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeCurrentFrameRateWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeCurrentFrameRateWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeCurrentFrameRateWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeCurrentFrameRateWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeCurrentFrameRateWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeCurrentFrameRateWithClusterStateCache:endpoint:queue:completion:@
+readAttributeCurrentFrameRateWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeCurrentFrameRateWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeCurrentFrameRateWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeHDRModeEnabledWithCompletion:@
+readAttributeHDRModeEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeHDRModeEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeHDRModeEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeHDRModeEnabledWithValue:completion:@
+writeAttributeHDRModeEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeHDRModeEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeHDRModeEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeHDRModeEnabledWithValue:params:completion:@
+writeAttributeHDRModeEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeHDRModeEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeHDRModeEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeHDRModeEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeHDRModeEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeHDRModeEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeHDRModeEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeHDRModeEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeHDRModeEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeHDRModeEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeHDRModeEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSupportedStreamUsagesWithCompletion:@
+readAttributeSupportedStreamUsagesWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSupportedStreamUsagesWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSupportedStreamUsagesWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSupportedStreamUsagesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSupportedStreamUsagesWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSupportedStreamUsagesWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSupportedStreamUsagesWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSupportedStreamUsagesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSupportedStreamUsagesWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSupportedStreamUsagesWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSupportedStreamUsagesWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAllocatedVideoStreamsWithCompletion:@
+readAttributeAllocatedVideoStreamsWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeAllocatedVideoStreamsWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeAllocatedVideoStreamsWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAllocatedVideoStreamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAllocatedVideoStreamsWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAllocatedVideoStreamsWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeAllocatedVideoStreamsWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAllocatedVideoStreamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAllocatedVideoStreamsWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAllocatedVideoStreamsWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAllocatedVideoStreamsWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAllocatedAudioStreamsWithCompletion:@
+readAttributeAllocatedAudioStreamsWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeAllocatedAudioStreamsWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeAllocatedAudioStreamsWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAllocatedAudioStreamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAllocatedAudioStreamsWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAllocatedAudioStreamsWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeAllocatedAudioStreamsWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAllocatedAudioStreamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAllocatedAudioStreamsWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAllocatedAudioStreamsWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAllocatedAudioStreamsWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAllocatedSnapshotStreamsWithCompletion:@
+readAttributeAllocatedSnapshotStreamsWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeAllocatedSnapshotStreamsWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeAllocatedSnapshotStreamsWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAllocatedSnapshotStreamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAllocatedSnapshotStreamsWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAllocatedSnapshotStreamsWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeAllocatedSnapshotStreamsWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAllocatedSnapshotStreamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAllocatedSnapshotStreamsWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAllocatedSnapshotStreamsWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAllocatedSnapshotStreamsWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeStreamUsagePrioritiesWithCompletion:@
+readAttributeStreamUsagePrioritiesWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeStreamUsagePrioritiesWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeStreamUsagePrioritiesWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeStreamUsagePrioritiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeStreamUsagePrioritiesWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeStreamUsagePrioritiesWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeStreamUsagePrioritiesWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeStreamUsagePrioritiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeStreamUsagePrioritiesWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeStreamUsagePrioritiesWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeStreamUsagePrioritiesWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSoftRecordingPrivacyModeEnabledWithCompletion:@
+readAttributeSoftRecordingPrivacyModeEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSoftRecordingPrivacyModeEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSoftRecordingPrivacyModeEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSoftRecordingPrivacyModeEnabledWithValue:completion:@
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSoftRecordingPrivacyModeEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSoftRecordingPrivacyModeEnabledWithValue:params:completion:@
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSoftRecordingPrivacyModeEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion:@
+readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:completion:@
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:params:completion:@
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeHardPrivacyModeOnWithCompletion:@
+readAttributeHardPrivacyModeOnWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeHardPrivacyModeOnWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeHardPrivacyModeOnWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeHardPrivacyModeOnWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeHardPrivacyModeOnWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeHardPrivacyModeOnWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeHardPrivacyModeOnWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeHardPrivacyModeOnWithClusterStateCache:endpoint:queue:completion:@
+readAttributeHardPrivacyModeOnWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeHardPrivacyModeOnWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeHardPrivacyModeOnWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeNightVisionWithCompletion:@
+readAttributeNightVisionWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeNightVisionWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeNightVisionWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeNightVisionWithValue:completion:@
+writeAttributeNightVisionWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeNightVisionWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeNightVisionWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeNightVisionWithValue:params:completion:@
+writeAttributeNightVisionWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeNightVisionWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeNightVisionWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeNightVisionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeNightVisionWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeNightVisionWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeNightVisionWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeNightVisionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeNightVisionWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeNightVisionWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeNightVisionWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeNightVisionIllumWithCompletion:@
+readAttributeNightVisionIllumWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeNightVisionIllumWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeNightVisionIllumWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeNightVisionIllumWithValue:completion:@
+writeAttributeNightVisionIllumWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeNightVisionIllumWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeNightVisionIllumWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeNightVisionIllumWithValue:params:completion:@
+writeAttributeNightVisionIllumWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeNightVisionIllumWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeNightVisionIllumWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeNightVisionIllumWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeNightVisionIllumWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeNightVisionIllumWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeNightVisionIllumWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeNightVisionIllumWithClusterStateCache:endpoint:queue:completion:@
+readAttributeNightVisionIllumWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeNightVisionIllumWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeNightVisionIllumWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeViewportWithCompletion:@
+readAttributeViewportWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeViewportWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeViewportWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeViewportWithValue:completion:@
+writeAttributeViewportWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRDataTypeViewportStruct value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeViewportWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeViewportWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeViewportWithValue:params:completion:@
+writeAttributeViewportWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRDataTypeViewportStruct value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeViewportWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeViewportWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeViewportWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeViewportWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeViewportWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeViewportWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeViewportWithClusterStateCache:endpoint:queue:completion:@
+readAttributeViewportWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeViewportWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeViewportWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSpeakerMutedWithCompletion:@
+readAttributeSpeakerMutedWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSpeakerMutedWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSpeakerMutedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSpeakerMutedWithValue:completion:@
+writeAttributeSpeakerMutedWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeSpeakerMutedWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSpeakerMutedWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSpeakerMutedWithValue:params:completion:@
+writeAttributeSpeakerMutedWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeSpeakerMutedWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSpeakerMutedWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSpeakerMutedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerMutedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeakerMutedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSpeakerMutedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeakerMutedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerMutedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeakerMutedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeakerMutedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSpeakerVolumeLevelWithCompletion:@
+readAttributeSpeakerVolumeLevelWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSpeakerVolumeLevelWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSpeakerVolumeLevelWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSpeakerVolumeLevelWithValue:completion:@
+writeAttributeSpeakerVolumeLevelWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeSpeakerVolumeLevelWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSpeakerVolumeLevelWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeSpeakerVolumeLevelWithValue:params:completion:@
+writeAttributeSpeakerVolumeLevelWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeSpeakerVolumeLevelWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeSpeakerVolumeLevelWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSpeakerVolumeLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerVolumeLevelWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeakerVolumeLevelWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSpeakerVolumeLevelWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeakerVolumeLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerVolumeLevelWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeakerVolumeLevelWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeakerVolumeLevelWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSpeakerMaxLevelWithCompletion:@
+readAttributeSpeakerMaxLevelWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSpeakerMaxLevelWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSpeakerMaxLevelWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSpeakerMaxLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerMaxLevelWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeakerMaxLevelWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSpeakerMaxLevelWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeakerMaxLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerMaxLevelWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeakerMaxLevelWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeakerMaxLevelWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeSpeakerMinLevelWithCompletion:@
+readAttributeSpeakerMinLevelWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeSpeakerMinLevelWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeSpeakerMinLevelWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeSpeakerMinLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerMinLevelWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeSpeakerMinLevelWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeSpeakerMinLevelWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeSpeakerMinLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerMinLevelWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeSpeakerMinLevelWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeSpeakerMinLevelWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMicrophoneMutedWithCompletion:@
+readAttributeMicrophoneMutedWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMicrophoneMutedWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMicrophoneMutedWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeMicrophoneMutedWithValue:completion:@
+writeAttributeMicrophoneMutedWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeMicrophoneMutedWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeMicrophoneMutedWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeMicrophoneMutedWithValue:params:completion:@
+writeAttributeMicrophoneMutedWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeMicrophoneMutedWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeMicrophoneMutedWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMicrophoneMutedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneMutedWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMicrophoneMutedWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMicrophoneMutedWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMicrophoneMutedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneMutedWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMicrophoneMutedWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMicrophoneMutedWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMicrophoneVolumeLevelWithCompletion:@
+readAttributeMicrophoneVolumeLevelWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMicrophoneVolumeLevelWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMicrophoneVolumeLevelWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeMicrophoneVolumeLevelWithValue:completion:@
+writeAttributeMicrophoneVolumeLevelWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeMicrophoneVolumeLevelWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeMicrophoneVolumeLevelWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeMicrophoneVolumeLevelWithValue:params:completion:@
+writeAttributeMicrophoneVolumeLevelWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeMicrophoneVolumeLevelWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeMicrophoneVolumeLevelWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMicrophoneVolumeLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneVolumeLevelWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMicrophoneVolumeLevelWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMicrophoneVolumeLevelWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMicrophoneVolumeLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneVolumeLevelWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMicrophoneVolumeLevelWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMicrophoneVolumeLevelWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMicrophoneMaxLevelWithCompletion:@
+readAttributeMicrophoneMaxLevelWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMicrophoneMaxLevelWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMicrophoneMaxLevelWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMicrophoneMaxLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneMaxLevelWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMicrophoneMaxLevelWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMicrophoneMaxLevelWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMicrophoneMaxLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneMaxLevelWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMicrophoneMaxLevelWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMicrophoneMaxLevelWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMicrophoneMinLevelWithCompletion:@
+readAttributeMicrophoneMinLevelWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMicrophoneMinLevelWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMicrophoneMinLevelWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMicrophoneMinLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneMinLevelWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMicrophoneMinLevelWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMicrophoneMinLevelWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMicrophoneMinLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneMinLevelWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMicrophoneMinLevelWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMicrophoneMinLevelWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeMicrophoneAGCEnabledWithCompletion:@
+readAttributeMicrophoneAGCEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeMicrophoneAGCEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeMicrophoneAGCEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeMicrophoneAGCEnabledWithValue:completion:@
+writeAttributeMicrophoneAGCEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeMicrophoneAGCEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeMicrophoneAGCEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeMicrophoneAGCEnabledWithValue:params:completion:@
+writeAttributeMicrophoneAGCEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeMicrophoneAGCEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeMicrophoneAGCEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeMicrophoneAGCEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneAGCEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeMicrophoneAGCEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeMicrophoneAGCEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeMicrophoneAGCEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneAGCEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeMicrophoneAGCEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeMicrophoneAGCEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeImageRotationWithCompletion:@
+readAttributeImageRotationWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeImageRotationWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeImageRotationWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeImageRotationWithValue:completion:@
+writeAttributeImageRotationWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeImageRotationWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeImageRotationWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeImageRotationWithValue:params:completion:@
+writeAttributeImageRotationWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeImageRotationWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeImageRotationWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeImageRotationWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeImageRotationWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeImageRotationWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeImageRotationWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeImageRotationWithClusterStateCache:endpoint:queue:completion:@
+readAttributeImageRotationWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeImageRotationWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeImageRotationWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeImageFlipHorizontalWithCompletion:@
+readAttributeImageFlipHorizontalWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeImageFlipHorizontalWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeImageFlipHorizontalWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeImageFlipHorizontalWithValue:completion:@
+writeAttributeImageFlipHorizontalWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeImageFlipHorizontalWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeImageFlipHorizontalWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeImageFlipHorizontalWithValue:params:completion:@
+writeAttributeImageFlipHorizontalWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeImageFlipHorizontalWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeImageFlipHorizontalWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeImageFlipHorizontalWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeImageFlipHorizontalWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeImageFlipHorizontalWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeImageFlipHorizontalWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeImageFlipHorizontalWithClusterStateCache:endpoint:queue:completion:@
+readAttributeImageFlipHorizontalWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeImageFlipHorizontalWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeImageFlipHorizontalWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeImageFlipVerticalWithCompletion:@
+readAttributeImageFlipVerticalWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeImageFlipVerticalWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeImageFlipVerticalWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeImageFlipVerticalWithValue:completion:@
+writeAttributeImageFlipVerticalWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeImageFlipVerticalWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeImageFlipVerticalWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeImageFlipVerticalWithValue:params:completion:@
+writeAttributeImageFlipVerticalWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeImageFlipVerticalWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeImageFlipVerticalWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeImageFlipVerticalWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeImageFlipVerticalWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeImageFlipVerticalWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeImageFlipVerticalWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeImageFlipVerticalWithClusterStateCache:endpoint:queue:completion:@
+readAttributeImageFlipVerticalWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeImageFlipVerticalWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeImageFlipVerticalWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeLocalVideoRecordingEnabledWithCompletion:@
+readAttributeLocalVideoRecordingEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeLocalVideoRecordingEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeLocalVideoRecordingEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLocalVideoRecordingEnabledWithValue:completion:@
+writeAttributeLocalVideoRecordingEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeLocalVideoRecordingEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeLocalVideoRecordingEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLocalVideoRecordingEnabledWithValue:params:completion:@
+writeAttributeLocalVideoRecordingEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeLocalVideoRecordingEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeLocalVideoRecordingEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeLocalVideoRecordingEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLocalVideoRecordingEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeLocalVideoRecordingEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeLocalVideoRecordingEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeLocalVideoRecordingEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLocalVideoRecordingEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeLocalVideoRecordingEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeLocalVideoRecordingEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeLocalSnapshotRecordingEnabledWithCompletion:@
+readAttributeLocalSnapshotRecordingEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeLocalSnapshotRecordingEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeLocalSnapshotRecordingEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLocalSnapshotRecordingEnabledWithValue:completion:@
+writeAttributeLocalSnapshotRecordingEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeLocalSnapshotRecordingEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeLocalSnapshotRecordingEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeLocalSnapshotRecordingEnabledWithValue:params:completion:@
+writeAttributeLocalSnapshotRecordingEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeLocalSnapshotRecordingEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeLocalSnapshotRecordingEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeLocalSnapshotRecordingEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLocalSnapshotRecordingEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeLocalSnapshotRecordingEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeLocalSnapshotRecordingEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeStatusLightEnabledWithCompletion:@
+readAttributeStatusLightEnabledWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeStatusLightEnabledWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeStatusLightEnabledWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeStatusLightEnabledWithValue:completion:@
+writeAttributeStatusLightEnabledWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeStatusLightEnabledWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeStatusLightEnabledWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeStatusLightEnabledWithValue:params:completion:@
+writeAttributeStatusLightEnabledWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeStatusLightEnabledWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeStatusLightEnabledWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeStatusLightEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeStatusLightEnabledWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeStatusLightEnabledWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeStatusLightEnabledWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeStatusLightEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeStatusLightEnabledWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeStatusLightEnabledWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeStatusLightEnabledWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeStatusLightBrightnessWithCompletion:@
+readAttributeStatusLightBrightnessWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeStatusLightBrightnessWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeStatusLightBrightnessWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeStatusLightBrightnessWithValue:completion:@
+writeAttributeStatusLightBrightnessWithValue_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value) => mtrBaseClusterCameraAVStreamManagement -> value -> Ptr () -> IO ()
+writeAttributeStatusLightBrightnessWithValue_completion mtrBaseClusterCameraAVStreamManagement  value completion =
+  withObjCPtr value $ \raw_value ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeStatusLightBrightnessWithValue:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- writeAttributeStatusLightBrightnessWithValue:params:completion:@
+writeAttributeStatusLightBrightnessWithValue_params_completion :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsNSNumber value, IsMTRWriteParams params) => mtrBaseClusterCameraAVStreamManagement -> value -> params -> Ptr () -> IO ()
+writeAttributeStatusLightBrightnessWithValue_params_completion mtrBaseClusterCameraAVStreamManagement  value params completion =
+  withObjCPtr value $ \raw_value ->
+    withObjCPtr params $ \raw_params ->
+        sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "writeAttributeStatusLightBrightnessWithValue:params:completion:") retVoid [argPtr (castPtr raw_value :: Ptr ()), argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeStatusLightBrightnessWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeStatusLightBrightnessWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeStatusLightBrightnessWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeStatusLightBrightnessWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeStatusLightBrightnessWithClusterStateCache:endpoint:queue:completion:@
+readAttributeStatusLightBrightnessWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeStatusLightBrightnessWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeStatusLightBrightnessWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeGeneratedCommandListWithCompletion:@
+readAttributeGeneratedCommandListWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeGeneratedCommandListWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeGeneratedCommandListWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAcceptedCommandListWithCompletion:@
+readAttributeAcceptedCommandListWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeAcceptedCommandListWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeAcceptedCommandListWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeAttributeListWithCompletion:@
+readAttributeAttributeListWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeAttributeListWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeAttributeListWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeFeatureMapWithCompletion:@
+readAttributeFeatureMapWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeFeatureMapWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeFeatureMapWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:@
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- readAttributeClusterRevisionWithCompletion:@
+readAttributeClusterRevisionWithCompletion :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> Ptr () -> IO ()
+readAttributeClusterRevisionWithCompletion mtrBaseClusterCameraAVStreamManagement  completion =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "readAttributeClusterRevisionWithCompletion:") retVoid [argPtr (castPtr completion :: Ptr ())]
+
+-- | @- subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandler :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRSubscribeParams params) => mtrBaseClusterCameraAVStreamManagement -> params -> Ptr () -> Ptr () -> IO ()
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandler mtrBaseClusterCameraAVStreamManagement  params subscriptionEstablished reportHandler =
+  withObjCPtr params $ \raw_params ->
+      sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:") retVoid [argPtr (castPtr raw_params :: Ptr ()), argPtr (castPtr subscriptionEstablished :: Ptr ()), argPtr (castPtr reportHandler :: Ptr ())]
+
+-- | @+ readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completion :: (IsMTRClusterStateCacheContainer clusterStateCacheContainer, IsNSNumber endpoint, IsNSObject queue) => clusterStateCacheContainer -> endpoint -> queue -> Ptr () -> IO ()
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completion clusterStateCacheContainer endpoint queue completion =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    withObjCPtr clusterStateCacheContainer $ \raw_clusterStateCacheContainer ->
+      withObjCPtr endpoint $ \raw_endpoint ->
+        withObjCPtr queue $ \raw_queue ->
+          sendClassMsg cls' (mkSelector "readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:") retVoid [argPtr (castPtr raw_clusterStateCacheContainer :: Ptr ()), argPtr (castPtr raw_endpoint :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ()), argPtr (castPtr completion :: Ptr ())]
+
+-- | @- init@
+init_ :: IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement => mtrBaseClusterCameraAVStreamManagement -> IO (Id MTRBaseClusterCameraAVStreamManagement)
+init_ mtrBaseClusterCameraAVStreamManagement  =
+    sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "init") (retPtr retVoid) [] >>= ownedObject . castPtr
+
+-- | @+ new@
+new :: IO (Id MTRBaseClusterCameraAVStreamManagement)
+new  =
+  do
+    cls' <- getRequiredClass "MTRBaseClusterCameraAVStreamManagement"
+    sendClassMsg cls' (mkSelector "new") (retPtr retVoid) [] >>= ownedObject . castPtr
+
+-- | For all instance methods (reads, writes, commands) that take a completion, the completion will be called on the provided queue.
+--
+-- ObjC selector: @- initWithDevice:endpointID:queue:@
+initWithDevice_endpointID_queue :: (IsMTRBaseClusterCameraAVStreamManagement mtrBaseClusterCameraAVStreamManagement, IsMTRBaseDevice device, IsNSNumber endpointID, IsNSObject queue) => mtrBaseClusterCameraAVStreamManagement -> device -> endpointID -> queue -> IO (Id MTRBaseClusterCameraAVStreamManagement)
+initWithDevice_endpointID_queue mtrBaseClusterCameraAVStreamManagement  device endpointID queue =
+  withObjCPtr device $ \raw_device ->
+    withObjCPtr endpointID $ \raw_endpointID ->
+      withObjCPtr queue $ \raw_queue ->
+          sendMsg mtrBaseClusterCameraAVStreamManagement (mkSelector "initWithDevice:endpointID:queue:") (retPtr retVoid) [argPtr (castPtr raw_device :: Ptr ()), argPtr (castPtr raw_endpointID :: Ptr ()), argPtr (castPtr raw_queue :: Ptr ())] >>= ownedObject . castPtr
+
+-- ---------------------------------------------------------------------------
+-- Selectors
+-- ---------------------------------------------------------------------------
+
+-- | @Selector@ for @audioStreamAllocateWithParams:completion:@
+audioStreamAllocateWithParams_completionSelector :: Selector
+audioStreamAllocateWithParams_completionSelector = mkSelector "audioStreamAllocateWithParams:completion:"
+
+-- | @Selector@ for @audioStreamDeallocateWithParams:completion:@
+audioStreamDeallocateWithParams_completionSelector :: Selector
+audioStreamDeallocateWithParams_completionSelector = mkSelector "audioStreamDeallocateWithParams:completion:"
+
+-- | @Selector@ for @videoStreamAllocateWithParams:completion:@
+videoStreamAllocateWithParams_completionSelector :: Selector
+videoStreamAllocateWithParams_completionSelector = mkSelector "videoStreamAllocateWithParams:completion:"
+
+-- | @Selector@ for @videoStreamModifyWithParams:completion:@
+videoStreamModifyWithParams_completionSelector :: Selector
+videoStreamModifyWithParams_completionSelector = mkSelector "videoStreamModifyWithParams:completion:"
+
+-- | @Selector@ for @videoStreamDeallocateWithParams:completion:@
+videoStreamDeallocateWithParams_completionSelector :: Selector
+videoStreamDeallocateWithParams_completionSelector = mkSelector "videoStreamDeallocateWithParams:completion:"
+
+-- | @Selector@ for @snapshotStreamAllocateWithParams:completion:@
+snapshotStreamAllocateWithParams_completionSelector :: Selector
+snapshotStreamAllocateWithParams_completionSelector = mkSelector "snapshotStreamAllocateWithParams:completion:"
+
+-- | @Selector@ for @snapshotStreamModifyWithParams:completion:@
+snapshotStreamModifyWithParams_completionSelector :: Selector
+snapshotStreamModifyWithParams_completionSelector = mkSelector "snapshotStreamModifyWithParams:completion:"
+
+-- | @Selector@ for @snapshotStreamDeallocateWithParams:completion:@
+snapshotStreamDeallocateWithParams_completionSelector :: Selector
+snapshotStreamDeallocateWithParams_completionSelector = mkSelector "snapshotStreamDeallocateWithParams:completion:"
+
+-- | @Selector@ for @setStreamPrioritiesWithParams:completion:@
+setStreamPrioritiesWithParams_completionSelector :: Selector
+setStreamPrioritiesWithParams_completionSelector = mkSelector "setStreamPrioritiesWithParams:completion:"
+
+-- | @Selector@ for @captureSnapshotWithParams:completion:@
+captureSnapshotWithParams_completionSelector :: Selector
+captureSnapshotWithParams_completionSelector = mkSelector "captureSnapshotWithParams:completion:"
+
+-- | @Selector@ for @readAttributeMaxConcurrentEncodersWithCompletion:@
+readAttributeMaxConcurrentEncodersWithCompletionSelector :: Selector
+readAttributeMaxConcurrentEncodersWithCompletionSelector = mkSelector "readAttributeMaxConcurrentEncodersWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxConcurrentEncodersWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxConcurrentEncodersWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxConcurrentEncodersWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxConcurrentEncodersWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxConcurrentEncodersWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxConcurrentEncodersWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxConcurrentEncodersWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxConcurrentEncodersWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxEncodedPixelRateWithCompletion:@
+readAttributeMaxEncodedPixelRateWithCompletionSelector :: Selector
+readAttributeMaxEncodedPixelRateWithCompletionSelector = mkSelector "readAttributeMaxEncodedPixelRateWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxEncodedPixelRateWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxEncodedPixelRateWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxEncodedPixelRateWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxEncodedPixelRateWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxEncodedPixelRateWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxEncodedPixelRateWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxEncodedPixelRateWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxEncodedPixelRateWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeVideoSensorParamsWithCompletion:@
+readAttributeVideoSensorParamsWithCompletionSelector :: Selector
+readAttributeVideoSensorParamsWithCompletionSelector = mkSelector "readAttributeVideoSensorParamsWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeVideoSensorParamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeVideoSensorParamsWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeVideoSensorParamsWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeVideoSensorParamsWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeVideoSensorParamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeVideoSensorParamsWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeVideoSensorParamsWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeVideoSensorParamsWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeNightVisionUsesInfraredWithCompletion:@
+readAttributeNightVisionUsesInfraredWithCompletionSelector :: Selector
+readAttributeNightVisionUsesInfraredWithCompletionSelector = mkSelector "readAttributeNightVisionUsesInfraredWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeNightVisionUsesInfraredWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeNightVisionUsesInfraredWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeNightVisionUsesInfraredWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeNightVisionUsesInfraredWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeNightVisionUsesInfraredWithClusterStateCache:endpoint:queue:completion:@
+readAttributeNightVisionUsesInfraredWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeNightVisionUsesInfraredWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeNightVisionUsesInfraredWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMinViewportResolutionWithCompletion:@
+readAttributeMinViewportResolutionWithCompletionSelector :: Selector
+readAttributeMinViewportResolutionWithCompletionSelector = mkSelector "readAttributeMinViewportResolutionWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMinViewportResolutionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMinViewportResolutionWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMinViewportResolutionWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMinViewportResolutionWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMinViewportResolutionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMinViewportResolutionWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMinViewportResolutionWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMinViewportResolutionWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeRateDistortionTradeOffPointsWithCompletion:@
+readAttributeRateDistortionTradeOffPointsWithCompletionSelector :: Selector
+readAttributeRateDistortionTradeOffPointsWithCompletionSelector = mkSelector "readAttributeRateDistortionTradeOffPointsWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeRateDistortionTradeOffPointsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeRateDistortionTradeOffPointsWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeRateDistortionTradeOffPointsWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeRateDistortionTradeOffPointsWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeRateDistortionTradeOffPointsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeRateDistortionTradeOffPointsWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeRateDistortionTradeOffPointsWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeRateDistortionTradeOffPointsWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxContentBufferSizeWithCompletion:@
+readAttributeMaxContentBufferSizeWithCompletionSelector :: Selector
+readAttributeMaxContentBufferSizeWithCompletionSelector = mkSelector "readAttributeMaxContentBufferSizeWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxContentBufferSizeWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxContentBufferSizeWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxContentBufferSizeWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxContentBufferSizeWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxContentBufferSizeWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxContentBufferSizeWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxContentBufferSizeWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxContentBufferSizeWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMicrophoneCapabilitiesWithCompletion:@
+readAttributeMicrophoneCapabilitiesWithCompletionSelector :: Selector
+readAttributeMicrophoneCapabilitiesWithCompletionSelector = mkSelector "readAttributeMicrophoneCapabilitiesWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMicrophoneCapabilitiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMicrophoneCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMicrophoneCapabilitiesWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMicrophoneCapabilitiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMicrophoneCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMicrophoneCapabilitiesWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSpeakerCapabilitiesWithCompletion:@
+readAttributeSpeakerCapabilitiesWithCompletionSelector :: Selector
+readAttributeSpeakerCapabilitiesWithCompletionSelector = mkSelector "readAttributeSpeakerCapabilitiesWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeSpeakerCapabilitiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeakerCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeakerCapabilitiesWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeakerCapabilitiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSpeakerCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSpeakerCapabilitiesWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeTwoWayTalkSupportWithCompletion:@
+readAttributeTwoWayTalkSupportWithCompletionSelector :: Selector
+readAttributeTwoWayTalkSupportWithCompletionSelector = mkSelector "readAttributeTwoWayTalkSupportWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeTwoWayTalkSupportWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeTwoWayTalkSupportWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeTwoWayTalkSupportWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeTwoWayTalkSupportWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeTwoWayTalkSupportWithClusterStateCache:endpoint:queue:completion:@
+readAttributeTwoWayTalkSupportWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeTwoWayTalkSupportWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeTwoWayTalkSupportWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSnapshotCapabilitiesWithCompletion:@
+readAttributeSnapshotCapabilitiesWithCompletionSelector :: Selector
+readAttributeSnapshotCapabilitiesWithCompletionSelector = mkSelector "readAttributeSnapshotCapabilitiesWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeSnapshotCapabilitiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSnapshotCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSnapshotCapabilitiesWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSnapshotCapabilitiesWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSnapshotCapabilitiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSnapshotCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSnapshotCapabilitiesWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSnapshotCapabilitiesWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMaxNetworkBandwidthWithCompletion:@
+readAttributeMaxNetworkBandwidthWithCompletionSelector :: Selector
+readAttributeMaxNetworkBandwidthWithCompletionSelector = mkSelector "readAttributeMaxNetworkBandwidthWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMaxNetworkBandwidthWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMaxNetworkBandwidthWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMaxNetworkBandwidthWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMaxNetworkBandwidthWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMaxNetworkBandwidthWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMaxNetworkBandwidthWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMaxNetworkBandwidthWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMaxNetworkBandwidthWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeCurrentFrameRateWithCompletion:@
+readAttributeCurrentFrameRateWithCompletionSelector :: Selector
+readAttributeCurrentFrameRateWithCompletionSelector = mkSelector "readAttributeCurrentFrameRateWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeCurrentFrameRateWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeCurrentFrameRateWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeCurrentFrameRateWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeCurrentFrameRateWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeCurrentFrameRateWithClusterStateCache:endpoint:queue:completion:@
+readAttributeCurrentFrameRateWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeCurrentFrameRateWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeCurrentFrameRateWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeHDRModeEnabledWithCompletion:@
+readAttributeHDRModeEnabledWithCompletionSelector :: Selector
+readAttributeHDRModeEnabledWithCompletionSelector = mkSelector "readAttributeHDRModeEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeHDRModeEnabledWithValue:completion:@
+writeAttributeHDRModeEnabledWithValue_completionSelector :: Selector
+writeAttributeHDRModeEnabledWithValue_completionSelector = mkSelector "writeAttributeHDRModeEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeHDRModeEnabledWithValue:params:completion:@
+writeAttributeHDRModeEnabledWithValue_params_completionSelector :: Selector
+writeAttributeHDRModeEnabledWithValue_params_completionSelector = mkSelector "writeAttributeHDRModeEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeHDRModeEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeHDRModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeHDRModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeHDRModeEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeHDRModeEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeHDRModeEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeHDRModeEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeHDRModeEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSupportedStreamUsagesWithCompletion:@
+readAttributeSupportedStreamUsagesWithCompletionSelector :: Selector
+readAttributeSupportedStreamUsagesWithCompletionSelector = mkSelector "readAttributeSupportedStreamUsagesWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeSupportedStreamUsagesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSupportedStreamUsagesWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSupportedStreamUsagesWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSupportedStreamUsagesWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSupportedStreamUsagesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSupportedStreamUsagesWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSupportedStreamUsagesWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSupportedStreamUsagesWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAllocatedVideoStreamsWithCompletion:@
+readAttributeAllocatedVideoStreamsWithCompletionSelector :: Selector
+readAttributeAllocatedVideoStreamsWithCompletionSelector = mkSelector "readAttributeAllocatedVideoStreamsWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAllocatedVideoStreamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAllocatedVideoStreamsWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAllocatedVideoStreamsWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAllocatedVideoStreamsWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAllocatedVideoStreamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAllocatedVideoStreamsWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAllocatedVideoStreamsWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAllocatedVideoStreamsWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAllocatedAudioStreamsWithCompletion:@
+readAttributeAllocatedAudioStreamsWithCompletionSelector :: Selector
+readAttributeAllocatedAudioStreamsWithCompletionSelector = mkSelector "readAttributeAllocatedAudioStreamsWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAllocatedAudioStreamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAllocatedAudioStreamsWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAllocatedAudioStreamsWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAllocatedAudioStreamsWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAllocatedAudioStreamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAllocatedAudioStreamsWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAllocatedAudioStreamsWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAllocatedAudioStreamsWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAllocatedSnapshotStreamsWithCompletion:@
+readAttributeAllocatedSnapshotStreamsWithCompletionSelector :: Selector
+readAttributeAllocatedSnapshotStreamsWithCompletionSelector = mkSelector "readAttributeAllocatedSnapshotStreamsWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAllocatedSnapshotStreamsWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAllocatedSnapshotStreamsWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAllocatedSnapshotStreamsWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAllocatedSnapshotStreamsWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAllocatedSnapshotStreamsWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAllocatedSnapshotStreamsWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAllocatedSnapshotStreamsWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAllocatedSnapshotStreamsWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeStreamUsagePrioritiesWithCompletion:@
+readAttributeStreamUsagePrioritiesWithCompletionSelector :: Selector
+readAttributeStreamUsagePrioritiesWithCompletionSelector = mkSelector "readAttributeStreamUsagePrioritiesWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeStreamUsagePrioritiesWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeStreamUsagePrioritiesWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeStreamUsagePrioritiesWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeStreamUsagePrioritiesWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeStreamUsagePrioritiesWithClusterStateCache:endpoint:queue:completion:@
+readAttributeStreamUsagePrioritiesWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeStreamUsagePrioritiesWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeStreamUsagePrioritiesWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSoftRecordingPrivacyModeEnabledWithCompletion:@
+readAttributeSoftRecordingPrivacyModeEnabledWithCompletionSelector :: Selector
+readAttributeSoftRecordingPrivacyModeEnabledWithCompletionSelector = mkSelector "readAttributeSoftRecordingPrivacyModeEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeSoftRecordingPrivacyModeEnabledWithValue:completion:@
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_completionSelector :: Selector
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_completionSelector = mkSelector "writeAttributeSoftRecordingPrivacyModeEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeSoftRecordingPrivacyModeEnabledWithValue:params:completion:@
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_params_completionSelector :: Selector
+writeAttributeSoftRecordingPrivacyModeEnabledWithValue_params_completionSelector = mkSelector "writeAttributeSoftRecordingPrivacyModeEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSoftRecordingPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSoftRecordingPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion:@
+readAttributeSoftLivestreamPrivacyModeEnabledWithCompletionSelector :: Selector
+readAttributeSoftLivestreamPrivacyModeEnabledWithCompletionSelector = mkSelector "readAttributeSoftLivestreamPrivacyModeEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:completion:@
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_completionSelector :: Selector
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_completionSelector = mkSelector "writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:params:completion:@
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_params_completionSelector :: Selector
+writeAttributeSoftLivestreamPrivacyModeEnabledWithValue_params_completionSelector = mkSelector "writeAttributeSoftLivestreamPrivacyModeEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSoftLivestreamPrivacyModeEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSoftLivestreamPrivacyModeEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeHardPrivacyModeOnWithCompletion:@
+readAttributeHardPrivacyModeOnWithCompletionSelector :: Selector
+readAttributeHardPrivacyModeOnWithCompletionSelector = mkSelector "readAttributeHardPrivacyModeOnWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeHardPrivacyModeOnWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeHardPrivacyModeOnWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeHardPrivacyModeOnWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeHardPrivacyModeOnWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeHardPrivacyModeOnWithClusterStateCache:endpoint:queue:completion:@
+readAttributeHardPrivacyModeOnWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeHardPrivacyModeOnWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeHardPrivacyModeOnWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeNightVisionWithCompletion:@
+readAttributeNightVisionWithCompletionSelector :: Selector
+readAttributeNightVisionWithCompletionSelector = mkSelector "readAttributeNightVisionWithCompletion:"
+
+-- | @Selector@ for @writeAttributeNightVisionWithValue:completion:@
+writeAttributeNightVisionWithValue_completionSelector :: Selector
+writeAttributeNightVisionWithValue_completionSelector = mkSelector "writeAttributeNightVisionWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeNightVisionWithValue:params:completion:@
+writeAttributeNightVisionWithValue_params_completionSelector :: Selector
+writeAttributeNightVisionWithValue_params_completionSelector = mkSelector "writeAttributeNightVisionWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeNightVisionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeNightVisionWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeNightVisionWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeNightVisionWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeNightVisionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeNightVisionWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeNightVisionWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeNightVisionWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeNightVisionIllumWithCompletion:@
+readAttributeNightVisionIllumWithCompletionSelector :: Selector
+readAttributeNightVisionIllumWithCompletionSelector = mkSelector "readAttributeNightVisionIllumWithCompletion:"
+
+-- | @Selector@ for @writeAttributeNightVisionIllumWithValue:completion:@
+writeAttributeNightVisionIllumWithValue_completionSelector :: Selector
+writeAttributeNightVisionIllumWithValue_completionSelector = mkSelector "writeAttributeNightVisionIllumWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeNightVisionIllumWithValue:params:completion:@
+writeAttributeNightVisionIllumWithValue_params_completionSelector :: Selector
+writeAttributeNightVisionIllumWithValue_params_completionSelector = mkSelector "writeAttributeNightVisionIllumWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeNightVisionIllumWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeNightVisionIllumWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeNightVisionIllumWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeNightVisionIllumWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeNightVisionIllumWithClusterStateCache:endpoint:queue:completion:@
+readAttributeNightVisionIllumWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeNightVisionIllumWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeNightVisionIllumWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeViewportWithCompletion:@
+readAttributeViewportWithCompletionSelector :: Selector
+readAttributeViewportWithCompletionSelector = mkSelector "readAttributeViewportWithCompletion:"
+
+-- | @Selector@ for @writeAttributeViewportWithValue:completion:@
+writeAttributeViewportWithValue_completionSelector :: Selector
+writeAttributeViewportWithValue_completionSelector = mkSelector "writeAttributeViewportWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeViewportWithValue:params:completion:@
+writeAttributeViewportWithValue_params_completionSelector :: Selector
+writeAttributeViewportWithValue_params_completionSelector = mkSelector "writeAttributeViewportWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeViewportWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeViewportWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeViewportWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeViewportWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeViewportWithClusterStateCache:endpoint:queue:completion:@
+readAttributeViewportWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeViewportWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeViewportWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSpeakerMutedWithCompletion:@
+readAttributeSpeakerMutedWithCompletionSelector :: Selector
+readAttributeSpeakerMutedWithCompletionSelector = mkSelector "readAttributeSpeakerMutedWithCompletion:"
+
+-- | @Selector@ for @writeAttributeSpeakerMutedWithValue:completion:@
+writeAttributeSpeakerMutedWithValue_completionSelector :: Selector
+writeAttributeSpeakerMutedWithValue_completionSelector = mkSelector "writeAttributeSpeakerMutedWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeSpeakerMutedWithValue:params:completion:@
+writeAttributeSpeakerMutedWithValue_params_completionSelector :: Selector
+writeAttributeSpeakerMutedWithValue_params_completionSelector = mkSelector "writeAttributeSpeakerMutedWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeSpeakerMutedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerMutedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeakerMutedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeakerMutedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeakerMutedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerMutedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSpeakerMutedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSpeakerMutedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSpeakerVolumeLevelWithCompletion:@
+readAttributeSpeakerVolumeLevelWithCompletionSelector :: Selector
+readAttributeSpeakerVolumeLevelWithCompletionSelector = mkSelector "readAttributeSpeakerVolumeLevelWithCompletion:"
+
+-- | @Selector@ for @writeAttributeSpeakerVolumeLevelWithValue:completion:@
+writeAttributeSpeakerVolumeLevelWithValue_completionSelector :: Selector
+writeAttributeSpeakerVolumeLevelWithValue_completionSelector = mkSelector "writeAttributeSpeakerVolumeLevelWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeSpeakerVolumeLevelWithValue:params:completion:@
+writeAttributeSpeakerVolumeLevelWithValue_params_completionSelector :: Selector
+writeAttributeSpeakerVolumeLevelWithValue_params_completionSelector = mkSelector "writeAttributeSpeakerVolumeLevelWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeSpeakerVolumeLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerVolumeLevelWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeakerVolumeLevelWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeakerVolumeLevelWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeakerVolumeLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerVolumeLevelWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSpeakerVolumeLevelWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSpeakerVolumeLevelWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSpeakerMaxLevelWithCompletion:@
+readAttributeSpeakerMaxLevelWithCompletionSelector :: Selector
+readAttributeSpeakerMaxLevelWithCompletionSelector = mkSelector "readAttributeSpeakerMaxLevelWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeSpeakerMaxLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerMaxLevelWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeakerMaxLevelWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeakerMaxLevelWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeakerMaxLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerMaxLevelWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSpeakerMaxLevelWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSpeakerMaxLevelWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeSpeakerMinLevelWithCompletion:@
+readAttributeSpeakerMinLevelWithCompletionSelector :: Selector
+readAttributeSpeakerMinLevelWithCompletionSelector = mkSelector "readAttributeSpeakerMinLevelWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeSpeakerMinLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeSpeakerMinLevelWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeSpeakerMinLevelWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeSpeakerMinLevelWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeSpeakerMinLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeSpeakerMinLevelWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeSpeakerMinLevelWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeSpeakerMinLevelWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMicrophoneMutedWithCompletion:@
+readAttributeMicrophoneMutedWithCompletionSelector :: Selector
+readAttributeMicrophoneMutedWithCompletionSelector = mkSelector "readAttributeMicrophoneMutedWithCompletion:"
+
+-- | @Selector@ for @writeAttributeMicrophoneMutedWithValue:completion:@
+writeAttributeMicrophoneMutedWithValue_completionSelector :: Selector
+writeAttributeMicrophoneMutedWithValue_completionSelector = mkSelector "writeAttributeMicrophoneMutedWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeMicrophoneMutedWithValue:params:completion:@
+writeAttributeMicrophoneMutedWithValue_params_completionSelector :: Selector
+writeAttributeMicrophoneMutedWithValue_params_completionSelector = mkSelector "writeAttributeMicrophoneMutedWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeMicrophoneMutedWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneMutedWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMicrophoneMutedWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMicrophoneMutedWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMicrophoneMutedWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneMutedWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMicrophoneMutedWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMicrophoneMutedWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMicrophoneVolumeLevelWithCompletion:@
+readAttributeMicrophoneVolumeLevelWithCompletionSelector :: Selector
+readAttributeMicrophoneVolumeLevelWithCompletionSelector = mkSelector "readAttributeMicrophoneVolumeLevelWithCompletion:"
+
+-- | @Selector@ for @writeAttributeMicrophoneVolumeLevelWithValue:completion:@
+writeAttributeMicrophoneVolumeLevelWithValue_completionSelector :: Selector
+writeAttributeMicrophoneVolumeLevelWithValue_completionSelector = mkSelector "writeAttributeMicrophoneVolumeLevelWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeMicrophoneVolumeLevelWithValue:params:completion:@
+writeAttributeMicrophoneVolumeLevelWithValue_params_completionSelector :: Selector
+writeAttributeMicrophoneVolumeLevelWithValue_params_completionSelector = mkSelector "writeAttributeMicrophoneVolumeLevelWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeMicrophoneVolumeLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneVolumeLevelWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMicrophoneVolumeLevelWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMicrophoneVolumeLevelWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMicrophoneVolumeLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneVolumeLevelWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMicrophoneVolumeLevelWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMicrophoneVolumeLevelWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMicrophoneMaxLevelWithCompletion:@
+readAttributeMicrophoneMaxLevelWithCompletionSelector :: Selector
+readAttributeMicrophoneMaxLevelWithCompletionSelector = mkSelector "readAttributeMicrophoneMaxLevelWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMicrophoneMaxLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneMaxLevelWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMicrophoneMaxLevelWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMicrophoneMaxLevelWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMicrophoneMaxLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneMaxLevelWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMicrophoneMaxLevelWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMicrophoneMaxLevelWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMicrophoneMinLevelWithCompletion:@
+readAttributeMicrophoneMinLevelWithCompletionSelector :: Selector
+readAttributeMicrophoneMinLevelWithCompletionSelector = mkSelector "readAttributeMicrophoneMinLevelWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeMicrophoneMinLevelWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneMinLevelWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMicrophoneMinLevelWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMicrophoneMinLevelWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMicrophoneMinLevelWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneMinLevelWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMicrophoneMinLevelWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMicrophoneMinLevelWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeMicrophoneAGCEnabledWithCompletion:@
+readAttributeMicrophoneAGCEnabledWithCompletionSelector :: Selector
+readAttributeMicrophoneAGCEnabledWithCompletionSelector = mkSelector "readAttributeMicrophoneAGCEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeMicrophoneAGCEnabledWithValue:completion:@
+writeAttributeMicrophoneAGCEnabledWithValue_completionSelector :: Selector
+writeAttributeMicrophoneAGCEnabledWithValue_completionSelector = mkSelector "writeAttributeMicrophoneAGCEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeMicrophoneAGCEnabledWithValue:params:completion:@
+writeAttributeMicrophoneAGCEnabledWithValue_params_completionSelector :: Selector
+writeAttributeMicrophoneAGCEnabledWithValue_params_completionSelector = mkSelector "writeAttributeMicrophoneAGCEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeMicrophoneAGCEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeMicrophoneAGCEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeMicrophoneAGCEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeMicrophoneAGCEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeMicrophoneAGCEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeMicrophoneAGCEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeMicrophoneAGCEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeMicrophoneAGCEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeImageRotationWithCompletion:@
+readAttributeImageRotationWithCompletionSelector :: Selector
+readAttributeImageRotationWithCompletionSelector = mkSelector "readAttributeImageRotationWithCompletion:"
+
+-- | @Selector@ for @writeAttributeImageRotationWithValue:completion:@
+writeAttributeImageRotationWithValue_completionSelector :: Selector
+writeAttributeImageRotationWithValue_completionSelector = mkSelector "writeAttributeImageRotationWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeImageRotationWithValue:params:completion:@
+writeAttributeImageRotationWithValue_params_completionSelector :: Selector
+writeAttributeImageRotationWithValue_params_completionSelector = mkSelector "writeAttributeImageRotationWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeImageRotationWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeImageRotationWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeImageRotationWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeImageRotationWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeImageRotationWithClusterStateCache:endpoint:queue:completion:@
+readAttributeImageRotationWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeImageRotationWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeImageRotationWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeImageFlipHorizontalWithCompletion:@
+readAttributeImageFlipHorizontalWithCompletionSelector :: Selector
+readAttributeImageFlipHorizontalWithCompletionSelector = mkSelector "readAttributeImageFlipHorizontalWithCompletion:"
+
+-- | @Selector@ for @writeAttributeImageFlipHorizontalWithValue:completion:@
+writeAttributeImageFlipHorizontalWithValue_completionSelector :: Selector
+writeAttributeImageFlipHorizontalWithValue_completionSelector = mkSelector "writeAttributeImageFlipHorizontalWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeImageFlipHorizontalWithValue:params:completion:@
+writeAttributeImageFlipHorizontalWithValue_params_completionSelector :: Selector
+writeAttributeImageFlipHorizontalWithValue_params_completionSelector = mkSelector "writeAttributeImageFlipHorizontalWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeImageFlipHorizontalWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeImageFlipHorizontalWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeImageFlipHorizontalWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeImageFlipHorizontalWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeImageFlipHorizontalWithClusterStateCache:endpoint:queue:completion:@
+readAttributeImageFlipHorizontalWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeImageFlipHorizontalWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeImageFlipHorizontalWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeImageFlipVerticalWithCompletion:@
+readAttributeImageFlipVerticalWithCompletionSelector :: Selector
+readAttributeImageFlipVerticalWithCompletionSelector = mkSelector "readAttributeImageFlipVerticalWithCompletion:"
+
+-- | @Selector@ for @writeAttributeImageFlipVerticalWithValue:completion:@
+writeAttributeImageFlipVerticalWithValue_completionSelector :: Selector
+writeAttributeImageFlipVerticalWithValue_completionSelector = mkSelector "writeAttributeImageFlipVerticalWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeImageFlipVerticalWithValue:params:completion:@
+writeAttributeImageFlipVerticalWithValue_params_completionSelector :: Selector
+writeAttributeImageFlipVerticalWithValue_params_completionSelector = mkSelector "writeAttributeImageFlipVerticalWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeImageFlipVerticalWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeImageFlipVerticalWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeImageFlipVerticalWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeImageFlipVerticalWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeImageFlipVerticalWithClusterStateCache:endpoint:queue:completion:@
+readAttributeImageFlipVerticalWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeImageFlipVerticalWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeImageFlipVerticalWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeLocalVideoRecordingEnabledWithCompletion:@
+readAttributeLocalVideoRecordingEnabledWithCompletionSelector :: Selector
+readAttributeLocalVideoRecordingEnabledWithCompletionSelector = mkSelector "readAttributeLocalVideoRecordingEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeLocalVideoRecordingEnabledWithValue:completion:@
+writeAttributeLocalVideoRecordingEnabledWithValue_completionSelector :: Selector
+writeAttributeLocalVideoRecordingEnabledWithValue_completionSelector = mkSelector "writeAttributeLocalVideoRecordingEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeLocalVideoRecordingEnabledWithValue:params:completion:@
+writeAttributeLocalVideoRecordingEnabledWithValue_params_completionSelector :: Selector
+writeAttributeLocalVideoRecordingEnabledWithValue_params_completionSelector = mkSelector "writeAttributeLocalVideoRecordingEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeLocalVideoRecordingEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLocalVideoRecordingEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeLocalVideoRecordingEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeLocalVideoRecordingEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeLocalVideoRecordingEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLocalVideoRecordingEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeLocalVideoRecordingEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeLocalVideoRecordingEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeLocalSnapshotRecordingEnabledWithCompletion:@
+readAttributeLocalSnapshotRecordingEnabledWithCompletionSelector :: Selector
+readAttributeLocalSnapshotRecordingEnabledWithCompletionSelector = mkSelector "readAttributeLocalSnapshotRecordingEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeLocalSnapshotRecordingEnabledWithValue:completion:@
+writeAttributeLocalSnapshotRecordingEnabledWithValue_completionSelector :: Selector
+writeAttributeLocalSnapshotRecordingEnabledWithValue_completionSelector = mkSelector "writeAttributeLocalSnapshotRecordingEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeLocalSnapshotRecordingEnabledWithValue:params:completion:@
+writeAttributeLocalSnapshotRecordingEnabledWithValue_params_completionSelector :: Selector
+writeAttributeLocalSnapshotRecordingEnabledWithValue_params_completionSelector = mkSelector "writeAttributeLocalSnapshotRecordingEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeLocalSnapshotRecordingEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeLocalSnapshotRecordingEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeLocalSnapshotRecordingEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeLocalSnapshotRecordingEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeLocalSnapshotRecordingEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeStatusLightEnabledWithCompletion:@
+readAttributeStatusLightEnabledWithCompletionSelector :: Selector
+readAttributeStatusLightEnabledWithCompletionSelector = mkSelector "readAttributeStatusLightEnabledWithCompletion:"
+
+-- | @Selector@ for @writeAttributeStatusLightEnabledWithValue:completion:@
+writeAttributeStatusLightEnabledWithValue_completionSelector :: Selector
+writeAttributeStatusLightEnabledWithValue_completionSelector = mkSelector "writeAttributeStatusLightEnabledWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeStatusLightEnabledWithValue:params:completion:@
+writeAttributeStatusLightEnabledWithValue_params_completionSelector :: Selector
+writeAttributeStatusLightEnabledWithValue_params_completionSelector = mkSelector "writeAttributeStatusLightEnabledWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeStatusLightEnabledWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeStatusLightEnabledWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeStatusLightEnabledWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeStatusLightEnabledWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeStatusLightEnabledWithClusterStateCache:endpoint:queue:completion:@
+readAttributeStatusLightEnabledWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeStatusLightEnabledWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeStatusLightEnabledWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeStatusLightBrightnessWithCompletion:@
+readAttributeStatusLightBrightnessWithCompletionSelector :: Selector
+readAttributeStatusLightBrightnessWithCompletionSelector = mkSelector "readAttributeStatusLightBrightnessWithCompletion:"
+
+-- | @Selector@ for @writeAttributeStatusLightBrightnessWithValue:completion:@
+writeAttributeStatusLightBrightnessWithValue_completionSelector :: Selector
+writeAttributeStatusLightBrightnessWithValue_completionSelector = mkSelector "writeAttributeStatusLightBrightnessWithValue:completion:"
+
+-- | @Selector@ for @writeAttributeStatusLightBrightnessWithValue:params:completion:@
+writeAttributeStatusLightBrightnessWithValue_params_completionSelector :: Selector
+writeAttributeStatusLightBrightnessWithValue_params_completionSelector = mkSelector "writeAttributeStatusLightBrightnessWithValue:params:completion:"
+
+-- | @Selector@ for @subscribeAttributeStatusLightBrightnessWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeStatusLightBrightnessWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeStatusLightBrightnessWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeStatusLightBrightnessWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeStatusLightBrightnessWithClusterStateCache:endpoint:queue:completion:@
+readAttributeStatusLightBrightnessWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeStatusLightBrightnessWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeStatusLightBrightnessWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeGeneratedCommandListWithCompletion:@
+readAttributeGeneratedCommandListWithCompletionSelector :: Selector
+readAttributeGeneratedCommandListWithCompletionSelector = mkSelector "readAttributeGeneratedCommandListWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeGeneratedCommandListWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeGeneratedCommandListWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeGeneratedCommandListWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeGeneratedCommandListWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAcceptedCommandListWithCompletion:@
+readAttributeAcceptedCommandListWithCompletionSelector :: Selector
+readAttributeAcceptedCommandListWithCompletionSelector = mkSelector "readAttributeAcceptedCommandListWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAcceptedCommandListWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAcceptedCommandListWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAcceptedCommandListWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAcceptedCommandListWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeAttributeListWithCompletion:@
+readAttributeAttributeListWithCompletionSelector :: Selector
+readAttributeAttributeListWithCompletionSelector = mkSelector "readAttributeAttributeListWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeAttributeListWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeAttributeListWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:@
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeAttributeListWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeAttributeListWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeFeatureMapWithCompletion:@
+readAttributeFeatureMapWithCompletionSelector :: Selector
+readAttributeFeatureMapWithCompletionSelector = mkSelector "readAttributeFeatureMapWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeFeatureMapWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeFeatureMapWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:@
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeFeatureMapWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeFeatureMapWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @readAttributeClusterRevisionWithCompletion:@
+readAttributeClusterRevisionWithCompletionSelector :: Selector
+readAttributeClusterRevisionWithCompletionSelector = mkSelector "readAttributeClusterRevisionWithCompletion:"
+
+-- | @Selector@ for @subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:@
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandlerSelector :: Selector
+subscribeAttributeClusterRevisionWithParams_subscriptionEstablished_reportHandlerSelector = mkSelector "subscribeAttributeClusterRevisionWithParams:subscriptionEstablished:reportHandler:"
+
+-- | @Selector@ for @readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:@
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completionSelector :: Selector
+readAttributeClusterRevisionWithClusterStateCache_endpoint_queue_completionSelector = mkSelector "readAttributeClusterRevisionWithClusterStateCache:endpoint:queue:completion:"
+
+-- | @Selector@ for @init@
+initSelector :: Selector
+initSelector = mkSelector "init"
+
+-- | @Selector@ for @new@
+newSelector :: Selector
+newSelector = mkSelector "new"
+
+-- | @Selector@ for @initWithDevice:endpointID:queue:@
+initWithDevice_endpointID_queueSelector :: Selector
+initWithDevice_endpointID_queueSelector = mkSelector "initWithDevice:endpointID:queue:"
+

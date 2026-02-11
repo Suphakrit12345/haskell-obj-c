@@ -1,0 +1,25 @@
+name:                apple-metalfx-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the MetalFX framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.MetalFX.Enums
+  - ObjC.MetalFX.Internal.Classes
+  - ObjC.MetalFX.Internal.Enums
+  - ObjC.MetalFX.MTLFXFrameInterpolatorDescriptor
+  - ObjC.MetalFX.MTLFXSpatialScalerDescriptor
+  - ObjC.MetalFX.MTLFXTemporalDenoisedScalerDescriptor
+  - ObjC.MetalFX.MTLFXTemporalScalerDescriptor

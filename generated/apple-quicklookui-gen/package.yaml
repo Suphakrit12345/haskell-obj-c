@@ -1,0 +1,29 @@
+name:                apple-quicklookui-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the QuickLookUI framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-foundation-gen
+- apple-uniformtypeidentifiers-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.QuickLookUI.Enums
+  - ObjC.QuickLookUI.Internal.Classes
+  - ObjC.QuickLookUI.Internal.Enums
+  - ObjC.QuickLookUI.QLFilePreviewRequest
+  - ObjC.QuickLookUI.QLPreviewPanel
+  - ObjC.QuickLookUI.QLPreviewProvider
+  - ObjC.QuickLookUI.QLPreviewReply
+  - ObjC.QuickLookUI.QLPreviewReplyAttachment
+  - ObjC.QuickLookUI.QLPreviewView

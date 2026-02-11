@@ -108,19 +108,24 @@ generateContent
 generateContent fwMap allKnown hierarchy cls modName framework depFws originFw =
   let importableClasses = Set.fromList
         [ c | (c, fw) <- Map.toList fwMap
-        , fw == framework || ("objc-" <> T.toLower fw) `Set.member` depFws
+        , fw == framework || fwToPackageName fw `Set.member` depFws
         ]
       importableStructs = Set.fromList
         [ structTypedefName sd
         | sd <- Map.elems (hierarchyStructs hierarchy)
         , Just sFw <- [structFramework sd]
-        , sFw == framework || ("objc-" <> T.toLower sFw) `Set.member` depFws
+        , sFw == framework || fwToPackageName sFw `Set.member` depFws
         ]
       importable = Set.union importableClasses importableStructs
+      importableEnums = Map.filter
+        (\ed -> case enumFramework ed of
+          Just eFw -> eFw == framework || fwToPackageName eFw `Set.member` depFws
+          Nothing  -> False)
+        (ktEnums allKnown)
       restrictedKnown = KnownTypes
         { ktClasses = Set.intersection (ktClasses allKnown) importable
         , ktStructs = Set.intersection (ktStructs allKnown) importable
-        , ktEnums   = ktEnums allKnown
+        , ktEnums   = importableEnums
         , ktAvailableFrameworks = ktAvailableFrameworks allKnown
         }
       originFilter m = methodOriginFramework m == Just originFw
@@ -208,7 +213,7 @@ isEnumAvailable enumMap framework depFws eName =
     Nothing -> False
     Just ed -> case enumFramework ed of
       Nothing -> False
-      Just fw -> fw == framework || ("objc-" <> T.toLower fw) `Set.member` depFws
+      Just fw -> fw == framework || fwToPackageName fw `Set.member` depFws
 
 exportMethods :: KnownTypes -> Set Text -> ObjCClass -> (ObjCMethod -> Bool) -> Text
 exportMethods known importable cls originFilter =
@@ -298,7 +303,7 @@ generateImports fwMap allKnown hierarchy cls framework importable depFws originF
       , Just ed <- [Map.lookup eName enumMap]
       , Just fw <- [enumFramework ed]
       , fw /= framework
-      , ("objc-" <> T.toLower fw) `Set.member` depFws
+      , fwToPackageName fw `Set.member` depFws
       ]
     crossEnumImports = fmap
       (\fw -> "import ObjC." <> fw <> ".Internal.Enums")
@@ -324,7 +329,7 @@ generateImports fwMap allKnown hierarchy cls framework importable depFws originF
       , Just sd <- [Map.lookup sName (hierarchyStructs hierarchy)]
       , Just fw <- [structFramework sd]
       , fw /= framework
-      , ("objc-" <> T.toLower fw) `Set.member` depFws
+      , fwToPackageName fw `Set.member` depFws
       ]
     crossStructImports = fmap
       (\fw -> "import ObjC." <> fw <> ".Internal.Structs")
@@ -343,7 +348,7 @@ generateImports fwMap allKnown hierarchy cls framework importable depFws originF
       , Set.member dep (ktAll allKnown)
       , Just fw <- [Map.lookup dep fwMap]
       , fw /= framework
-      , ("objc-" <> T.toLower fw) `Set.member` depFws
+      , fwToPackageName fw `Set.member` depFws
       ]
     crossFwImportLines
       | Set.null crossFws = []

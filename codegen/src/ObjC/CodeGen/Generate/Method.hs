@@ -252,14 +252,14 @@ generateMethodBody known _cls cfg method =
            <> retArg <> " " <> argsExpr <> suffixPart]
 
     InstanceReceiver selfVar ->
-      withObjCPtrLines
-      ++ [baseIndent <> "  " <> nestIndent <> prefixPart
+      fmap ("  " <>) withObjCPtrLines
+      ++ [baseIndent <> "  " <> nestIndent <> "  " <> prefixPart
            <> sendFn <> " " <> selfVar <> " (mkSelector " <> selStr <> ") "
            <> retArg <> " " <> argsExpr <> suffixPart]
 
     DirectReceiver recvExpr ->
-      withObjCPtrLines
-      ++ [baseIndent <> "  " <> nestIndent <> prefixPart
+      fmap ("  " <>) withObjCPtrLines
+      ++ [baseIndent <> "  " <> nestIndent <> "  " <> prefixPart
            <> sendFn <> " " <> recvExpr <> " (mkSelector " <> selStr <> ") "
            <> retArg <> " " <> argsExpr <> suffixPart]
 
@@ -326,7 +326,14 @@ mkPrimitiveRetExprs kt q d selector
   | Just ed <- lookupEnumByQualType kt q d
     = let retFn = enumRetFunction ed
           retTy = enumRetFunctionType ed
-      in ("fmap (coerce :: " <> retTy <> " -> " <> enumName ed <> ") $", retFn, "")
+          hsTy  = enumUnderlyingHsType ed
+          eName = enumName ed
+          -- If the FFI return type matches the newtype wrapper, coerce directly.
+          -- Otherwise go through fromIntegral first.
+          wrapper
+            | retTy == hsTy = "fmap (coerce :: " <> retTy <> " -> " <> eName <> ") $"
+            | otherwise     = "fmap (" <> eName <> " . fromIntegral :: " <> retTy <> " -> " <> eName <> ") $"
+      in (wrapper, retFn, "")
   -- __kindof annotation
   | "__kindof " `T.isPrefixOf` d
   , let clsName = extractClassName (T.drop 9 d)
@@ -422,7 +429,11 @@ mkPrimitiveArgExpr kt q d paramName
   -- Known enum types
   | Just ed <- lookupEnumByQualType kt q d
     = let argFn = enumArgFunction ed
-      in argFn <> " (coerce " <> paramName <> ")"
+          retTy = enumRetFunctionType ed
+          hsTy  = enumUnderlyingHsType ed
+      in if retTy == hsTy
+         then argFn <> " (coerce " <> paramName <> ")"
+         else argFn <> " (fromIntegral (coerce " <> paramName <> " :: " <> hsTy <> "))"
   -- __kindof
   | "__kindof " `T.isPrefixOf` d
     = "argPtr (castPtr " <> paramName <> " :: Ptr ())"
@@ -455,6 +466,11 @@ mkPrimitiveArgExpr kt q d paramName
   | isBlockDesugared d    = "argPtr (castPtr " <> paramName <> " :: Ptr ())"
   -- Delegate to PrimitiveTypes table
   | Just info <- lookupPrimitive q d
-    = ptArgFunction info <> " (fromIntegral " <> paramName <> ")"
+    = let argFn = ptArgFunction info
+          argTy = ptRetFuncType info
+          hsTy  = ptHsType info
+      in if argTy == hsTy
+         then argFn <> " " <> paramName
+         else argFn <> " (fromIntegral " <> paramName <> ")"
   -- Conservative fallback
   | otherwise = "argCInt (fromIntegral " <> paramName <> ")"

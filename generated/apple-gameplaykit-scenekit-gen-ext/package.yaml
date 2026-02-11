@@ -1,0 +1,24 @@
+name:                apple-gameplaykit-scenekit-gen-ext
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the GameplayKit extensions on SceneKit framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-gameplaykit-gen
+- apple-scenekit-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.GameplayKit.NSArray
+  - ObjC.GameplayKit.SCNNode
+  - ObjC.GameplayKit.SKNode
+  - ObjC.GameplayKit.SKTexture
+  - ObjC.GameplayKit.SKTileMapNode

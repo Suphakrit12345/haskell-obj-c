@@ -98,7 +98,8 @@ internalCrossFwModules hierarchy framework depFws =
     depFwNames = Set.fromList
       [ fw
       | depPkg <- Set.toList depFws
-      , let rawFw = T.drop 5 depPkg
+      -- strip "apple-" prefix and "-gen" suffix
+      , let rawFw = T.dropEnd 4 (T.drop 6 depPkg)
       , fw <- lookupFrameworkName rawFw
       ]
     allFws = Set.fromList (Map.elems (hierarchyFrameworks hierarchy))

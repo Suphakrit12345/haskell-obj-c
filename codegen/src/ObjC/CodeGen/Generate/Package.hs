@@ -13,6 +13,8 @@ module ObjC.CodeGen.Generate.Package
     generateFrameworkPackages
     -- * Single-package generation
   , generatePackage
+    -- * Extension packages
+  , generateExtensionPackages
     -- * Dependency computation
   , frameworkDependencies
   , classFrameworkMap
@@ -37,6 +39,7 @@ import ObjC.CodeGen.Generate.Shared
   ( isStructFieldSupported, isMethodSupported, isStructSupported
   , propertyToMethods, methodUnsupportedType
   , computeTypeClosure, classReferencedTypes
+  , fwToPackageName
   )
 import ObjC.CodeGen.Generate.Enums
   ( generateEnumsModule, generatePublicEnumsModule, frameworkEnums )
@@ -54,7 +57,8 @@ import ObjC.CodeGen.Generate.ClassModule
 -- ---------------------------------------------------------------------------
 
 -- | Generate packages for all (or a targeted subset of) frameworks
--- found in the class hierarchy.
+-- found in the class hierarchy, plus extension packages for
+-- cross-framework category methods.
 generateFrameworkPackages :: ClassHierarchy -> Maybe Text -> [GeneratedPackage]
 generateFrameworkPackages hierarchy0 targetFw =
   let hierarchy = resolveOpaqueStructFields hierarchy0
@@ -72,10 +76,11 @@ generateFrameworkPackages hierarchy0 targetFw =
         , ktAvailableFrameworks = allFwNames
         }
 
-      -- Group classes by framework
+      -- Group classes by framework (skip private frameworks starting with '_')
       fwGroups :: Map Text [Text]
       fwGroups = Map.foldlWithKey'
-        (\m cls fw -> Map.insertWith (++) fw [cls] m)
+        (\m cls fw -> if isPrivateFramework fw then m
+                      else Map.insertWith (++) fw [cls] m)
         Map.empty fwMap
 
       -- Frameworks that have structs but no classes
@@ -84,6 +89,7 @@ generateFrameworkPackages hierarchy0 targetFw =
         [ (fw, [])
         | sd <- Map.elems (hierarchyStructs hierarchy)
         , Just fw <- [structFramework sd]
+        , not (isPrivateFramework fw)
         , not (Map.member fw fwGroups)
         ]
 
@@ -92,8 +98,38 @@ generateFrameworkPackages hierarchy0 targetFw =
 
       allFwNames = Map.keysSet allFwGroups
 
-      allPackages = fmap (generatePackage hierarchy fwMap allKnown allFwNames)
-                         (Map.toList allFwGroups)
+      -- Step 1: compute core (structural) deps per framework as framework
+      -- names — these are acyclic by construction.
+      coreDepFwMap :: Map Text (Set Text)
+      coreDepFwMap = Map.mapWithKey
+        (\fw clss -> computeCoreDepsFw hierarchy fwMap fw (Set.fromList clss))
+        allFwGroups
+
+      -- Step 2: compute raw method deps per framework (as framework names).
+      rawMethodDepFwMap :: Map Text (Set Text)
+      rawMethodDepFwMap = Map.mapWithKey
+        (\fw clss -> computeMethodDepsFw hierarchy fwMap allKnown fw (Set.fromList clss))
+        allFwGroups
+
+      -- Step 3: iteratively accept method deps that don't create cycles.
+      -- Start from core deps and greedily add method deps, recomputing
+      -- reachability after each addition to catch indirect cycles.
+      finalDepFwMap :: Map Text (Set Text)
+      finalDepFwMap = addMethodDepsNoCycles coreDepFwMap rawMethodDepFwMap
+
+      -- Convert to package names.
+      safeDeps :: Map Text (Set Text)
+      safeDeps = Map.map (Set.map fwToPackageName) finalDepFwMap
+
+      basePkgs = fmap (generatePackageWith safeDeps hierarchy fwMap allKnown allFwNames)
+                      (Map.toList allFwGroups)
+
+      -- Extension packages for cross-framework categories
+      extPkgs = generateExtensionPackages hierarchy fwMap allKnown allFwNames
+
+      -- Methods that reference cycle-inducing types will naturally
+      -- fall back to RawId since their framework won't be in depFws.
+      allPackages = basePkgs ++ extPkgs
 
       targetPackages = case targetFw of
         Nothing -> allPackages
@@ -130,13 +166,112 @@ transitiveFwClosure pkgMap = go Set.empty
 
     pkgNameToFramework :: Text -> Text
     pkgNameToFramework pkgName =
-      case filter (\fw -> "objc-" <> T.toLower fw == pkgName) (Map.keys pkgMap) of
+      case filter (\fw -> fwToPackageName fw == pkgName) (Map.keys pkgMap) of
         (fw : _) -> fw
         []       -> T.drop 5 pkgName
+
+-- | Compute the set of frameworks transitively reachable from a given
+-- framework via the core (structural) dependency graph.
+-- The input map is @framework -> Set packageName@ (core deps only).
+reachableFrom :: Map Text (Set Text) -> Text -> Set Text
+reachableFrom depMap start = go Set.empty (Set.singleton start)
+  where
+    go visited frontier
+      | Set.null newFws = visited'
+      | otherwise       = go visited' newFws
+      where
+        visited' = Set.union visited frontier
+        depPkgs  = foldMap
+          (\fw -> Map.findWithDefault Set.empty fw depMap)
+          (Set.toList frontier)
+        newFws   = Set.difference depPkgs visited'
 
 -- ---------------------------------------------------------------------------
 -- Single package generation
 -- ---------------------------------------------------------------------------
+
+-- | Generate a single framework package using precomputed dependencies.
+generatePackageWith
+  :: Map Text (Set Text)  -- ^ precomputed per-framework deps (package names)
+  -> ClassHierarchy
+  -> Map Text Text
+  -> KnownTypes
+  -> Set Text
+  -> (Text, [Text])
+  -> GeneratedPackage
+generatePackageWith depOverrides hierarchy fwMap allKnown availableFws (framework, classNames) =
+  let genSet  = Set.fromList classNames
+      ordered = filter (`Set.member` genSet) (hierarchyTopoOrder hierarchy)
+      hasClasses = not (null classNames)
+
+      -- Use precomputed deps (already cycle-free)
+      depFwsRaw = Map.findWithDefault Set.empty framework depOverrides
+      availablePkgNames = Set.map fwToPackageName availableFws
+      depFws = Set.intersection depFwsRaw availablePkgNames
+
+      internalMod = generateInternalClassesModule fwMap hierarchy framework ordered depFws
+      fwStructs = frameworkStructs hierarchy framework
+      structsMod = generateStructsModule hierarchy framework fwStructs
+      fwEnums = frameworkEnums hierarchy framework
+      enumsMod = generateEnumsModule framework fwEnums
+
+      modules = fmap (generateClassModule fwMap hierarchy allKnown framework depFws) ordered
+      protocolsMod = Nothing
+
+      pkgName  = fwToPackageName framework
+      prefix   = "ObjC." <> framework
+      publicStructsMod = generatePublicStructsModule prefix fwStructs
+      publicEnumsMod   = generatePublicEnumsModule prefix fwEnums
+
+      allExtraModules = concat
+        [ [internalMod       | hasClasses]
+        , [structsMod        | not (null fwStructs)]
+        , [publicStructsMod  | not (null fwStructs)]
+        , [enumsMod          | not (null fwEnums)]
+        , [publicEnumsMod    | not (null fwEnums)]
+        , maybe [] (: []) protocolsMod
+        , modules
+        ]
+
+      structReExport = generateStructReExportModule prefix fwStructs
+      pkgYaml
+        | hasClasses = generatePackageYaml pkgName framework depFws allExtraModules
+        | otherwise  = generatePackageYaml pkgName framework depFws
+                         (structReExport : allExtraModules)
+
+      methodSkips = concatMap (classMethodSkips allKnown framework) $
+        mapMaybe (\n -> Map.lookup n (hierarchyClasses hierarchy)) ordered
+      extSkips = concatMap (classMethodSkips allKnown framework . snd)
+        [ (name, cls)
+        | (name, cls) <- Map.toList (hierarchyClasses hierarchy)
+        , classFramework cls /= Just framework
+        , any (\m -> methodOriginFramework m == Just framework) (classMethods cls)
+        ]
+      protoSkips = concatMap (protoMethodSkips allKnown framework) $
+        filter (\p -> protoDeclFramework p == Just framework)
+               (Map.elems (hierarchyProtocols hierarchy))
+      structSkips =
+        [ SkippedBinding
+          { skipFramework = framework
+          , skipClass     = structTypedefName sd
+          , skipSelector  = fName
+          , skipReason    = "unsupported struct field type: " <> T.pack (show fTy)
+          }
+        | sd <- fwStructs
+        , (fName, fTy) <- structFields sd
+        , not (isStructFieldSupported (ktAll allKnown) (fName, fTy))
+        ]
+      allSkips = methodSkips ++ extSkips ++ protoSkips ++ structSkips
+
+  in GeneratedPackage
+    { gpkgName      = pkgName
+    , gpkgFramework = framework
+    , gpkgDeps      = depFws
+    , gpkgModules   = allExtraModules
+    , gpkgReExport  = if hasClasses then Nothing else Just structReExport
+    , gpkgPackageYaml = pkgYaml
+    , gpkgSkipped   = allSkips
+    }
 
 -- | Generate a single framework package.
 generatePackage
@@ -164,14 +299,11 @@ generatePackage hierarchy fwMap allKnown availableFws (framework, classNames) =
 
       -- Dependency computation
       depFwsRaw = computePackageDeps hierarchy fwMap allKnown framework genSet
-      availablePkgNames = Set.map (\fw -> "objc-" <> T.toLower fw) availableFws
+      availablePkgNames = Set.map fwToPackageName availableFws
       depFws = Set.intersection depFwsRaw availablePkgNames
 
       -- Per-class modules
       modules = fmap (generateClassModule fwMap hierarchy allKnown framework depFws) ordered
-
-      -- Extension modules
-      extModules = generateExtensionModules fwMap hierarchy allKnown framework depFws
 
       -- Protocol modules (disabled pending superprotocol constraint handling)
       -- TODO: Re-enable once protocol instance generation handles superprotocol
@@ -190,10 +322,9 @@ generatePackage hierarchy fwMap allKnown availableFws (framework, classNames) =
         , [publicEnumsMod    | not (null fwEnums)]
         , maybe [] (: []) protocolsMod
         , modules
-        , extModules
         ]
 
-      pkgName  = "objc-" <> T.toLower framework
+      pkgName  = fwToPackageName framework
       prefix   = "ObjC." <> framework
       structReExport = generateStructReExportModule prefix fwStructs
       pkgYaml
@@ -237,6 +368,115 @@ generatePackage hierarchy fwMap allKnown availableFws (framework, classNames) =
     }
 
 -- ---------------------------------------------------------------------------
+-- Extension packages
+-- ---------------------------------------------------------------------------
+
+-- | Generate separate packages for cross-framework category methods.
+--
+-- When framework A defines ObjC categories on classes belonging to
+-- framework B, the generated bindings go into a standalone package
+-- @objc-\<a\>-\<b\>-ext@ that depends on both @objc-a@ and @objc-b@
+-- (plus any other frameworks referenced by the extension methods).
+-- This avoids dependency cycles between the base framework packages.
+generateExtensionPackages
+  :: ClassHierarchy
+  -> Map Text Text   -- ^ class name -> framework name
+  -> KnownTypes
+  -> Set Text        -- ^ all framework names
+  -> [GeneratedPackage]
+generateExtensionPackages hierarchy fwMap allKnown allFwNames =
+  let availablePkgNames = Set.map fwToPackageName allFwNames
+      -- Discover (categoryFw, classFw) pairs
+      pairs :: Map (Text, Text) [(Text, ObjCClass)]
+      pairs = Map.foldlWithKey' collectPairs Map.empty (hierarchyClasses hierarchy)
+
+      collectPairs acc _name cls =
+        case classFramework cls of
+          Nothing -> acc
+          Just classFw ->
+            let -- category frameworks that differ from the class framework
+                catFws = Set.fromList
+                  [ catFw
+                  | m <- classMethods cls
+                  , Just catFw <- [methodOriginFramework m]
+                  , catFw /= classFw
+                  , Set.member catFw allFwNames
+                  ]
+                catFwsP = Set.fromList
+                  [ catFw
+                  | p <- classProperties cls
+                  , Just catFw <- [propOriginFramework p]
+                  , catFw /= classFw
+                  , Set.member catFw allFwNames
+                  ]
+                allCatFws = Set.union catFws catFwsP
+            in Set.foldl'
+                 (\m catFw -> Map.insertWith (++) (catFw, classFw) [(_name, cls)] m)
+                 acc allCatFws
+
+  in mapMaybe (mkExtPkg hierarchy fwMap allKnown availablePkgNames)
+              (Map.toList pairs)
+
+-- | Build one extension package for a (categoryFw, classFw) pair.
+mkExtPkg
+  :: ClassHierarchy
+  -> Map Text Text
+  -> KnownTypes
+  -> Set Text        -- ^ available package names
+  -> ((Text, Text), [(Text, ObjCClass)])
+  -> Maybe GeneratedPackage
+mkExtPkg hierarchy fwMap allKnown availablePkgNames ((catFw, classFw), classes) =
+  let pkgName = "apple-" <> T.toLower catFw <> "-" <> T.toLower classFw <> "-gen-ext"
+      -- The extension modules live under the category framework's namespace
+      -- so they don't conflict with the base class modules.
+      -- Deps: both base framework packages + any types the extension methods reference
+      baseDeps = Set.fromList
+        [ fwToPackageName catFw
+        , fwToPackageName classFw
+        ]
+      -- Compute additional deps from types used in extension methods
+      extraDeps = Set.fromList
+        [ fwToPackageName fw
+        | (_name, cls) <- classes
+        , m <- classMethods cls
+        , methodOriginFramework m == Just catFw
+        , isMethodSupported allKnown m
+        , ty <- methodReturnType m : fmap snd (methodParams m)
+        , depName <- Set.toList (referencedClasses' ty)
+        , Just fw <- [Map.lookup depName fwMap]
+        , fw /= catFw && fw /= classFw
+        ]
+      allDeps = Set.intersection
+        (Set.difference (Set.unions [baseDeps, extraDeps])
+                        (Set.singleton pkgName))
+        availablePkgNames
+      -- Generate the extension modules using the category framework as
+      -- the "origin" framework filter
+      extModules = generateExtensionModules fwMap hierarchy allKnown catFw allDeps
+  in if null extModules then Nothing
+     else Just GeneratedPackage
+       { gpkgName      = pkgName
+       , gpkgFramework = catFw <> "+" <> classFw
+       , gpkgDeps      = allDeps
+       , gpkgModules   = extModules
+       , gpkgReExport  = Nothing
+       , gpkgPackageYaml = generatePackageYaml pkgName
+           (catFw <> " extensions on " <> classFw)
+           allDeps extModules
+       , gpkgSkipped   = []
+       }
+  where
+    referencedClasses' :: ObjCType -> Set Text
+    referencedClasses' (ObjCId (Just n) _)     = Set.singleton n
+    referencedClasses' (ObjCGeneric n args _)   =
+      Set.insert n (foldMap referencedClasses' args)
+    referencedClasses' (ObjCPointer inner)     = referencedClasses' inner
+    referencedClasses' (ObjCQualified _ inner)  = referencedClasses' inner
+    referencedClasses' (ObjCBlock ret params)  =
+      referencedClasses' ret <> foldMap referencedClasses' params
+    referencedClasses' _ = Set.empty
+
+-- ---------------------------------------------------------------------------
 -- Skip reports
 -- ---------------------------------------------------------------------------
 
@@ -262,6 +502,18 @@ methodSkip kt fw clsName m =
       , skipSelector  = methodSelector m
       , skipReason    = "unsupported type: " <> T.pack (show ty)
       }
+
+-- ---------------------------------------------------------------------------
+-- Private framework filtering
+-- ---------------------------------------------------------------------------
+
+-- | Private/internal Apple frameworks (prefixed with @_@) cannot be
+-- used as Haskell package names and should be excluded from
+-- generation and dependency lists.
+isPrivateFramework :: Text -> Bool
+isPrivateFramework fw = case T.uncons fw of
+  Just ('_', _) -> True
+  _             -> False
 
 -- ---------------------------------------------------------------------------
 -- package.yaml generation
@@ -306,7 +558,7 @@ classFrameworkMap hierarchy =
 frameworkDependencies :: ClassHierarchy -> Text -> Set Text
 frameworkDependencies hierarchy framework =
   Set.fromList
-    [ "objc-" <> T.toLower depFw
+    [ fwToPackageName depFw
     | (_name, cls) <- Map.toList (hierarchyClasses hierarchy)
     , classFramework cls == Just framework
     , depFw <- classDepFrameworks hierarchy cls
@@ -342,42 +594,145 @@ classDepFrameworks hierarchy cls =
     typeFrameworks _ = []
 
 -- | Compute the package dependencies for a framework.
+--
+-- This returns the full set of dependencies (core + method).
+-- Use 'computeCoreDeps' and 'computeMethodDeps' separately when you need
+-- cycle-aware dependency computation.
 computePackageDeps
   :: ClassHierarchy -> Map Text Text -> KnownTypes
   -> Text -> Set Text -> Set Text
 computePackageDeps hierarchy fwMap allKnown framework ownClasses =
-  let -- Superclass deps
-      superDeps = Set.fromList
-        [ "objc-" <> T.toLower fw
+  Set.unions
+    [ computeCoreDeps hierarchy fwMap framework ownClasses
+    , computeMethodDeps hierarchy fwMap allKnown framework ownClasses
+    ]
+
+-- | Iteratively add method dependencies to the core dep graph, skipping
+-- any edge that would introduce a cycle.  Processes all frameworks in a
+-- fixed order; for each framework, tries to add each method dep and
+-- checks for cycles via transitive reachability in the accumulated graph.
+addMethodDepsNoCycles
+  :: Map Text (Set Text)  -- ^ core dep graph (framework → frameworks)
+  -> Map Text (Set Text)  -- ^ raw method deps per framework
+  -> Map Text (Set Text)  -- ^ final dep graph (core + safe method deps)
+addMethodDepsNoCycles coreGraph rawMethods =
+  foldl tryAddFw coreGraph (Map.toList rawMethods)
+  where
+    tryAddFw graph (fw, mDeps) =
+      foldl (tryAddEdge fw) graph (Set.toList mDeps)
+
+    tryAddEdge fw graph depFw
+      -- Adding fw → depFw creates a cycle if fw is reachable from depFw
+      -- in the current graph.
+      | fw `Set.member` reachableFrom graph depFw = graph
+      | otherwise = Map.insertWith Set.union fw (Set.singleton depFw) graph
+
+-- | Core (structural) dependencies as framework names.
+-- Used for cycle detection in the reachability graph.
+computeCoreDepsFw
+  :: ClassHierarchy -> Map Text Text
+  -> Text -> Set Text -> Set Text
+computeCoreDepsFw hierarchy fwMap framework ownClasses =
+  let superDeps = Set.fromList
+        [ fw
         | name <- Set.toList ownClasses
         , Just cls <- [Map.lookup name (hierarchyClasses hierarchy)]
         , Just super <- [classSuperclass cls]
         , Just fw <- [Map.lookup super fwMap]
         , fw /= framework
+        , not (isPrivateFramework fw)
         ]
-      -- Method type deps
-      methodDeps = Set.fromList
-        [ "objc-" <> T.toLower fw
-        | name <- Set.toList ownClasses
-        , Just cls <- [Map.lookup name (hierarchyClasses hierarchy)]
-        , m <- classMethods cls
-        , isMethodSupported allKnown m
-        , ty <- methodReturnType m : fmap snd (methodParams m)
-        , depName <- Set.toList (referencedClasses' ty)
-        , Just fw <- [Map.lookup depName fwMap]
-        , fw /= framework
-        ]
-      -- Struct deps
       structDeps = Set.fromList
-        [ "objc-" <> T.toLower fw
+        [ fw
         | sd <- Map.elems (hierarchyStructs hierarchy)
         , structFramework sd == Just framework
         , (_, ObjCStruct refName) <- structFields sd
         , Just refSd <- [Map.lookup refName (hierarchyStructs hierarchy)]
         , Just fw <- [structFramework refSd]
         , fw /= framework
+        , not (isPrivateFramework fw)
         ]
-  in Set.unions [superDeps, methodDeps, structDeps]
+  in Set.union superDeps structDeps
+
+-- | Core (structural) dependencies: superclass and struct-field references.
+-- These form a DAG by construction and cannot create cycles.
+-- Returns package names (not framework names).
+computeCoreDeps
+  :: ClassHierarchy -> Map Text Text
+  -> Text -> Set Text -> Set Text
+computeCoreDeps hierarchy fwMap framework ownClasses =
+  let superDeps = Set.fromList
+        [ fwToPackageName fw
+        | name <- Set.toList ownClasses
+        , Just cls <- [Map.lookup name (hierarchyClasses hierarchy)]
+        , Just super <- [classSuperclass cls]
+        , Just fw <- [Map.lookup super fwMap]
+        , fw /= framework
+        , not (isPrivateFramework fw)
+        ]
+      structDeps = Set.fromList
+        [ fwToPackageName fw
+        | sd <- Map.elems (hierarchyStructs hierarchy)
+        , structFramework sd == Just framework
+        , (_, ObjCStruct refName) <- structFields sd
+        , Just refSd <- [Map.lookup refName (hierarchyStructs hierarchy)]
+        , Just fw <- [structFramework refSd]
+        , fw /= framework
+        , not (isPrivateFramework fw)
+        ]
+  in Set.union superDeps structDeps
+
+-- | Method type dependencies as framework names (not package names).
+-- Used for cycle-aware dependency computation.
+computeMethodDepsFw
+  :: ClassHierarchy -> Map Text Text -> KnownTypes
+  -> Text -> Set Text -> Set Text
+computeMethodDepsFw hierarchy fwMap allKnown framework ownClasses =
+  let methodBelongsHere m = case methodOriginFramework m of
+        Nothing -> True
+        Just fw -> fw == framework
+  in Set.fromList
+        [ fw
+        | name <- Set.toList ownClasses
+        , Just cls <- [Map.lookup name (hierarchyClasses hierarchy)]
+        , m <- classMethods cls
+        , methodBelongsHere m
+        , isMethodSupported allKnown m
+        , ty <- methodReturnType m : fmap snd (methodParams m)
+        , depName <- Set.toList (referencedClasses' ty)
+        , Just fw <- [Map.lookup depName fwMap]
+        , fw /= framework
+        , not (isPrivateFramework fw)
+        ]
+  where
+    referencedClasses' :: ObjCType -> Set Text
+    referencedClasses' (ObjCId (Just n) _) = Set.singleton n
+    referencedClasses' (ObjCGeneric n _ _) = Set.singleton n
+    referencedClasses' _                   = Set.empty
+
+-- | Method type dependencies: frameworks referenced by method parameter and
+-- return types.  Only considers methods originating from *this* framework.
+-- Returns package names.
+computeMethodDeps
+  :: ClassHierarchy -> Map Text Text -> KnownTypes
+  -> Text -> Set Text -> Set Text
+computeMethodDeps hierarchy fwMap allKnown framework ownClasses =
+  let methodBelongsHere m = case methodOriginFramework m of
+        Nothing -> True
+        Just fw -> fw == framework
+  in Set.fromList
+        [ fwToPackageName fw
+        | name <- Set.toList ownClasses
+        , Just cls <- [Map.lookup name (hierarchyClasses hierarchy)]
+        , m <- classMethods cls
+        , methodBelongsHere m
+        , isMethodSupported allKnown m
+        , ty <- methodReturnType m : fmap snd (methodParams m)
+        , depName <- Set.toList (referencedClasses' ty)
+        , Just fw <- [Map.lookup depName fwMap]
+        , fw /= framework
+        , not (isPrivateFramework fw)
+        ]
   where
     referencedClasses' :: ObjCType -> Set Text
     referencedClasses' (ObjCId (Just n) _)     = Set.singleton n

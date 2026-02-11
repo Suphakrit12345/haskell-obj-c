@@ -132,7 +132,8 @@ reservedNames = Set.fromList
   , "not", "and", "or", "any", "all"
   , "concat", "sum", "product", "elem", "repeat", "replicate"
   , "take", "drop", "reverse", "lookup", "words", "lines", "unwords"
-  , "unlines", "otherwise", "undefined", "seq"
+  , "unlines", "otherwise", "undefined", "seq", "subtract"
+  , "div", "mod", "rem", "quot", "negate", "abs", "signum"
   ]
 
 -- ---------------------------------------------------------------------------

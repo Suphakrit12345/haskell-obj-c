@@ -1,0 +1,35 @@
+name:                apple-iousbhost-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the IOUSBHost framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-foundation-gen
+- apple-iokit-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.IOUSBHost.Enums
+  - ObjC.IOUSBHost.IOUSBHostCIControllerStateMachine
+  - ObjC.IOUSBHost.IOUSBHostCIDeviceStateMachine
+  - ObjC.IOUSBHost.IOUSBHostCIEndpointStateMachine
+  - ObjC.IOUSBHost.IOUSBHostCIPortStateMachine
+  - ObjC.IOUSBHost.IOUSBHostControllerInterface
+  - ObjC.IOUSBHost.IOUSBHostDevice
+  - ObjC.IOUSBHost.IOUSBHostIOSource
+  - ObjC.IOUSBHost.IOUSBHostInterface
+  - ObjC.IOUSBHost.IOUSBHostObject
+  - ObjC.IOUSBHost.IOUSBHostPipe
+  - ObjC.IOUSBHost.IOUSBHostStream
+  - ObjC.IOUSBHost.Internal.Classes
+  - ObjC.IOUSBHost.Internal.Enums
+  - ObjC.IOUSBHost.Internal.Structs
+  - ObjC.IOUSBHost.Structs

@@ -1,0 +1,22 @@
+name:                apple-extensionkit-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the ExtensionKit framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-foundation-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.ExtensionKit.EXAppExtensionBrowserViewController
+  - ObjC.ExtensionKit.EXHostViewController
+  - ObjC.ExtensionKit.Internal.Classes

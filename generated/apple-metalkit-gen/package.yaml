@@ -1,0 +1,27 @@
+name:                apple-metalkit-gen
+version:             0.1.0.0
+synopsis:            Generated Haskell bindings for the MetalKit framework
+license:             BSD-3-Clause
+
+dependencies:
+- base >= 4.7 && < 5
+- haskell-obj-c
+- libffi
+- apple-appkit-gen
+- apple-foundation-gen
+- apple-modelio-gen
+
+ghc-options:
+- -Wall
+- -Wno-orphans
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - ObjC.MetalKit.Internal.Classes
+  - ObjC.MetalKit.MTKMesh
+  - ObjC.MetalKit.MTKMeshBuffer
+  - ObjC.MetalKit.MTKMeshBufferAllocator
+  - ObjC.MetalKit.MTKSubmesh
+  - ObjC.MetalKit.MTKTextureLoader
+  - ObjC.MetalKit.MTKView

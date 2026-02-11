@@ -35,6 +35,8 @@ module ObjC.CodeGen.Generate.Shared
   , ownershipWrapper
     -- * Managed parameter detection
   , isManagedObjCParam
+    -- * Package naming
+  , fwToPackageName
   ) where
 
 import Data.Map.Strict (Map)
@@ -338,3 +340,16 @@ isManagedObjCParam kt = go
           let pointee = extractClassName (T.strip (T.dropEnd 1 d))
           in Set.member pointee classes
     go _ = False
+
+-- ---------------------------------------------------------------------------
+-- Package naming
+-- ---------------------------------------------------------------------------
+
+-- | Convert a framework name to the generated Haskell package name.
+--
+-- >>> fwToPackageName "Foundation"
+-- "apple-foundation-gen"
+-- >>> fwToPackageName "CoreData"
+-- "apple-coredata-gen"
+fwToPackageName :: Text -> Text
+fwToPackageName fw = "apple-" <> T.toLower fw <> "-gen"
