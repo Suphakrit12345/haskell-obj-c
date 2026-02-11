@@ -1,157 +1,112 @@
 # haskell-obj-c
 
-Comprehensive Haskell bindings to Apple's Objective-C runtime (`libobjc`). This
-library provides type-safe access to the full Objective-C runtime API, dynamic
-message sending via `libffi`, Haskell-backed Objective-C classes, and a code
-generator that produces typed bindings from framework headers.
+Type-safe Haskell bindings to Apple's Objective-C runtime. Write native macOS
+apps in Haskell with generated bindings for AppKit, Foundation, and 150+ other
+Apple frameworks.
 
-## Project Structure
+## Features
 
-```
-haskell-obj-c/
-├── src/            Runtime library — FFI bindings to libobjc + higher-level API
-├── cbits/          C stubs for objc_msgSend, retain/release, and ObjC blocks
-├── codegen/        Standalone tool that parses Clang AST JSON and emits Haskell modules
-├── generated/      Output of the codegen — per-framework packages (Foundation, AppKit, …)
-├── examples/       Sample macOS apps using the bindings
-└── test/           Test suite exercising the runtime API
-```
+- **Generated bindings** for Apple frameworks — typed method wrappers, enums
+  with pattern synonyms, and `Storable` struct instances
+- **Phantom-typed object references** — `Id a` carries a type parameter that
+  encodes the ObjC class hierarchy, so the compiler rejects type mismatches
+- **Automatic memory management** — `Id a` is a `ForeignPtr` with
+  retain/release semantics; no manual reference counting
+- **Haskell-backed ObjC classes** — use Template Haskell to define ObjC classes
+  whose methods are Haskell closures (for targets, delegates, etc.)
+- **ObjC blocks from Haskell** — pass Haskell functions as ObjC block arguments
 
-## Components
+## Quick Start
 
-### Runtime Library (`src/ObjC/Runtime/`)
-
-The core library, exposed as `ObjC.Runtime`. It wraps `libobjc` and provides:
-
-| Module              | Purpose                                                       |
-|---------------------|---------------------------------------------------------------|
-| `Types`             | Phantom-typed `Id a`, raw `RawId`, `Class`, `Selector`, etc.  |
-| `MsgSend`           | Dynamic message sending via `libffi`                          |
-| `Class`             | Class lookup and introspection                                |
-| `Object`            | `alloc`, `init`, ivar access                                  |
-| `Selector`          | `mkSelector`, selector registration                           |
-| `Cast`              | Safe downcasting via `isKindOfClass:`                         |
-| `ClassBuilder`      | `objc_allocateClassPair` / `objc_registerClassPair`           |
-| `DynClass`          | Vtable infrastructure for Haskell-backed ObjC classes         |
-| `TH`                | Template Haskell API (`defineClass`) for declaring classes     |
-| `Block`             | Create ObjC blocks from Haskell callbacks                     |
-| `NSString`          | `pureNSString` convenience                                    |
-| `Framework`         | `loadFramework` / `loadFrameworkAt` via `dlopen`              |
-| `AutoreleasePool`   | `withAutoreleasePool`                                         |
-| `Association`       | Associated objects                                            |
-| `Ivar`              | Ivar introspection                                            |
-| `Property`          | Property introspection                                        |
-| `Protocol`          | Protocol introspection                                        |
-| `Method`            | Method introspection                                          |
-
-**Key design decisions:**
-
-- **Phantom types for safety.** `Id a` is a managed `ForeignPtr` with a phantom
-  type parameter. Generated bindings produce `IsNSObject`, `IsNSView`, etc.
-  typeclasses that form a subclass hierarchy, so a method expecting
-  `IsNSView a => Id a` will accept an `Id NSButton` but not an `Id NSString`.
-
-- **`libffi` for message sending.** `objc_msgSend` is a trampoline whose calling
-  convention must match the target method. Rather than generating a `foreign
-  import` per signature, the library uses `libffi` to build the call
-  dynamically with the correct types.
-
-- **Automatic memory management.** `Id a` wraps a `ForeignPtr` with a release
-  finalizer. `ownedObject` (for `+1` references from init/copy/new) and
-  `retainedObject` (for `+0` references that need a retain) handle the two
-  common ownership patterns.
-
-- **Vtable-based dynamic classes.** Haskell-backed ObjC classes use a per-instance
-  vtable (a C array of `FunPtr`s stored in an ivar). The Template Haskell
-  `defineClass` macro generates stub IMPs that dispatch through this vtable,
-  so each instance can have its own closure-backed implementations. See
-  [docs/dynclass.md](docs/dynclass.md) for details.
-
-### C Stubs (`cbits/objc_stubs.c`)
-
-A small C file that:
-
-- Exports the addresses of `objc_msgSend` (and `_stret`, `_fpret`, `_super`
-  variants) as function pointers for Haskell to call via `libffi`.
-- Provides `hs_objc_retain` / `hs_objc_release` for `ForeignPtr` finalizers.
-- Implements `hs_create_block` / `hs_release_block` using the ObjC block ABI.
-- Forces the linker to keep Foundation loaded despite `-dead_strip_dylibs`.
-
-Architecture-specific: on ARM64, `_stret` and `_fpret` both resolve to plain
-`objc_msgSend`. The stret/fpret variants only exist on x86_64.
-
-### Code Generator (`codegen/`)
-
-A standalone Haskell tool that produces typed bindings from Objective-C
-framework headers:
-
-1. Builds a header that `#import`s the framework.
-2. Runs `clang -Xclang -ast-dump=json` to get the full AST.
-3. Parses the JSON into an IR (`ClangAST.hs` -> `IR.hs`).
-4. Builds a class hierarchy and resolves cross-framework dependencies
-   (`Hierarchy.hs`).
-5. Emits one Haskell package per framework (`Generate/*.hs`), each containing:
-   - `Internal.Classes` — phantom types and `IsXxx` typeclass instances
-   - `Internal.Structs` — `Storable` instances for C structs
-   - `Internal.Enums` — enum types with pattern synonyms
-   - One module per class with typed method wrappers
-
-### Generated Bindings (`generated/`)
-
-Per-framework packages produced by the codegen:
-
-- `objc-foundation` — Foundation (NSObject, NSString, NSArray, …)
-- `objc-appkit` — AppKit (NSApplication, NSWindow, NSView, …)
-- `objc-coredata`, `objc-corefoundation`, `objc-quartzcore`, etc.
-
-Each generated method wrapper calls `sendMsg` / `sendClassMsg` with the
-correct `libffi` argument and return types, and uses `IsXxx` constraints for
-polymorphic dispatch.
-
-### Examples (`examples/`)
-
-Sample macOS applications demonstrating usage:
-
-| Example                | What it shows                                              |
-|------------------------|------------------------------------------------------------|
-| `hello-world`          | Window with a text field, basic AppKit object creation      |
-| `counter`              | Haskell-backed ObjC class via `defineClass` + `IORef`       |
-| `temperature-converter`| Two-way binding with text fields and actions                |
-| `color-mixer`          | Color picker                                                |
-| `controls-gallery`     | Various AppKit controls                                     |
-
-## How Things Fit Together
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                  User Application                       │
-│  Uses generated bindings + ObjC.Runtime for manual work │
-└───────────────────────────┬─────────────────────────────┘
-                            │
-        ┌───────────────────┼───────────────────┐
-        ▼                   ▼                   ▼
-  Generated Bindings   ObjC.Runtime.TH     ObjC.Runtime
-  (objc-foundation,    (defineClass →       (Types, MsgSend,
-   objc-appkit, …)      DynClass vtable)    Class, Object, …)
-        │                   │                   │
-        └───────────────────┼───────────────────┘
-                            ▼
-                     cbits/objc_stubs.c
-                  (msgSend ptrs, retain/
-                   release, block ABI)
-                            │
-                            ▼
-                    libobjc + libffi
+```bash
+stack build
 ```
 
-The **generated bindings** depend on the **runtime library** for message sending
-and type infrastructure. The **TH module** depends on the runtime library and
-`DynClass` to produce Haskell-backed ObjC classes. Everything bottoms out in
-the C stubs, `libobjc`, and `libffi`.
+### Hello World
 
-The **codegen** is a build-time tool that reads Clang's AST and writes `.hs`
-files. It does not link against the runtime at all — it just generates source
-code that imports it.
+```haskell
+main :: IO ()
+main = withAutoreleasePool $ do
+  loadFramework "AppKit"
+
+  app <- App.sharedApplication
+  _ <- App.setActivationPolicy app NSApplicationActivationPolicyRegular
+
+  let styleMask = NSWindowStyleMaskTitled <> NSWindowStyleMaskClosable
+               <> NSWindowStyleMaskResizable
+      rect = NSRect (NSPoint 200 200) (NSSize 480 260)
+
+  window <- alloc @NSWindow >>=
+    \w -> Win.initWithContentRect_styleMask_backing_defer
+            w rect styleMask NSBackingStoreBuffered False
+
+  Win.setTitle window ("Hello Haskell" :: Id NSString)
+
+  label <- TF.labelWithString ("Hello, World from Haskell!" :: Id NSString)
+  View.setFrame label (NSRect (NSPoint 40 80) (NSSize 400 100))
+
+  cv <- Win.contentView window
+  View.addSubview cv (toNSView label)
+
+  Win.makeKeyAndOrderFront window (RawId nullPtr)
+  App.run app
+```
+
+### Haskell-backed ObjC classes
+
+Use `defineClass` to create ObjC classes with Haskell closure implementations.
+This is how you wire up button targets, delegates, and data sources:
+
+```haskell
+$(defineClass "CounterTarget" "NSObject" $ do
+  instanceMethod "increment:" [t| RawId -> IO () |]
+  instanceMethod "decrement:" [t| RawId -> IO () |]
+ )
+
+main :: IO ()
+main = withAutoreleasePool $ do
+  -- ...
+  target <- newCounterTarget $ do
+    ref <- newIORef (0 :: Int)
+    pure CounterTargetImpl
+      { _increment = \_sender -> modifyIORef' ref (+ 1) >> readIORef ref >>= updateLabel label
+      , _decrement = \_sender -> modifyIORef' ref (subtract 1) >> readIORef ref >>= updateLabel label
+      }
+
+  plusBtn <- Btn.buttonWithTitle_target_action
+    ("+" :: Id NSString) target (mkSelector "increment:")
+  -- ...
+```
+
+## Examples
+
+Complete example apps live in `examples/`:
+
+| Example                | Description                                        |
+|------------------------|----------------------------------------------------|
+| `hello-world`          | Window with a label — basic AppKit usage            |
+| `counter`              | Haskell-backed ObjC class with `defineClass`        |
+| `temperature-converter`| Two-way binding with text fields and actions        |
+| `color-mixer`          | Color picker                                        |
+| `controls-gallery`     | Various AppKit controls                             |
+
+Build and run an example:
+
+```bash
+stack build --stack-yaml stack.yaml haskell-obj-c-examples
+stack exec hello-world
+```
+
+## Available Frameworks
+
+The codegen produces typed bindings for 150+ Apple frameworks, including:
+
+- **Foundation** — NSObject, NSString, NSArray, NSDictionary, ...
+- **AppKit** — NSApplication, NSWindow, NSView, NSButton, NSTextField, ...
+- **CoreData**, **CoreFoundation**, **QuartzCore**, **WebKit**, **Metal**,
+  **SceneKit**, **SpriteKit**, **MapKit**, **CoreML**, **Vision**, and many more
+
+See `generated/` for the full list.
 
 ## Building
 
@@ -161,7 +116,19 @@ stack test                # run tests
 stack build --stack-yaml stack.yaml haskell-obj-c-examples   # build examples
 ```
 
-## Further Reading
+### Regenerating framework bindings
 
-- [docs/dynclass.md](docs/dynclass.md) — How Haskell-backed ObjC classes work
+```bash
+scripts/regen-frameworks.sh
+```
+
+## Documentation
+
+- [Architecture](docs/architecture.md) — project structure, component overview,
+  and design decisions
+- [Dynamic Classes](docs/dynclass.md) — how Haskell-backed ObjC classes work
   (vtable design, TH code generation, dispatch flow)
+
+## License
+
+BSD-3-Clause
