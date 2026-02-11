@@ -60,3 +60,12 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     - -dynamic
+
+  todo-list:
+    main: Main.hs
+    source-dirs: todo-list
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -dynamic

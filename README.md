@@ -4,6 +4,10 @@ Type-safe Haskell bindings to Apple's Objective-C runtime. Write native macOS
 apps in Haskell with generated bindings for AppKit, Foundation, and 150+ other
 Apple frameworks.
 
+Note: This project is a work in progress. It is not yet ready for production use.
+
+![Todo List Example](docs/images/todo.png)
+
 ## Features
 
 - **Generated bindings** for Apple frameworks — typed method wrappers, enums
