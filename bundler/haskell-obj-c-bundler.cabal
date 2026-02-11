@@ -1,0 +1,63 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.38.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskell-obj-c-bundler
+version:        0.1.0.0
+synopsis:       macOS .app bundle creator for GHC-dynamic Haskell executables
+category:       Distribution
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2026 Author name here
+license:        BSD-3-Clause
+build-type:     Simple
+
+library
+  exposed-modules:
+      ObjC.Bundler.Types
+      ObjC.Bundler.Dylib
+      ObjC.Bundler.Plist
+      ObjC.Bundler.Bundle
+  other-modules:
+      Paths_haskell_obj_c_bundler
+  autogen-modules:
+      Paths_haskell_obj_c_bundler
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , process
+    , text
+    , xml-conduit
+    , xml-types
+  default-language: Haskell2010
+
+executable objc-bundler
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_obj_c_bundler
+  autogen-modules:
+      Paths_haskell_obj_c_bundler
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , haskell-obj-c-bundler
+    , optparse-applicative
+    , process
+    , text
+    , xml-conduit
+    , xml-types
+  default-language: Haskell2010

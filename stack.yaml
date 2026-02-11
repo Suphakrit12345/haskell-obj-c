@@ -33,6 +33,7 @@ packages:
 - .
 - examples
 - codegen
+- bundler
 # Generated framework packages (flat under generated/)
 # Regenerate with: stack exec objc-codegen -- -f AppKit -f WebKit ... -o generated
 - generated/apple-accessibility-gen
